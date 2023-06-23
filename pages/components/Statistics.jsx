@@ -31,9 +31,9 @@ const Statistics = () => {
                         <h2 className='text-app-orange text-center font-bold md:text-xl md:mt-4'>SPORTSFUSION STATISTICS</h2>
 
                         <div className='flex items-center gap-4 justify-center mt-3 mb-5'>
-                            <div className='h-1 bg-[#FF9E58] rounded-full w-12' />
-                            <div className='h-1 bg-[#FF9E58] rounded-full w-8' />
-                            <div className='h-1 bg-[#FF9E58] rounded-full w-12' />
+                        <div className='h-1 rounded-full w-12 bg-gradient-to-tr from-[rgba(225,107,0,0.5)] to-[rgba(41,165,255,0.5)]' />
+                            <div className='h-1 rounded-full w-8 bg-gradient-to-tr from-[rgba(225,107,0,0.5)] to-[rgba(41,165,255,0.5)]' />
+                            <div className='h-1 rounded-full w-12 bg-gradient-to-tr from-[rgba(225,107,0,0.5)] to-[rgba(41,165,255,0.5)]' />
                         </div>
 
                         <StatsTable stats={stats} />
@@ -60,7 +60,7 @@ export default Statistics
 
 const StatsTable = ({ stats }) => {
     return (
-        <table className='w-full'>
+        <table className='w-full '>
             <thead>
                 <tr>
                     <th className='text-app-orange text-left pl-4 md:pl-8'>Date</th>

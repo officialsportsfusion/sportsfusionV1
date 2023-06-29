@@ -1,5 +1,5 @@
-import { Header} from "../components"
-import Signin from "../components/signIn"
+import { Header} from "./components"
+import Signin from "./components/signIn"
 import { Sora } from '@next/font/google'
 const sora = Sora({ subsets: ['latin'] })
 

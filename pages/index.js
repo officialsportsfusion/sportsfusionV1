@@ -7,7 +7,7 @@ import {
   Footer,
   Hero,
   Testimonial,
-} from "@/components";
+} from "@/pages/components";
 
 // import Footer from '@/components/footer'
 // import Hero from '../components/Hero'

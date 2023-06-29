@@ -1,6 +1,6 @@
-import Footer from '@/components/footer'
-import Profile from '../components/profilePage'
-import { Header} from "../components"
+import Footer from '@/pages/components/footer'
+import Profile from './components/profilePage'
+import { Header} from "./components"
 import { Sora } from '@next/font/google'
 const sora = Sora({ subsets: ['latin'] })
 

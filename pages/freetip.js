@@ -8,7 +8,7 @@ import {
   Footer,
   BannerAd,
   FreetipsStats,
-} from "@/components";
+} from "@/pages/components";
 import { Sora } from "@next/font/google";
 const sora = Sora({ subsets: ["latin"] });
 

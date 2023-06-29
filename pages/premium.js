@@ -1,14 +1,11 @@
 import {
-  FreeTips,
+  BannerAd,
+  Footer,
+  FreetipsStats,
   Header,
   Premium,
-  Series,
-  Statistics,
-  Footer,
   Testimonial,
-  FreetipsStats,
-  BannerAd,
-} from "@/components";
+} from "../components";
 import { Sora } from "@next/font/google";
 const sora = Sora({ subsets: ["latin"] });
 

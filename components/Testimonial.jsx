@@ -1,5 +1,5 @@
-import Image from "next/image";
 import { useEffect, useState } from 'react';
+import Image from "next/image";
 import Img1 from "./../assets/image.png";
 import SwiperCore, { Navigation, Pagination } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -14,20 +14,21 @@ export default function Testimonial() {
   const [slidesPerView, setSlidesPerView] = useState(1);
   const testimonies = [
     {
-      name: "John Parker",
-      testimony: "lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum ",
+      name: "Ezra John",
+      testimony: "Sports Fusion's team exhibits unmatched expertise in analyzing sports events.",
       image: Img1,
       star: 5,
     },
     {
-      name: "John Smith",
-      testimony: "lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum ",
+      name: "Pa Taiwo",
+      testimony: "Sports Fusion improves betting decisions and deepens sports knowledge.",
       image: Img1,
       star: 4,
     },
     {
-      name: "Jane Doe",
-      testimony: "lorem ipsum lorem ipsum loremlorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum ",
+
+      name: "John Doe",
+      testimony: "For reliable sports predictions and serious sports betting, Sports Fusion is a necessity. ",
       image: Img1,
       star: 5,
     },
@@ -39,7 +40,7 @@ export default function Testimonial() {
     },
     {
       name: "Jonathan Moore",
-      testimony: "lorem ipsum lorem ipsum lorem ipsum lorem ipsumlorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum  ipsum lorem ipsum lorem ipsum ",
+      testimony: "No other sports prediction website compares to the accuracy and reliability of Sports Fusion",
       image: Img1,
       star: 3.5,
     },

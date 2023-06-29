@@ -1,4 +1,3 @@
-
 export default function BannerAd(){
     return(
         <div className="bg-[#FFFBF8] h-40">

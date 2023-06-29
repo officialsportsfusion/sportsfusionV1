@@ -1,6 +1,8 @@
 import React from 'react'
 import Image from 'next/image'
 
+
+
 const Statistics = () => {
 
     const stats = [
@@ -27,7 +29,7 @@ const Statistics = () => {
                 </p>
 
                 <div className='grid mt-6 gap-y-12 md:mt-12 md:grid-cols-12 pb-6'>
-                    <div className='bg-[#112636] rounded-lg py-4 sm:w-[28rem] sm:mx-auto md:mx-0 md:w-auto md:col-span-5 md:max-w-[23rem]'>
+                    <div className='bg-[#43] rounded-lg py-4 sm:w-[28rem] sm:mx-auto md:mx-0 md:w-auto md:col-span-5 md:max-w-[23rem]'>
                         <h2 className='text-app-orange text-center font-bold md:text-xl md:mt-4'>SPORTSFUSION STATISTICS</h2>
 
                         <div className='flex items-center gap-4 justify-center mt-3 mb-5'>
@@ -60,7 +62,7 @@ export default Statistics
 
 const StatsTable = ({ stats }) => {
     return (
-        <table className='w-full '>
+        <table className='w-full text-base'>
             <thead>
                 <tr>
                     <th className='text-app-orange text-left pl-4 md:pl-8'>Date</th>
@@ -73,10 +75,10 @@ const StatsTable = ({ stats }) => {
                 {
                     stats && stats.length !== 0 ?
                         stats.map((stat, index) => <tr key={index} className='text-app-white text-sm sm:text-lg md:text-md'>
-                            <td className='pl-4 md:pl-8 py-1 md:w-[10rem]'>{stat?.date}</td>
-                            <td className='pl-2 py-1'>{stat?.wins}</td>
-                            <td className='pl-2 py-1'>{stat?.loss}</td>
-                            <td className='py-1'>${stat?.profits}</td>
+                            <td className='pl-4 md:pl-8 py-1 md:w-[10rem] text-sm'>{stat?.date}</td>
+                            <td className='pl-2 py-1 text-sm'>{stat?.wins}</td>
+                            <td className='pl-2 py-1 text-sm'>{stat?.loss}</td>
+                            <td className='py-1 text-sm'>${stat?.profits}</td>
                         </tr>) :
                         null
                 }
@@ -114,8 +116,10 @@ const Pill = ({ stats, value }) => {
                 <p>{stats}</p>
             </div>
             <div className='rounded-full w-20 h-20 bg-[rgba(255,255,255,0.13)] grid place-items-center min-[360px]:w-24 min-[360px]:h-24 md:h-28 md:w-28 lg:w-32 lg:h-32'>
-                <p className='text-app-orange-light text-2xl md:text-3xl'>{value || 0}</p>
+            <p className='text-app-orange-light text-2xl md:text-3xl'> {value || 0}</p>
             </div>
         </div>
     )
 }
+
+

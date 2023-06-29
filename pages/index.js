@@ -8,9 +8,9 @@ import {
   Hero,
   Testimonial,
 } from "@/components";
+import { Sora } from '@next/font/google'
+const sora = Sora({ subsets: ['latin'] })
 
-import { Sora } from "@next/font/google";
-const sora = Sora({ subsets: ["latin"] });
 
 export default function Home() {
   return (

@@ -1,9 +1,6 @@
 import {
   FreeTips,
   Header,
-  Premium,
-  Series,
-  Statistics,
   Testimonial,
   Footer,
   BannerAd,

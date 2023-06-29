@@ -1,0 +1,14 @@
+.count {
+    font-size: 20px;
+    animation: countAnimation 2s ease-in-out forwards;
+  }
+  
+  @keyframes countAnimation {
+    from {
+      counter-increment: count;
+    }
+    to {
+      counter-increment: count 500;
+    }
+  }
+  

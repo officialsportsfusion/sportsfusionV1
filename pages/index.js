@@ -1,8 +1,8 @@
 
-import Footer from '@/pages/components/footer'
-import Hero from './components/Hero'
-import Testimonial from './components/Testimonial'
-import { FreeTips, Header, Premium, Series, Statistics} from "./components"
+import Footer from '@/components/footer'
+import Hero from '../components/Hero'
+import Testimonial from '../components/Testimonial'
+import { FreeTips, Header, Premium, Series, Statistics} from "../components"
 import { Sora } from '@next/font/google'
 const sora = Sora({ subsets: ['latin'] })
 

@@ -36,12 +36,12 @@ export default function Hero(){
         <div className="app-container md:flex md:justify-between md:mt-20 mb-20 mt-3">
           <div className=" md:p-5 md:w-7/12 lg:w-6/12">
           <h1 className="text-3xl font-bold text-left mb-3 w-11/12"> A WEB 3 DECENTRALIZED SPORTS <spam className='text-app-orange'> MARKET PLACE </spam></h1>
-            <p className="text-left mb-5 text-sm w-10/12 text-justify"> Exclusive way to earn big from the multiple systems for tips
+            <p className=" mb-5 text-sm md:w-10/12 lg:text-justify"> Exclusive way to earn big from the multiple systems for tips
                 on the marketplace, carefully collated and evaluated from the
                 best tipsters around the world. A platform that is Profit driven
                 where u can either buy and sell your predictions. Also become a tipster
             </p>
-            <p className='mb-5 text-sm w-10/12 text-justify'> Are you a Sport enthusiast but do not know or have the skills and knowledge on 
+            <p className='mb-5 text-sm md:w-10/12 '> Are you a Sport enthusiast but do not know or have the skills and knowledge on 
               how to predict? We are here to assist and help you make profits
             </p>
             <button className='h-[2.25rem] w-[6.8rem] grid place-items-center bg-gradient-to-r from-app-orange via-app-sky to-app-orange p-[1px] rounded-lg cursor-pointer hover:p-[2px]' ><span className='bg-app-black w-full h-full p-[1px] text-sm rounded-lg inline-grid place-items-center '>Join Us</span></button>

@@ -16,35 +16,29 @@ export default function Testimonial() {
 
   const Testimonies = [
     {
-      name: "John Doe",
-      testimony: "lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum ",
+      name: "Ezra John",
+      testimony: "Sports Fusion's team exhibits unmatched expertise in analyzing sports events.",
       image: Img1,
       star: <AiOutlineStar size={20} className="text-gradient-radial" />,
     },
     {
-      name: "John Doe",
-      testimony: "lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum ",
+      name: "Pa Taiwo",
+      testimony: "Sports Fusion improves betting decisions and deepens sports knowledge.",
       image: Img1,
       star: <AiOutlineStar size={20} />,
     },
     {
       name: "John Doe",
-      testimony: "lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum ",
+      testimony: "For reliable sports predictions and serious sports betting, Sports Fusion is a necessity. ",
       image: Img1,
       star: <AiOutlineStar size={20} />,
     },
     {
       name: "John Doe",
-      testimony: "lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum ",
+      testimony: "No other sports prediction website compares to the accuracy and reliability of Sports Fusion",
       image: Img1,
       star: <AiOutlineStar size={20} />,
-    },
-    {
-      name: "John Doe",
-      testimony: "lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum ",
-      image: Img1,
-      star: <AiOutlineStar size={20}  />,
-    },
+    }
   ]; 
 
  const [slidesPerView, setSlidesPerView] = useState(1);
@@ -97,7 +91,7 @@ export default function Testimonial() {
           <p className="font-bold text-xl md:text-3xl lg:text-5xl lg:mt-3 md:mb-2 text-app-orange-light ">
                   {testi.name}
                 </p>
-                <p className="text-app-white-500 lg:text-xl md:mb-2 lg:mb-5">{testi.testimony}</p>
+                <p className="text-app-white-500 text-sm lg:text-xl md:mb-2 lg:mb-5">{testi.testimony}</p>
                 <div className="flex">
                   {testi.star}
                   {testi.star}

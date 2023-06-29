@@ -8,3 +8,5 @@ export { default as Hero } from './Hero';
 export { default as Testimonial } from './Testimonial';
 export { default as FreetipsStats } from './FreetipsStats';
 export { default as Footer } from './Footer';
+export { default as Star } from './Star';
+export { default as StarHalf } from './StarHalf';

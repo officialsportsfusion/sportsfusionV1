@@ -1,53 +1,55 @@
-'use client'
 import Image from "next/image";
-import  { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Img1 from "./../assets/image.png";
 import SwiperCore, { Navigation, Pagination } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { AiOutlineStar } from "react-icons/ai";
-
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import { Star, StarHalf } from ".";
 
 SwiperCore.use([Navigation, Pagination]);
 
 export default function Testimonial() {
-
-  const Testimonies = [
+  const [slidesPerView, setSlidesPerView] = useState(1);
+  const testimonies = [
     {
-      name: "John Doe",
-      testimony: "lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum ",
+      name: "John Parker",
+      testimony: "lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum ",
       image: Img1,
-      star: <AiOutlineStar size={20} className="text-gradient-radial" />,
+      star: 5,
     },
     {
-      name: "John Doe",
+      name: "John Smith",
       testimony: "lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum ",
       image: Img1,
-      star: <AiOutlineStar size={20} />,
+      star: 4,
     },
     {
-      name: "John Doe",
-      testimony: "lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum ",
+      name: "Jane Doe",
+      testimony: "lorem ipsum lorem ipsum loremlorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum ",
       image: Img1,
-      star: <AiOutlineStar size={20} />,
+      star: 5,
     },
     {
-      name: "John Doe",
-      testimony: "lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum ",
+      name: "Cris Kyle",
+      testimony: "lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum ",
       image: Img1,
-      star: <AiOutlineStar size={20} />,
+      star: 4.5,
     },
     {
-      name: "John Doe",
+      name: "Jonathan Moore",
+      testimony: "lorem ipsum lorem ipsum lorem ipsum lorem ipsumlorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum  ipsum lorem ipsum lorem ipsum ",
+      image: Img1,
+      star: 3.5,
+    },
+    {
+      name: "John Champion",
       testimony: "lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum ",
       image: Img1,
-      star: <AiOutlineStar size={20}  />,
+      star: 5,
     },
-  ]; 
-
- const [slidesPerView, setSlidesPerView] = useState(1);
+  ];
 
   useEffect(() => {
     const handleResize = () => {
@@ -60,6 +62,7 @@ export default function Testimonial() {
 
     // Call the handleResize function on initial load and when the window is resized
     handleResize();
+
     window.addEventListener('resize', handleResize);
 
     return () => {
@@ -68,54 +71,61 @@ export default function Testimonial() {
   }, []);
 
   return (
-    <div className="app-container flex items-center justify-center mb-5">
-     <div className="w-full ">
-     <h1 className="text-3xl text-center text-app-orange font-bold py-5 lg:text-5xl">
-        {" "}
-        Testimonials
-      </h1>
-      <Swiper
-       slidesPerView={slidesPerView}
+    <div className="w-full">
+      <div className="app-container mb-5">
+        <h1 className="text-3xl text-center text-app-orange font-bold py-5 lg:text-5xl">Testimonials</h1>
+
+        <Swiper
+          slidesPerView={slidesPerView}
           navigation
           pagination={{ clickable: true }}
+          id="swiper"
           className="mySwiper">
-      {Testimonies.map((testi, key) => {
-        return (
-      <SwiperSlide key={key} className="swiper-slide">
-          <div    className="flex items-center justify center ">
-            <div
-            className=" m-3 lg:w-full lg:h-full rounded-2xl bg-gradient-to-r from-app-orange via-app-sky to-app-orange p-[2px] lg:h-72"
-          >
-            <div className="flex  p-4  rounded-2xl h-full w-full bg-app-black ">
-             <div className=" mt-4 md:mt-0 md:flex md:justify-center md:items-center lg:w-6/12">
-             <div className="  ">
-                <Image src={testi.image} alt="Testimonial Image" />
-              </div>
-             </div>
-              <div className=" flex justify-center item-center ml-3 ">  
-          <div>
-          <p className="font-bold text-xl md:text-3xl lg:text-5xl lg:mt-3 md:mb-2 text-app-orange-light ">
-                  {testi.name}
-                </p>
-                <p className="text-app-white-500 lg:text-xl md:mb-2 lg:mb-5">{testi.testimony}</p>
-                <div className="flex">
-                  {testi.star}
-                  {testi.star}
-                  {testi.star}
-                  {testi.star}
-                  {testi.star}
-             </div>
-          </div>
-              
-              </div>
-            </div>
-          </div>
-        </div>
-      </SwiperSlide>
-        );
-      })}
-      </Swiper>
-     </div>
+          {testimonies.map((testimony, key) => {
+            return (
+              <SwiperSlide key={key} className="swiper-slide px-4">
+                <Card testimony={testimony} />
+              </SwiperSlide>
+            );
+          })}
+        </Swiper>
+      </div>
     </div>
   );
+}
+
+const Card = ({ testimony }) => {
+  return (
+    <div className="rounded-2xl bg-gradient-to-r from-app-orange via-app-sky to-app-orange p-[2px]">
+      <div className="grid grid-cols-12 p-2 rounded-2xl h-full w-full bg-app-black sm:p-4 items-center">
+        <div className="col-span-4">
+          <Image src={testimony?.image} alt={`Image of ${testimony?.name || 'testifier'}`} className="w-full h-auto max-w-24" />
+        </div>
+
+        <div className="ml-4 col-span-8 md:ml-6 lg:ml-8">
+          <h2 className="font-bold text-app-orange-light">{testimony?.name}</h2>
+          <p className="text-app-white-500 line-clamp-3 text-[.875rem] mb-1 md:mb-2 ">{testimony?.testimony}</p>
+          <div className="flex gap-3"><Ratings rating={testimony?.star} /></div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+const Ratings = ({ rating }) => {
+  const isInteger = rating % 1 === 0;
+  const wholeNumber = Math.floor(rating)
+  const fullstar = []
+
+  for (let index = 0; index < wholeNumber; index++) {
+    fullstar.push(index)
+  }
+
+  if (!rating || rating <= 0) {
+    return <></>
+  }
+
+  return (
+    <>{fullstar.map(n => <Star key={n} />)} {!isInteger && <StarHalf />}</>
+  )
 }

@@ -3,7 +3,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 html,body{
   overflow-x: hidden;
 }
@@ -13,9 +12,50 @@ html,body{
     margin: 0 auto;
     width: 92%;
     max-width: 1200px;
-
   }
 }
 
+.star {
+  width: 1.25rem;
+  height: 1.1875rem;
+  clip-path: polygon(
+    50% 0%,
+    65% 33%,
+    98% 40%,
+    75% 65%,
+    80% 100%,
+    50% 82%,
+    20% 100%,
+    25% 65%,
+    2% 40%,
+    35% 33%
+  );
+}
+.star .star {
+  width: 0.75rem;
+  height: 0.7125rem;
+  clip-path: polygon(
+    50% 0%,
+    65% 33%,
+    98% 40%,
+    75% 65%,
+    80% 100%,
+    50% 82%,
+    20% 100%,
+    25% 65%,
+    2% 40%,
+    35% 33%
+  );
+}
 
+.star-half {
+  clip-path: polygon(0 0, 50% 0%, 50% 100%, 0 100%);
+  width: fit-content;
+}
+
+#swiper{
+  margin-left: -1rem;
+  margin-right: -1rem;
+  overflow-x: hidden;
+}
 

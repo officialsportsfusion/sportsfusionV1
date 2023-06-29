@@ -1,9 +1,8 @@
-'use client'
 import Image from 'next/image'
 import Logo from '../assets/logo (1).png'
 import Link from 'next/link'
 import { useState } from 'react'
-import { FaFootballBall, FaSearch, FaTimes, FaBars, FaAngleDown, FaAngleUp, FaUser } from 'react-icons/fa'
+import { FaSearch, FaTimes, FaBars, FaAngleDown, FaAngleUp, FaUser } from 'react-icons/fa'
 
 const Header = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -24,40 +23,43 @@ const Header = () => {
         <div>
             <nav className='py-4 flex items-center justify-between app-container md:py-6'>
                 <Link className='text-app-orange inline-flex items-center md:text-2xl' href='/'>
-                    <Image src={Logo} alt='Logo'/>
-                    {/* <FaFootballBall className='text-lg mr-1 md:text-3xl' /> {' '} SportsFusion */}
+                    <Image src={Logo} alt='Logo' />
                 </Link>
 
-                <ul className='hidden md:gap-6 md:flex lg:text-2xl lg:gap-8 '>
-                    <li className='group relative'>
-                        <button className='pb-[8px] text-base'>Home</button>
-                        <ul className='bg-black absolute text-white text-base h-0 overflow-hidden group-hover:h-auto group-hover:p-4 text-md'>
-                            <li>News</li>
-                            <li>Scores</li>
-                            <li>Shows</li>
-                            <li>About Us</li>
-                            <li>Community</li>
-                        </ul>
-                    </li>
+                {
+                    isLoggedIn && (
+                        <ul className='hidden md:gap-6 md:flex lg:text-2xl lg:gap-8 '>
+                            <li className='group relative'>
+                                <button className='pb-[8px] text-base'>Home</button>
+                                <ul className='bg-black absolute text-white text-base h-0 overflow-hidden group-hover:h-auto group-hover:p-4 text-md'>
+                                    <li>News</li>
+                                    <li>Scores</li>
+                                    <li>Shows</li>
+                                    <li>About Us</li>
+                                    <li>Community</li>
+                                </ul>
+                            </li>
 
-                    <li className='group relative'>
-                        <button className='pb-[8px] text-base'>Tips</button>
-                        <ul className='bg-black absolute z-10 top-[100%] text-white text-base h-0 overflow-hidden group-hover:h-auto group-hover:p-4 w-[160px] text-md'>
-                            <li>Soccer Tips</li>
-                            <li>Soccer Tips</li>
-                            <li>Soccer Tips</li>
-                        </ul>
-                    </li>
+                            <li className='group relative'>
+                                <button className='pb-[8px] text-base'>Tips</button>
+                                <ul className='bg-black absolute z-10 top-[100%] text-white text-base h-0 overflow-hidden group-hover:h-auto group-hover:p-4 w-[160px] text-md'>
+                                    <li>Soccer Tips</li>
+                                    <li>Soccer Tips</li>
+                                    <li>Soccer Tips</li>
+                                </ul>
+                            </li>
 
-                    <li className='group relative'>
-                        <button className='pb-[8px] text-base'>Tipsters</button>
-                        <ul className='bg-black z-10 absolute text-white  text-base h-0 w-[218px] overflow-hidden group-hover:h-auto group-hover:p-4 text-md'>
-                            <li>Junior Tipster</li>
-                            <li>Senior Tipster</li>
-                            <li>Premium Tipster</li>
+                            <li className='group relative'>
+                                <button className='pb-[8px] text-base'>Tipsters</button>
+                                <ul className='bg-black z-10 absolute text-white  text-base h-0 w-[218px] overflow-hidden group-hover:h-auto group-hover:p-4 text-md'>
+                                    <li>Junior Tipster</li>
+                                    <li>Senior Tipster</li>
+                                    <li>Premium Tipster</li>
+                                </ul>
+                            </li>
                         </ul>
-                    </li>
-                </ul>
+                    )
+                }
 
                 <div className='hidden md:flex md:items-center md:gap-4'>
                     {isLoggedIn ?
@@ -95,7 +97,7 @@ const Header = () => {
                     <button onClick={hideMobileNav} className='cursor-pointer block ml-auto'><FaTimes className='text-3xl' /></button>
                 </div>
 
-                <ul>
+                {isLoggedIn && (<ul>
                     <li className='bg-[#1E2124]'>
                         <div className='app-container'>
                             <button className='inline-flex items-center w-full py-3 text-xl' onClick={() => { switchTab('home') }}>Home {tab === 'home' ? <FaAngleUp className='text-app-orange ml-4' /> : <FaAngleDown className='text-app-orange ml-4' />}</button>
@@ -128,7 +130,7 @@ const Header = () => {
                             </ul>
                         </div>
                     </li>
-                </ul>
+                </ul>)}
 
                 <div className='app-container pt-12'>
                     {isLoggedIn ?
@@ -171,7 +173,7 @@ const ButtonOutline = ({ children, clickHandler, classProps }) => {
         }
     }
     return (
-        
+
         // <button className={`w-full bg-gradient-to-r from-app-orange via-app-sky to-app-orange py-[1px] px-[1px] rounded-lg cursor-pointer ${classProps}`} onClick={onClick}><span className='bg-app-black w-full h-full inline-block rounded-lg py-3'>{children}</span></button>
         <button className={`h-[2.25rem] w-[6.8rem] grid place-items-center bg-gradient-to-r from-app-orange via-app-sky to-app-orange p-[1px] rounded-lg cursor-pointer hover:p-[2px] ${classProps}`} onClick={onClick}><span className='bg-app-black w-full h-full p-[1px] text-sm rounded-lg inline-grid place-items-center '>{children}</span></button>
     )

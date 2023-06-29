@@ -1,9 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
 
-const Statistics = () => {
-
-
+const FreetipsStats = () => {
     return (
         <section className='w-full'>
             <div className='app-container'>
@@ -24,7 +22,7 @@ const Statistics = () => {
     )
 }
 
-export default Statistics
+export default FreetipsStats
 
 
 const StatsSummary = ({ stats }) => {

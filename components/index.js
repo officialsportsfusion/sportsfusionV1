@@ -7,7 +7,7 @@ export { default as Header } from "./Header";
 export { default as Hero } from "./Hero";
 export { default as Otp } from "./Otp";
 export { default as Premium } from "./Premium";
-export { default as Profile } from "./profilePage";
+export { default as Profile } from "./ProfilePage";
 export { default as Reset } from "./Reset";
 export { default as Series } from "./Series";
 export { default as SigninPage } from "./SignIn";

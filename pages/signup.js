@@ -1,11 +1,7 @@
-import { Header, SignupPage } from "../components";
-import { Sora } from "@next/font/google";
-const sora = Sora({ subsets: ["latin"] });
+import { Header, SignupPage } from "@/components";
 export default function signup() {
   return (
-    <main
-      className={`min-h-screen bg-app-black text-app-white-500 ${sora.className}`}
-    >
+    <main className="min-h-screen bg-app-black text-app-white-500">
       <Header />
       <SignupPage />
     </main>

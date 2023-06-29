@@ -1,8 +1,7 @@
-'use client'
 import Image from 'next/image';
-import  { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import FootballImg from './../assets/football.png'
-import SwiperCore, { Navigation, Pagination, EffectCoverflow  } from 'swiper';
+import SwiperCore, { Navigation, Pagination, EffectCoverflow } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';

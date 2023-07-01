@@ -106,7 +106,7 @@ const Card = ({ testimony }) => {
         <div className="ml-4 col-span-8 md:ml-6 lg:ml-8">
           <h2 className="font-bold text-app-orange-light">{testimony?.name}</h2>
           <p className="text-app-white-500 line-clamp-3 text-[.875rem] mb-1 md:mb-2 ">{testimony?.testimony}</p>
-          <div className="flex gap-3"><Ratings rating={testimony?.star} /></div>
+          <div className="flex gap-1 md:gap-3"><Ratings rating={testimony?.star} /></div>
         </div>
       </div>
     </div>

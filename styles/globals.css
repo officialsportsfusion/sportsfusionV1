@@ -1,9 +1,9 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-html,body{
+html,
+body {
   overflow-x: hidden;
 }
 
@@ -12,6 +12,31 @@ html,body{
     margin: 0 auto;
     width: 92%;
     max-width: 1200px;
+  }
+  /* Custom gradient borders */
+  .app-border-gradient {
+    @apply grid place-items-center bg-gradient-to-r from-app-orange via-app-sky to-app-orange p-[1px];
+  }
+  .app-border-gradient > * {
+    @apply w-full h-full bg-app-black;
+  }
+  .app-border-gradient-rounded-sm {
+    @apply grid place-items-center bg-gradient-to-r from-app-orange via-app-sky to-app-orange rounded-sm p-[1px];
+  }
+  .app-border-gradient-rounded-sm > * {
+    @apply w-full h-full rounded-sm bg-app-black;
+  }
+  .app-border-gradient-rounded-md {
+    @apply grid place-items-center bg-gradient-to-r from-app-orange via-app-sky to-app-orange rounded-md p-[1px];
+  }
+  .app-border-gradient-rounded-md > * {
+    @apply w-full h-full rounded-md bg-app-black;
+  }
+  .app-border-gradient-rounded-lg {
+    @apply grid place-items-center bg-gradient-to-r from-app-orange via-app-sky to-app-orange rounded-lg p-[1px];
+  }
+  .app-border-gradient-rounded-lg > * {
+    @apply w-full h-full rounded-lg bg-app-black;
   }
 }
 
@@ -53,9 +78,8 @@ html,body{
   width: fit-content;
 }
 
-#swiper{
+#swiper {
   margin-left: -1rem;
   margin-right: -1rem;
   overflow-x: hidden;
 }
-

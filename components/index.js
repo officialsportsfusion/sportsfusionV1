@@ -1,5 +1,7 @@
 export { default as AnimatedCount } from "./AnimatedCount";
 export { default as BannerAd } from "./BannerAd";
+export { default as Count } from "./Count";
+export { default as CountUp } from "./CountUp";
 export { default as Footer } from "./Footer";
 export { default as FreeTips } from "./FreeTips";
 export { default as FreetipsStats } from "./FreetipsStats";

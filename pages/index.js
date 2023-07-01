@@ -11,7 +11,7 @@ import {
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-app-black text-app-white-500">
+    <div className="min-h-screen bg-app-black text-app-white-500">
       <Header />
       <Hero />
       <Statistics />
@@ -20,6 +20,6 @@ export default function Home() {
       <Series />
       <Testimonial />
       <Footer />
-    </main>
+    </div>
   );
 }

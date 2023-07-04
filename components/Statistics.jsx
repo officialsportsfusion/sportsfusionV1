@@ -1,6 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
-import { Count, CountUp } from '.'
+import { Count, CountUp } from './index'
 
 const Statistics = () => {
 

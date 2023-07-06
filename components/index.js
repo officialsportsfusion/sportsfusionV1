@@ -18,3 +18,7 @@ export { default as Star } from "./Star";
 export { default as StarHalf } from "./StarHalf";
 export { default as Statistics } from "./Statistics";
 export { default as Testimonial } from "./Testimonial";
+export {default as Addfreetips} from './Addfreetips';
+export {default as Addpremiumtips} from './Addpremiumtip'
+export {default as Updatefreetip} from './Updatefreetip'
+export {default as Adminfreetip} from './Adminfreetip'

@@ -1,8 +1,32 @@
-import { FaUser } from "react-icons/fa"
-import axios from 'axios';
-import { useState, useEffect } from "react"
+import {
+    FreeTips,
+    Header,
+    Testimonial,
+    Footer,
+    BannerAd,
+    FreetipsStats,
+  } from "@/components";
 
-const FreeTips = () => {
+
+  import { FaUser } from "react-icons/fa"
+  import Link from "next/link";
+// export default function Adminfreetips(){
+// return (
+//     <main className="min-h-screen bg-app-black text-app-white-500">
+//       <Header />
+//       <FreeTips />
+//       <BannerAd />
+//       <FreetipsStats />
+//       <Testimonial />
+//       <Footer />
+//     </main>
+//   );
+// }
+
+import { useState, useEffect } from "react";
+import axios from "axios";
+
+export default function Adminfreetips() {
     const [tips, setTips] = useState('')
     const fetchdata = async () =>{
         try{
@@ -20,18 +44,7 @@ const FreeTips = () => {
     fetchdata();
   }, []);
 
-    // const tips = [
-    //     { date: '25/05', time: '03:00', league: 'PRE 1', match: { long: 'Chelsea FC - Manchester City FC', short: 'CFC - MCC' }, tip: 'Over 2.5', odd: '1.85', tipster: 'JesseJAY', score: '1:2' },
-    //     { date: '27/05', time: '03:00', league: 'PRE 1', match: { long: 'Liverpool FC - Manchester United FC', short: 'LFC - MNU' }, tip: 'Over 2.5', odd: '1.55', tipster: 'SammyJAY', score: '1:2' },
-    //     { date: '27/05', time: '03:00', league: 'PRE 1', match: { long: 'Chelsea FC - Manchester City FC', short: 'CFC - MCC' }, tip: 'Over 1.5', odd: '1.95', tipster: 'JesseJAY', score: '1:2' },
-    //     { date: '29/05', time: '03:00', league: 'PRE 1', match: { long: 'Bolton Albion FC - Manchester City FC', short: 'BAF - MCC' }, tip: 'Over 2.5', odd: '2.85', tipster: 'JesseJat', score: '1:2' },
-    //     { date: '27/05', time: '03:00', league: 'PRE 1', match: { long: 'Chelsea FC - Manchester City FC', short: 'CFC - MCC' }, tip: 'Over 1.5', odd: '1.50', tipster: 'JesseJAY', score: '1:2' },
-    //     { date: '29/05', time: '03:00', league: 'PRE 1', match: { long: 'Bolton Albion FC - Manchester City FC', short: 'BAF - MCC' }, tip: 'Over 2.5', odd: '2.85', tipster: 'JesseJat', score: '1:2' },
-    //     { date: '27/05', time: '03:00', league: 'PRE 1', match: { long: 'Chelsea FC - Manchester City FC', short: 'CFC - MCC' }, tip: 'Over 1.5', odd: '1.50', tipster: 'JesseJAY', score: '1:2' },
-    //     { date: '29/05', time: '03:00', league: 'PRE 1', match: { long: 'Bolton Albion FC - Manchester City FC', short: 'BAF - MCC' }, tip: 'Over 2.5', odd: '2.85', tipster: 'JesseJat', score: '1:2' },
-    //     { date: '27/05', time: '03:00', league: 'PRE 1', match: { long: 'Chelsea FC - Manchester City FC', short: 'CFC - MCC' }, tip: 'Over 1.5', odd: '1.50', tipster: 'JesseJAY', score: '1:2' },
-    //     { date: '30/05', time: '03:00', league: 'PRE 1', match: { long: 'Chelsea FC - Manchester City FC', short: 'CFC - MCC' }, tip: 'Under 2.5', odd: '2.20', tipster: 'JesseJAY', score: '1:1' },
-    // ]
+    
     return (
         <section className="bg-app-black py-12">
             <h1 className="text-app-orange font-bold text-4xl text-center mb-4">Fusion Free Tips</h1>
@@ -43,7 +56,7 @@ const FreeTips = () => {
     )
 }
 
-export default FreeTips
+
 
 const TipsTable = ({ tips }) => {
     return (
@@ -74,6 +87,7 @@ const TipsTable = ({ tips }) => {
                                         <td className="hidden md:table-cell ">{tip.odds}</td>
                                         <td className="hidden md:table-cell"><FaUser className="text-app-orange inline mb-1" />{' '}{tip.tipster}</td>
                                         <td className="text-center">{tip.scores}</td>
+                                        <Link href={`/updatetip/${tip._id}`} passHref> edit </Link>
                                     </tr>
                                 }) : null
                         }

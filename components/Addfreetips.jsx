@@ -1,7 +1,11 @@
 import { useState } from "react";
 import axios from 'axios';
+import { useRouter } from "next/router";
 
 export default function Addfreetips() {
+  // const router = useRouter()
+  const [error , setError] = useState('')
+  const [Message, setMessage] = useState('')
   const [formData, setFormData] = useState({
     date: '',
     time: '',
@@ -24,7 +28,12 @@ export default function Addfreetips() {
     try {
       const url = 'https://tasty-duck-coveralls.cyclic.app/v1/freetip';
       const response = await axios.post(url, formData);
-      console.log(response.data); // Handle the response as needed
+      // console.log(response.data);
+      setMessage(response.data.message)
+      setTimeout(()=>{
+        setMessage('')
+      }, 5000)
+      console.log(response.data.message) // Handle the response as needed
       // Reset form data if needed
       setFormData({
         date: '',
@@ -35,9 +44,23 @@ export default function Addfreetips() {
         tip: '',
         scores: ''
       });
+
+      // router.push('/freetip')
     } catch (error) {
       console.error('Error:', error);
       console.log(error.message)
+      if (error.message){
+        setError(error.message)
+        setTimeout(() => {
+          setError(null);
+        }, 5000);
+      } else{
+        setError('An error occured please try again later')
+        setTimeout(() => {
+          setError(null);
+        }, 5000);
+      }
+      
     }
   };
 
@@ -63,7 +86,7 @@ export default function Addfreetips() {
               placeholder='time'
               value={formData.time}
               onChange={handleInputChange}
-              className='p-3'
+              className='p-3 w-full'
             />
           </div>
 
@@ -74,7 +97,7 @@ export default function Addfreetips() {
               placeholder='league'
               value={formData.league}
               onChange={handleInputChange}
-              className='p-3'
+              className='p-3 w-full'
             />
           </div>
 
@@ -85,7 +108,7 @@ export default function Addfreetips() {
               placeholder='match'
               value={formData.match}
               onChange={handleInputChange}
-              className='p-3'
+              className='p-3 w-full'
             />
           </div>
 
@@ -96,7 +119,7 @@ export default function Addfreetips() {
               placeholder='odds'
               value={formData.odds}
               onChange={handleInputChange}
-              className='p-3'
+              className='p-3 w-full'
             />
           </div>
 
@@ -107,7 +130,7 @@ export default function Addfreetips() {
               placeholder='tip'
               value={formData.tip}
               onChange={handleInputChange}
-              className='p-3'
+              className='p-3 w-full'
             />
           </div>
 
@@ -118,14 +141,17 @@ export default function Addfreetips() {
               placeholder='scores'
               value={formData.scores}
               onChange={handleInputChange}
-              className='p-3'
+              className='p-3 w-full'
             />
           </div>
 
           <button className='mt-4 h-[2.25rem] w-[6.8rem] grid place-items-center bg-gradient-to-r from-app-orange via-app-sky to-app-orange p-[1px] rounded-lg cursor-pointer hover:p-[2px] text-white'>
-            <span className='bg-app-black w-full h-full p-[1px] text-sm rounded-lg inline-grid place-items-center'>Add Free Tips</span>
+            <span className='bg-app-black w-full h-full p-[1px] text-sm rounded-lg inline-grid place-items-center'>Add Tip</span>
           </button>
         </form>
+        {error && <p className="text-app-white">{error}</p>}
+        {Message && <p className = 'text-app-white'>{Message}</p>}
+        
       </div>
     </div>
   );

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { useRouter } from "next/router";
 
-export default function Updatefreetips() {
+export default function Updatepremiumtip() {
   const router = useRouter();
   const { _id } = router.query;
 
@@ -19,7 +19,7 @@ export default function Updatefreetips() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const url = `https://tasty-duck-coveralls.cyclic.app/v1/freetip/${_id}`;
+        const url = `https://tasty-duck-coveralls.cyclic.app/v1/premium/${_id}`;
         const response = await axios.get(url);
         const { date, time, league, match, odds, tip, scores } = response.data;
         setDate(date);
@@ -72,7 +72,7 @@ export default function Updatefreetips() {
       scores,
     };
     try {
-      const url = `https://tasty-duck-coveralls.cyclic.app/v1/freetip/${_id}`;
+      const url = `https://tasty-duck-coveralls.cyclic.app/v1/premium/${_id}`;
       const response = await axios.put(url, formData);
       console.log(response.data);
       setDate("");
@@ -82,7 +82,7 @@ export default function Updatefreetips() {
       setOdds("");
       setTip("");
       setScores("");
-      router.push("/adminfreetip");
+      router.push("/adminpremiumtip");
     } catch (error) {
       console.error("Error:", error);
       console.log(error.message);

@@ -22,3 +22,5 @@ export {default as Addfreetips} from './Addfreetips';
 export {default as Addpremiumtips} from './Addpremiumtip'
 export {default as Updatefreetip} from './Updatefreetip'
 export {default as Adminfreetip} from './Adminfreetip'
+export {default as Adminpremiumtip} from './Adminpremiumtip'
+export {default as Updatepremiumtip} from './Updatepremiuntip.jsx'

@@ -1,33 +1,27 @@
-import {
-    FreeTips,
-    Header,
-    Testimonial,
-    Footer,
-    BannerAd,
-    FreetipsStats,
-  } from "@/components";
+import {FreeTips,Header,Testimonial,Footer,BannerAd,FreetipsStats,} from "@/components";
 
-
-  import { FaUser } from "react-icons/fa"
-  import Link from "next/link";
-// export default function Adminfreetips(){
-// return (
-//     <main className="min-h-screen bg-app-black text-app-white-500">
-//       <Header />
-//       <FreeTips />
-//       <BannerAd />
-//       <FreetipsStats />
-//       <Testimonial />
-//       <Footer />
-//     </main>
-//   );
-// }
-
+import { FaUser } from "react-icons/fa"
+import Link from "next/link";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
 export default function Adminfreetips() {
     const [tips, setTips] = useState('')
+
+    const deletetip = async (tipId) => {
+        try {
+          await axios.delete(`https://tasty-duck-coveralls.cyclic.app/v1/freetip/${tipId}`);
+          // Update the state to reflect the deleted tip
+          setTips(tips.filter((tip) => tip._id !== tipId));
+          console.log("Tip deleted successfully");
+        } catch (error) {
+          console.error("Error deleting tip:", error);
+          // Handle the error as needed
+        }
+      };
+
+      
+
     const fetchdata = async () =>{
         try{
         const freetip = await axios.get('https://tasty-duck-coveralls.cyclic.app/v1/freetip')
@@ -38,6 +32,9 @@ export default function Adminfreetips() {
             console.log(err.message)
         }
     }
+
+
+    //   deletetip()
 
     
   useEffect(() => {
@@ -51,14 +48,14 @@ export default function Adminfreetips() {
 
             <p className="text-center text-app-white max-w-2xl app-container">We provide free evaluated tips by experts daily from tipsters and sources all around the world, that will hlp you make better betting decisions and profits. They are basically free for all users.</p>
 
-            <TipsTable tips={tips} />
+            <TipsTable tips={tips} deletetip={deletetip}/>
         </section>
     )
 }
 
 
 
-const TipsTable = ({ tips }) => {
+const TipsTable = ({ tips, deletetip}) => {
     return (
         <div className="md:app-container">
             <div className="relative">
@@ -79,7 +76,7 @@ const TipsTable = ({ tips }) => {
                         {
                             tips && tips.length !== 0 ?
                                 tips.map((tip, index) => {
-                                    return <tr key={index} className="border-b-solid border-b-[#4E443D] border-b-[1px] last-of-type:border-none">
+                                    return <tr key={index} className="border-b-solid border-b-[#4E443D] border-b-[1px] last-of-type:border-none text-app-white">
                                         <td className="pl-2"><p className="inline-flex text-sm flex-col ml-1 min-[420px]:text-md min-[420px]:flex-row"><span>{tip.date}</span> <span className='mx-4'>{tip.time}</span></p></td>
                                         <td className="hidden md:table-cell">{tip.league}</td>
                                         <td><span className="hidden sm:inline">{tip.match}</span><span className="sm:hidden">{tip.match}</span></td>
@@ -88,15 +85,16 @@ const TipsTable = ({ tips }) => {
                                         <td className="hidden md:table-cell"><FaUser className="text-app-orange inline mb-1" />{' '}{tip.tipster}</td>
                                         <td className="text-center">{tip.scores}</td>
                                         <Link href={`/updatetip/${tip._id}`} passHref> edit </Link>
+                                        <button onClick={() => deletetip(tip._id)}>delete</button>
                                     </tr>
                                 }) : null
                         }
                     </tbody>
                 </table>
-                <div className="bg-gradient-to-t from-[#0D0D0D] to-[#0D0D0D00] h-48 absolute bottom-0 left-0 right-0" />
+                {/* <div className="bg-gradient-to-t from-[#0D0D0D] to-[#0D0D0D00] h-48 absolute bottom-0 left-0 right-0" /> */}
             </div>
             <div className="grid place-items-center pt-3">
-                <button className='h-[2.25rem] w-[6.5rem] grid place-items-center bg-gradient-to-r from-app-orange via-app-sky to-app-orange p-[1px] rounded-lg cursor-pointer hover:p-[2px]' ><span className='bg-app-black w-full h-full rounded-lg inline-grid place-items-center '>See More</span></button>
+                <button className='h-[2.25rem] w-[6.5rem] grid place-items-center bg-gradient-to-r from-app-orange via-app-sky to-app-orange p-[1px] rounded-lg cursor-pointer hover:p-[2px] text-app-white' ><span className='bg-app-black w-full h-full rounded-lg inline-grid place-items-center '>See More</span></button>
             </div>
         </div>
     )

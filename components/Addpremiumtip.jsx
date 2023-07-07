@@ -2,7 +2,8 @@ import { useState } from "react";
 import axios from 'axios';
 
 export default function Addpremiumtips() {
-  const [error, setError] = useState(null);
+  const [error , setError] = useState('')
+  const [Message, setMessage] = useState('')
   const [formData, setFormData] = useState({
     date: '',
     time: '',
@@ -36,19 +37,24 @@ export default function Addpremiumtips() {
         tip: '',
         scores: ''
       });
+      setMessage(response.data.message)
+      setTimeout(()=>{
+        setMessage('')
+      }, 5000)
     } catch (error) {
       console.error('Error:', error);
       console.log(error.message)
-      if (error.response) {
-        // Handle error response from the backend
-        const errorMessage = error.response.data.error; // Adjust the property name based on your backend response structure
-        // Update your state or display the error message on the page
-        setError(errorMessage); // Assuming you have an error state variable called "error"
-      } else {
-        // Handle other errors (network, server, etc.)
-        setError('An error occurred. Please try again.'); // Display a generic error message
+      if (error.message){
+        setError(error.message)
+        setTimeout(() => {
+          setError(null);
+        }, 5000);
+      } else{
+        setError('An error occured please try again later')
+        setTimeout(() => {
+          setError(null);
+        }, 5000);
       }
-    }
   };
 
   return (
@@ -142,4 +148,4 @@ export default function Addpremiumtips() {
       </div>
     </div>
   );
-}
+}}

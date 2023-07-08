@@ -6,11 +6,12 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import { Star, StarHalf } from ".";
+import { Star } from './Star';
+import { StarHalf } from './StarHalf';
 
 SwiperCore.use([Navigation, Pagination]);
 
-export default function Testimonial() {
+export const Testimonial = () => {
   const [slidesPerView, setSlidesPerView] = useState(1);
   const testimonies = [
     {

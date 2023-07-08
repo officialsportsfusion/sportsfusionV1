@@ -1,61 +1,52 @@
-import {FreeTips,Header,Testimonial,Footer,BannerAd,FreetipsStats,} from "@/components";
-
 import { FaUser } from "react-icons/fa"
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-export default function Adminfreetips() {
+export const Adminfreetips = () => {
     const [tips, setTips] = useState('')
-
     const deletetip = async (tipId) => {
         try {
-          await axios.delete(`https://tasty-duck-coveralls.cyclic.app/v1/freetip/${tipId}`);
-          // Update the state to reflect the deleted tip
-          setTips(tips.filter((tip) => tip._id !== tipId));
-          console.log("Tip deleted successfully");
+            await axios.delete(`https://tasty-duck-coveralls.cyclic.app/v1/freetip/${tipId}`);
+            // Update the state to reflect the deleted tip
+            setTips(tips.filter((tip) => tip._id !== tipId));
+            console.log("Tip deleted successfully");
         } catch (error) {
-          console.error("Error deleting tip:", error);
-          // Handle the error as needed
+            console.error("Error deleting tip:", error);
+            // Handle the error as needed
         }
-      };
+    };
 
-      
-
-    const fetchdata = async () =>{
-        try{
-        const freetip = await axios.get('https://tasty-duck-coveralls.cyclic.app/v1/freetip')
-        const response = freetip.data
-        console.log(response)
-        setTips(response)
-        }catch(err){
+    const fetchdata = async () => {
+        try {
+            const freetip = await axios.get('https://tasty-duck-coveralls.cyclic.app/v1/freetip')
+            const response = freetip.data
+            console.log(response)
+            setTips(response)
+        } catch (err) {
             console.log(err.message)
         }
     }
 
+    useEffect(() => {
+        fetchdata();
+    }, []);
 
-    //   deletetip()
 
-    
-  useEffect(() => {
-    fetchdata();
-  }, []);
-
-    
     return (
         <section className="bg-app-black py-12">
             <h1 className="text-app-orange font-bold text-4xl text-center mb-4">Fusion Free Tips</h1>
 
             <p className="text-center text-app-white max-w-2xl app-container">We provide free evaluated tips by experts daily from tipsters and sources all around the world, that will hlp you make better betting decisions and profits. They are basically free for all users.</p>
 
-            <TipsTable tips={tips} deletetip={deletetip}/>
+            <TipsTable tips={tips} deletetip={deletetip} />
         </section>
     )
 }
 
 
 
-const TipsTable = ({ tips, deletetip}) => {
+const TipsTable = ({ tips, deletetip }) => {
     return (
         <div className="md:app-container">
             <div className="relative">

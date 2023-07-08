@@ -1,23 +1,21 @@
 import { useState, useEffect } from "react"
 import axios from 'axios';
 
-
-
-const Premium = () => {
-const [Tip , setTips] = useState(null)
-async function getPremium() {
-    try{
-        let response= await axios.get('https://tasty-duck-coveralls.cyclic.app/v1/premium')
-        console.log(response.data)
-        setTips(response.data)
-    } catch(err){
-    console.log(err.message)
+export const Premium = () => {
+    const [Tip, setTips] = useState(null)
+    async function getPremium() {
+        try {
+            let response = await axios.get('https://tasty-duck-coveralls.cyclic.app/v1/premium')
+            console.log(response.data)
+            setTips(response.data)
+        } catch (err) {
+            console.log(err.message)
+        }
     }
-}
 
-useEffect(()=>{
-    getPremium();
-},[])
+    useEffect(() => {
+        getPremium();
+    }, [])
 
     // const data = [
     //     { date: '28-06-23', time: '03:45', event: { match: 'Pafos FC - Apollon Limassol', league: 'Cyprus 1-1, Division Championship Playoff' }, bettingType: { odd: 'Fixed Odd', duration: 'Full Time' }, tipster: { name: 'Jaxub Dabrowski', rank: 'Premium Tipster' }, price: '980' },
@@ -35,8 +33,6 @@ useEffect(()=>{
         </section>
     )
 }
-
-export default Premium
 
 const Table = ({ Tip }) => {
 

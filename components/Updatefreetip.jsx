@@ -2,9 +2,9 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { useRouter } from "next/router";
 
-export default function Updatefreetips() {
+export const Updatefreetips = () => {
   const router = useRouter();
-  const { _id } = router.query;
+  const { id } = router.query;
 
   const [error, setError] = useState(null);
 
@@ -35,14 +35,14 @@ export default function Updatefreetips() {
       }
     };
 
-    if (_id) {
+    if (id) {
       fetchData();
     }
-  }, [_id]);
+  }, [id]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    
+
     if (name === "date") {
       setDate(value);
     } else if (name === "time") {

@@ -1,9 +1,9 @@
-import { Addpremiumtips } from "@/components"
+import { Addpremiumtips } from "@components/Addpremiumtip";
 
-export default function Addpremiumtip (){
-    return(
-        <main className="min-h-screen bg-app-black text-app-white-500">
-        <Addpremiumtips/>
-      </main>
-      )
+export default function Page() {
+  return (
+    <main className="min-h-screen bg-app-black text-app-white-500">
+      <Addpremiumtips />
+    </main>
+  );
 }

@@ -4,20 +4,13 @@ import FootballImg from "../assets/football.png";
 import { FaFacebookF } from "react-icons/fa";
 import { BiLogoGoogle } from "react-icons/bi";
 import { AiFillApple } from "react-icons/ai";
-
 import { Swiper, SwiperSlide } from "swiper/react";
-
-// Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-
-// import "./styles.css";
-
-// import required modules
 import { Autoplay, Pagination, Navigation } from "swiper";
 
-export default function Otp() {
+export function Otp() {
   return (
     <div className="lg:flex justify-between ">
       <div className="flex justify-center items-center  lg:w-5/12">

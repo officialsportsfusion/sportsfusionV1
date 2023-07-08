@@ -1,10 +1,10 @@
 import { useState } from "react";
 import axios from 'axios';
-import { useRouter } from "next/router";
+// import { useRouter } from "next/router";
 
-export default function Addfreetips() {
+export const Addfreetips = () => {
   // const router = useRouter()
-  const [error , setError] = useState('')
+  const [error, setError] = useState('')
   const [Message, setMessage] = useState('')
   const [formData, setFormData] = useState({
     date: '',
@@ -30,7 +30,7 @@ export default function Addfreetips() {
       const response = await axios.post(url, formData);
       // console.log(response.data);
       setMessage(response.data.message)
-      setTimeout(()=>{
+      setTimeout(() => {
         setMessage('')
       }, 5000)
       console.log(response.data.message) // Handle the response as needed
@@ -49,18 +49,18 @@ export default function Addfreetips() {
     } catch (error) {
       console.error('Error:', error);
       console.log(error.message)
-      if (error.message){
+      if (error.message) {
         setError(error.message)
         setTimeout(() => {
           setError(null);
         }, 5000);
-      } else{
+      } else {
         setError('An error occured please try again later')
         setTimeout(() => {
           setError(null);
         }, 5000);
       }
-      
+
     }
   };
 
@@ -150,8 +150,8 @@ export default function Addfreetips() {
           </button>
         </form>
         {error && <p className="text-app-white">{error}</p>}
-        {Message && <p className = 'text-app-white'>{Message}</p>}
-        
+        {Message && <p className='text-app-white'>{Message}</p>}
+
       </div>
     </div>
   );

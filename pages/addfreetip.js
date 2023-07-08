@@ -1,9 +1,9 @@
-import { Addfreetips } from "@/components"
+import { Addfreetips } from "@components/Addfreetips";
 
-export default function addFreeTip(){
-    return(
-        <main className="min-h-screen bg-app-black text-app-white-500">
-        <Addfreetips/>
-      </main>
-    )
+export default function Page() {
+  return (
+    <main className="min-h-screen bg-app-black text-app-white-500">
+      <Addfreetips />
+    </main>
+  );
 }

@@ -1,8 +1,8 @@
 import React from 'react'
 import Image from 'next/image'
-import { Count, CountUp } from './index'
+import { CountUp } from './CountUp'
 
-const Statistics = () => {
+export const Statistics = () => {
 
     const stats = [
         { date: '2/2/2023', wins: 20, loss: 0, profits: 500 },
@@ -56,8 +56,6 @@ const Statistics = () => {
         </section>
     )
 }
-
-export default Statistics
 
 const StatsTable = ({ stats }) => {
     return (

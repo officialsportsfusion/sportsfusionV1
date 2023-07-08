@@ -1,16 +1,16 @@
 import React from 'react'
 import Image from 'next/image'
 
-const FreetipsStats = () => {
+export const FreetipsStats = () => {
     return (
         <section className='w-full'>
             <div className='app-container'>
 
                 <div className='grid  gap-y-6 md:mt-12 md:grid-cols-12 pb-6'>
                     <div className=' sm:w-[28rem] sm:mx-auto md:mx-0 md:w-auto md:col-span-5 md:max-w-[23rem] mt-24'>
-                    <h2 className=' text-app-orange text-3xl font-bold md:text-4xl mb-4'>Statistics</h2>
-                    <p className=''>We provide stats to help you verify the value of all our tips without compromising digits or results to suit or lure investors. 
-                        Trasparency is 100% value on all our offers.</p>
+                        <h2 className=' text-app-orange text-3xl font-bold md:text-4xl mb-4'>Statistics</h2>
+                        <p className=''>We provide stats to help you verify the value of all our tips without compromising digits or results to suit or lure investors.
+                            Trasparency is 100% value on all our offers.</p>
                     </div>
 
                     <div className=' sm:w-[28rem] sm:mx-auto md:col-span-7 md:ml-8 md:w-auto md:mx-0 lg:ml-12'>
@@ -21,9 +21,6 @@ const FreetipsStats = () => {
         </section>
     )
 }
-
-export default FreetipsStats
-
 
 const StatsSummary = ({ stats }) => {
     return (

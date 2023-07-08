@@ -2,36 +2,24 @@ import { FaUser } from "react-icons/fa"
 import axios from 'axios';
 import { useState, useEffect } from "react"
 
-const FreeTips = () => {
-    const [tips, setTips] = useState('')
-    const fetchdata = async () =>{
-        try{
-        const freetip = await axios.get('https://tasty-duck-coveralls.cyclic.app/v1/freetip')
-        const response = freetip.data
-        console.log(response)
-        setTips(response)
-        }catch(err){
+export const FreeTips = () => {
+    const [tips, setTips] = useState([])
+    const fetchdata = async () => {
+        try {
+            const freetip = await axios.get('https://tasty-duck-coveralls.cyclic.app/v1/freetip')
+            const response = freetip.data
+            console.log(response)
+            setTips(response)
+        } catch (err) {
             console.log(err.message)
         }
     }
 
-    
-  useEffect(() => {
-    fetchdata();
-  }, []);
 
-    // const tips = [
-    //     { date: '25/05', time: '03:00', league: 'PRE 1', match: { long: 'Chelsea FC - Manchester City FC', short: 'CFC - MCC' }, tip: 'Over 2.5', odd: '1.85', tipster: 'JesseJAY', score: '1:2' },
-    //     { date: '27/05', time: '03:00', league: 'PRE 1', match: { long: 'Liverpool FC - Manchester United FC', short: 'LFC - MNU' }, tip: 'Over 2.5', odd: '1.55', tipster: 'SammyJAY', score: '1:2' },
-    //     { date: '27/05', time: '03:00', league: 'PRE 1', match: { long: 'Chelsea FC - Manchester City FC', short: 'CFC - MCC' }, tip: 'Over 1.5', odd: '1.95', tipster: 'JesseJAY', score: '1:2' },
-    //     { date: '29/05', time: '03:00', league: 'PRE 1', match: { long: 'Bolton Albion FC - Manchester City FC', short: 'BAF - MCC' }, tip: 'Over 2.5', odd: '2.85', tipster: 'JesseJat', score: '1:2' },
-    //     { date: '27/05', time: '03:00', league: 'PRE 1', match: { long: 'Chelsea FC - Manchester City FC', short: 'CFC - MCC' }, tip: 'Over 1.5', odd: '1.50', tipster: 'JesseJAY', score: '1:2' },
-    //     { date: '29/05', time: '03:00', league: 'PRE 1', match: { long: 'Bolton Albion FC - Manchester City FC', short: 'BAF - MCC' }, tip: 'Over 2.5', odd: '2.85', tipster: 'JesseJat', score: '1:2' },
-    //     { date: '27/05', time: '03:00', league: 'PRE 1', match: { long: 'Chelsea FC - Manchester City FC', short: 'CFC - MCC' }, tip: 'Over 1.5', odd: '1.50', tipster: 'JesseJAY', score: '1:2' },
-    //     { date: '29/05', time: '03:00', league: 'PRE 1', match: { long: 'Bolton Albion FC - Manchester City FC', short: 'BAF - MCC' }, tip: 'Over 2.5', odd: '2.85', tipster: 'JesseJat', score: '1:2' },
-    //     { date: '27/05', time: '03:00', league: 'PRE 1', match: { long: 'Chelsea FC - Manchester City FC', short: 'CFC - MCC' }, tip: 'Over 1.5', odd: '1.50', tipster: 'JesseJAY', score: '1:2' },
-    //     { date: '30/05', time: '03:00', league: 'PRE 1', match: { long: 'Chelsea FC - Manchester City FC', short: 'CFC - MCC' }, tip: 'Under 2.5', odd: '2.20', tipster: 'JesseJAY', score: '1:1' },
-    // ]
+    useEffect(() => {
+        fetchdata();
+    }, []);
+
     return (
         <section className="bg-app-black py-12">
             <h1 className="text-app-orange font-bold text-4xl text-center mb-4">Fusion Free Tips</h1>

@@ -1,7 +1,7 @@
 import React, { useState, startTransition, useEffect } from 'react'
 import { useInView } from 'react-intersection-observer';
 
-const CountUp = ({ start = 0, end, duration = 2, fromPrev }) => {
+export const CountUp = ({ start = 0, end, duration = 2, fromPrev }) => {
     const { ref, inView } = useInView({
         triggerOnce: true,
         threshold: 1,
@@ -28,5 +28,3 @@ const CountUp = ({ start = 0, end, duration = 2, fromPrev }) => {
         <span ref={ref}>{count}</span>
     )
 }
-
-export default CountUp

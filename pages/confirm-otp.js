@@ -1,6 +1,7 @@
-import { Header, Otp } from "@/components";
+import { Header } from "@components/Header";
+import { Otp } from "@components/Otp";
 
-export default function confirmotp() {
+export default function Page() {
   return (
     <main className="min-h-screen bg-app-black text-app-white-500">
       <Header />

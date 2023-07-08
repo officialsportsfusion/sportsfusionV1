@@ -1,9 +1,9 @@
-import {Adminpremiumtip} from "@/components";
+import { Adminpremiumtip } from "@components/Adminpremiumtip";
 
-export default function Adminpremiumtips (){
-    return(
-        <main>
-        <Adminpremiumtip/>
-        </main>
-    )
+export default function Page() {
+  return (
+    <main>
+      <Adminpremiumtip />
+    </main>
+  );
 }

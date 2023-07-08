@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Img from "/assets/image.png";
 
-export default function Profile() {
+export function Profile() {
   const data = [
     {
       date: "28-06-23",
@@ -42,6 +42,7 @@ export default function Profile() {
       price: "325",
     },
   ];
+
   return (
     <div className="app-container flex justify-center">
       <div className="w-full lg:w-10/12">
@@ -147,39 +148,39 @@ const Table = ({ data }) => {
         <tbody>
           {data && data.length !== 0
             ? data.map((item, index) => {
-                return (
-                  <tr
-                    key={index}
-                    className="border-b-solid border-b-[#4E443D] border-b-[1px] last-of-type:border-none"
-                  >
-                    <td className="py-1 px-[2px] text-center border border-[#4E443D]">
-                      <p className="inline-flex flex-col min-[420px]:text-md">
-                        <span>{item.date}</span>
-                        <span>{item.time}</span>
-                      </p>
-                    </td>
+              return (
+                <tr
+                  key={index}
+                  className="border-b-solid border-b-[#4E443D] border-b-[1px] last-of-type:border-none"
+                >
+                  <td className="py-1 px-[2px] text-center border border-[#4E443D]">
+                    <p className="inline-flex flex-col min-[420px]:text-md">
+                      <span>{item.date}</span>
+                      <span>{item.time}</span>
+                    </p>
+                  </td>
 
-                    <td className="p-1 text-center border border-[#4E443D] max-w-[12rem]">
-                      <p className="inline-flex flex-col ml-1 min-[420px]:text-md">
-                        <span className="text-[#AAAAAA]">
-                          {item.event.match}
-                        </span>
-                      </p>
-                    </td>
+                  <td className="p-1 text-center border border-[#4E443D] max-w-[12rem]">
+                    <p className="inline-flex flex-col ml-1 min-[420px]:text-md">
+                      <span className="text-[#AAAAAA]">
+                        {item.event.match}
+                      </span>
+                    </p>
+                  </td>
 
-                    <td className="pl-2 text-center  border border-[#4E443D] ">
-                      <p className="inline-flex flex-col  min-[420px]:text-sm">
-                        <span>{item.bettingType.odd}</span>
-                        <span>{item.bettingType.duration}</span>
-                      </p>
-                    </td>
+                  <td className="pl-2 text-center  border border-[#4E443D] ">
+                    <p className="inline-flex flex-col  min-[420px]:text-sm">
+                      <span>{item.bettingType.odd}</span>
+                      <span>{item.bettingType.duration}</span>
+                    </p>
+                  </td>
 
-                    <td className="text-center border border-[#4E443D]">
-                      <Button>{item.price}</Button>
-                    </td>
-                  </tr>
-                );
-              })
+                  <td className="text-center border border-[#4E443D]">
+                    <Button>{item.price}</Button>
+                  </td>
+                </tr>
+              );
+            })
             : null}
         </tbody>
       </table>

@@ -1,4 +1,4 @@
-const Series = () => {
+export const Series = () => {
     const series = [
         { date: '28-06', time: '03:45', match: 'Inter Turku vs Haka', league: 'ENG P1', odd: '1.92', tip: 'Over 2.5', stake: 500, result: '+440', profit: '+440', score: '4:1', won: true, series: 'X1' },
         { date: '28-06', time: '03:45', match: 'Inter Turku vs Haka', league: 'FRA P1', odd: '2.22', tip: 'Over 2.5', stake: 1000, result: '+440', profit: '+440', score: '4:1', won: true, series: 'X2' },
@@ -16,10 +16,7 @@ const Series = () => {
     )
 }
 
-export default Series
-
 const Table = ({ series }) => {
-
     return (
         <div className="md:app-container">
             <table className="w-full mt-8 bg-[#1E2124] text-xs border-collapse min-[540px]:text-sm sm:text-base">
@@ -55,7 +52,6 @@ const Table = ({ series }) => {
                                     <td className="hidden py-2 pl-1 text-center text-[#AAAAAA] md:table-cell">{serie.result}</td>
                                     <td className="hidden py-2 pl-1 text-center text-[#AAAAAA] md:table-cell">{serie.profit}</td>
                                     <td className="py-2 text-right pr-2"><Status won={serie.won} /></td>
-
                                 </tr>
                             }) : null
                     }
@@ -66,7 +62,6 @@ const Table = ({ series }) => {
 }
 
 const Status = ({ won }) => {
-
     return (
         <button className={`rounded-md h-8 w-14 ${won && won === true ? 'text-[#0C9700] border-solid border-[#0C9700] border-[1px]' : 'text-[#CE2E1C] border-solid border-[1px] border-[#CE2E1C]'}`}>{won && won === true ? 'WIN' : 'LOSS'}</button>
     )

@@ -9,7 +9,7 @@ import img3 from "/assets/Vector8.png";
 import img4 from "/assets/Vector9.png";
 import { BiCopyright } from "react-icons/bi";
 
-export default function Footer() {
+export const Footer = () => {
   return (
     <>
       <div className="bg-app-black justify-center items-center lg:justify-end mt-20 lg:pl-8">

@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { useState } from 'react'
 import { FaSearch, FaTimes, FaBars, FaAngleDown, FaAngleUp, FaUser } from 'react-icons/fa'
 
-const Header = () => {
+export const Header = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [displayMobile, setDisplayMobile] = useState(false);
     const showMobileNav = () => { setDisplayMobile(true) };
@@ -145,8 +145,6 @@ const Header = () => {
         </div>
     )
 }
-
-export default Header
 
 const Button = ({ children, classProps, handler }) => {
     const onClick = () => {

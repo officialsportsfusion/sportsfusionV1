@@ -1,6 +1,6 @@
 import React, { useState, startTransition, useEffect } from 'react'
 
-const Count = ({ start = 0, end, duration = 2, fromPrev }) => {
+export const Count = ({ start = 0, end, duration = 2, fromPrev }) => {
     const validate = () => fromPrev && typeof fromPrev === 'number' && end - fromPrev < end;
     const countDuration = duration * 1000;
     const interval = validate() ? end - fromPrev : end - start;
@@ -50,5 +50,3 @@ const Count = ({ start = 0, end, duration = 2, fromPrev }) => {
         <>{count}</>
     )
 }
-
-export default Count

@@ -7,11 +7,10 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import "swiper/css/effect-coverflow";
-
 SwiperCore.use([Navigation, Pagination, EffectCoverflow]);
 
 
-export default function Hero() {
+export const Hero = () => {
   const [slidesPerView, setSlidesPerView] = useState(1);
 
   useEffect(() => {

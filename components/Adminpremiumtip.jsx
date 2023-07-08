@@ -1,45 +1,43 @@
-
 import { useState, useEffect } from "react"
 import Link from "next/link";
 import axios from 'axios';
 
+export const Adminpremiumtip = () => {
+    const [Tip, setTips] = useState(null)
 
-export default function Adminpremiumtip (){
-const [Tip , setTips] = useState(null)
+    const deletetip = async (tipId) => {
+        try {
+            await axios.delete(`https://tasty-duck-coveralls.cyclic.app/v1/premium/${tipId}`);
+            // Update the state to reflect the deleted tip
+            setTips(Tip.filter((tip) => tip._id !== tipId));
+            console.log("Tip deleted successfully");
+        } catch (error) {
+            console.error("Error deleting tip:", error);
+            // Handle the error as needed
+        }
+    };
 
-const deletetip = async (tipId) => {
-    try {
-      await axios.delete(`https://tasty-duck-coveralls.cyclic.app/v1/premium/${tipId}`);
-      // Update the state to reflect the deleted tip
-      setTips(Tip.filter((tip) => tip._id !== tipId));
-      console.log("Tip deleted successfully");
-    } catch (error) {
-      console.error("Error deleting tip:", error);
-      // Handle the error as needed
+    async function getPremium() {
+        try {
+            let response = await axios.get('https://tasty-duck-coveralls.cyclic.app/v1/premium')
+            console.log(response.data)
+            setTips(response.data)
+        } catch (err) {
+            console.log(err.message)
+        }
     }
-  };
 
-async function getPremium() {
-    try{
-        let response= await axios.get('https://tasty-duck-coveralls.cyclic.app/v1/premium')
-        console.log(response.data)
-        setTips(response.data)
-    } catch(err){
-    console.log(err.message)
-    }
-}
-
-useEffect(()=>{
-    getPremium();
-},[])
-    return(
+    useEffect(() => {
+        getPremium();
+    }, [])
+    return (
         <section className="bg-app-black py-12">
-        <h1 className="text-app-orange font-bold text-4xl text-center mb-4">Fusion Premium</h1>
+            <h1 className="text-app-orange font-bold text-4xl text-center mb-4">Fusion Premium</h1>
 
-        <p className="text-center text-app-white max-w-2xl app-container">Pick from our exclusive well sorted premium tips from all our biggest tipsters daily at different prices. Very low risk to help you make more profits and better betting decisions. These tips are paid and bought from various tipsters and sources, then repurposed and sold at cheaper rates to our investors.</p>
+            <p className="text-center text-app-white max-w-2xl app-container">Pick from our exclusive well sorted premium tips from all our biggest tipsters daily at different prices. Very low risk to help you make more profits and better betting decisions. These tips are paid and bought from various tipsters and sources, then repurposed and sold at cheaper rates to our investors.</p>
 
-        <Table Tip={Tip} deletetip={deletetip}/>
-    </section>
+            <Table Tip={Tip} deletetip={deletetip} />
+        </section>
     )
 }
 
@@ -70,9 +68,9 @@ const Table = ({ Tip, deletetip }) => {
 
                                     <td className="pl-2 text-center  border border-[#4E443D] md:table-cell"><p className="inline-flex flex-col ml-1 min-[420px]:text-md"><span className='text-[#AAAAAA]'>{item.tipster}</span></p></td>
                                     <td className="pl-2 text-center  border border-[#4E443D] md:table-cell"><p className="inline-flex flex-col ml-1 min-[420px]:text-md"><span className='text-[#AAAAAA]'>{item.tip}</span></p></td>
-                                      <Link href={`/updatetip/premium/${item._id}`} passHref> edit</Link>
-                                    <td className="text-center border border-[#4E443D]"><Button onClick={()=> deletetip(item._id)}>delete</Button></td>
-                                    
+                                    <Link href={`/updatetip/premium/${item._id}`} passHref> edit</Link>
+                                    <td className="text-center border border-[#4E443D]"><Button onClick={() => deletetip(item._id)}>delete</Button></td>
+
                                 </tr>
                             }) : null
                     }
@@ -82,8 +80,7 @@ const Table = ({ Tip, deletetip }) => {
     )
 }
 
-const Button = ({ children , onClick}) => {
-
+const Button = ({ children, onClick }) => {
     return (
         <button className='bg-app-orange rounded-full py-1 px-4 sm:px-5 md:px-6' onClick={onClick}>{children}</button>
     )

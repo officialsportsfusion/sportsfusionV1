@@ -1,12 +1,12 @@
 import Link from "next/link";
 import Image from "next/image";
-import Logo from "/assets/logo1.png";
-import ageWarning from "/assets/18+.png";
-import FooterLogo from "/assets/Layer1.png";
-import fbImage from "/assets/Vector1.png";
-import img2 from "/assets/Vector7.png";
-import img3 from "/assets/Vector8.png";
-import img4 from "/assets/Vector9.png";
+import Logo from "/images/logo1.png";
+import ageWarning from "/images/18+.png";
+import FooterLogo from "/images/Layer1.png";
+import fbImage from "/images/Vector1.png";
+import img2 from "/images/Vector7.png";
+import img3 from "/images/Vector8.png";
+import img4 from "/images/Vector9.png";
 import { BiCopyright } from "react-icons/bi";
 
 export const Footer = () => {

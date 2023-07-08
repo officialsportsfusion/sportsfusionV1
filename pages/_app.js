@@ -4,8 +4,8 @@ const sora = Sora({ subsets: ["latin"] });
 
 export default function App({ Component, pageProps }) {
   return (
-    <main className={sora.className}>
+    <div className={sora.className}>
       <Component {...pageProps} />
-    </main>
+    </div>
   );
 }

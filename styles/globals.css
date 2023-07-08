@@ -7,7 +7,20 @@ body {
   overflow-x: hidden;
 }
 
+button {
+  cursor: pointer;
+}
+
 @layer components {
+  .gradient-text {
+    @apply bg-gradient-to-tr to-app-orange from-app-sky text-transparent bg-clip-text;
+  }
+  .gradient-text-reverse {
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+    background-image: linear-gradient(60deg, #ff6b00, #29a5ff);
+  }
   .app-container {
     margin: 0 auto;
     width: 92%;

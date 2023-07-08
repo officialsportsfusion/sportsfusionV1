@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import Image from "next/image";
-import Img1 from "/assets/image.png";
+import Img1 from "/images/image.png";
 import SwiperCore, { Navigation, Pagination } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';

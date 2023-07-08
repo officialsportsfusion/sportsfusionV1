@@ -1,38 +1,72 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# SportsFusion
 
-## Getting Started
+This project was bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-First, run the development server:
+<!-- Open [http://localhost:3000](http://localhost:3000) with your browser to see the result. -->
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+## Project Conventions
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Naming
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+1. variables names should be `noun word/phrases` while functions should be `verb`
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+     Examples: 
+    ``` javascript
+        let name = 'entertainment'; // variable name
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+        const getLastName = () => { return 'fusion' }; // function name
+    ``` 
+2. variables should use camelCase naming conventions
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+     Examples: 
+    ``` javascript
+        var tag = 'entertainment';
+        var firstName = 'sports';
+        var getLastName = () => { return 'fusion' };
+    ``` 
 
-## Learn More
+3. Global constants should should use all uppercase with the snake-case naming conventions.
 
-To learn more about Next.js, take a look at the following resources:
+    Examples: 
+    ``` javascript
+        const APP_NAME = 'SportsFusion';
+    ``` 
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+4. Boolean variables or function that returns Boolean value should should start with `is` prefix.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+    Examples: 
+    ``` javascript
+        var isString = true;
 
-## Deploy on Vercel
+        var isValid = () => { return true; }; //
+    ``` 
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+5. UI rendering javascript files should use the `.jsx` extension, all components filename should be PascalCase
+    ```
+    Component.jsx
+    MyComponent.jsx
+    ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+6. All components in pages directory should be all lowercase, multi words should be separated by hyphen
+    ```
+    page.jsx
+    my-page.jsx
+    ```
+
+### Imports/Exports
+
+* All Component should be **_named exports_**, except component in `/pages` directory which requires default exports
+
+* All lib/utils functions should be named exports
+
+## Git 
+
+### Commit Messages
+
+git commit messages should follow the git commit message format as specified in [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0), for more `types/scopes` refer  [Angular Convention](https://github.com/angular/angular/blob/22b96b9/CONTRIBUTING.md#-commit-message-guidelines) to see other commit messages types and/or scopes.
+
+### Work Flow
+
+To work on a feature, pull the code and chectout to a feature branch (using the features as branch name). When done, pull the lastest update (if any) on the parent branch, merge the branches and resolve conflict (if any) before pushing the feature branch to github.
+
+After pushing, create a Pull Request and wait for it to be merged into the parent branch (please do not resolve the Pull Request yourself, contact the team lead or anyone designated to handle PRs).

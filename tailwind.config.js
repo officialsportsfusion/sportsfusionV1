@@ -10,7 +10,7 @@ module.exports = {
         laptop: "992px",
       },
       colors: {
-        "app-black": "#0D0D0D",
+        "app-black": "#00070d",
         "app-orange": "#FF6B00",
         "app-orange-light": "#FFCEAA",
         "app-orange-thick": "#FF7D20",

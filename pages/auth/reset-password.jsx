@@ -8,7 +8,6 @@ import Link from "next/link";
 export default function Page() {
     return (
         <AuthLayout>
-            {/* <AuthForm /> */}
             <section className="app-container md:grid md:grid-cols-12 md:gap-12 md:items-center md:portrait:max-lg:pt-36 md:landscape:pt-24">
                 <div className="md:col-span-6">
                     <div className='pt-4'>
@@ -26,9 +25,8 @@ export default function Page() {
                     </p>
                 </div>
 
-                <div className="md:col-span-6 lg:col-span-5 lg:col-start-8">
+                <div className="pt-24 md:pt-0 md:col-span-6 lg:col-span-5 lg:col-start-8">
                     <div className='text-center'>
-                        {/* <h2 className="gradient-text-reverse font-extrabold text-3xl mb-8">Sign {signup ? 'Up' : 'In'}<br /> To Get Started</h2> */}
                         <div className="h-72 w-full rounded-2xl overflow-hidden">
                             <Image src={FootballImg} alt="" className="w-full h-full object-cover" />
                         </div>

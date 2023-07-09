@@ -51,7 +51,7 @@ export const AuthForm = ({ signup }) => {
                 </div>
             </div>
 
-            <div className="md:col-span-6 lg:col-span-5 lg:col-start-8">
+            <div className="pt-16 md:pt-0 md:col-span-6 lg:col-span-5 lg:col-start-8">
                 <div className='text-center'>
                     <h2 className="gradient-text-reverse font-extrabold text-3xl mb-8">Sign {signup ? 'Up' : 'In'}<br /> To Get Started</h2>
                     <div className="h-72 w-full rounded-2xl overflow-hidden">

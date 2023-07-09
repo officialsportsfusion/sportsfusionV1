@@ -1,7 +1,12 @@
+import { Footer } from "./Footer"
+import { Header } from "./Header"
+
 export const Layout = ({ children }) => {
     return (
-        <div>
+        <main className="min-h-screen bg-app-black text-app-white-500">
+            <Header />
             {children}
-        </div>
+            <Footer />
+        </main>
     )
 }

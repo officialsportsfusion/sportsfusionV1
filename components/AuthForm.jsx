@@ -1,3 +1,5 @@
+import * as yup from 'yup'
+import { useFormik } from 'formik'
 import Link from "next/link"
 import Image from "next/image";
 import FootballImg from '/images/football.png'
@@ -7,8 +9,35 @@ import { AiFillApple } from 'react-icons/ai'
 import { Input } from "./Input";
 import { AuthButton } from "./AuthButton";
 import { OAuthButton } from "./OAuthButton";
+import { signIn } from "next-auth/react";
 
 export const AuthForm = ({ signup }) => {
+    const schema = yup.object().shape({
+        email: yup.string().email().required(),
+        password: yup.string().trim().required()
+            .matches(/(?=.*[A-Z])/, 'must contain uppercase')
+            .matches(/^(?=.*[a-z])/, 'Must contain lowercase')
+            .matches(/(?=.*\d)/, 'must contain a digit')
+            .matches(/(?=.*[^\w\d\s])/, 'must contain special character')
+            .min(8, 'must be at least 8 characters long')
+            .max(50, 'must be at most 50 characters long')
+    })
+
+
+    const formik = useFormik({
+        initialValues: { email: '', password: '' },
+        validationSchema: schema,
+        onSubmit: async ({ email, password }, { }) => {
+            if (!!signup) {
+                return console.log('sign up')
+            }
+
+            const res = await signIn('credentials', { email, password })
+            // const user = await res.json()
+            console.log(res)
+        }
+    })
+
     return (
         <section className="app-container md:grid md:grid-cols-12 md:gap-12 md:items-center md:portrait:max-lg:pt-36">
             <div className="md:col-span-6">
@@ -17,9 +46,16 @@ export const AuthForm = ({ signup }) => {
                     <p className='text-center mt-3'>Sign {signup ? 'up' : 'in'} to get started</p>
                 </div>
 
-                <div className="py-6">
-                    <Input placeholder='Enter Email' type='email' />
-                    <Input placeholder='Enter Password' type='password' />
+                <form className="py-6" onSubmit={formik.handleSubmit}>
+                    <div className='relative'>
+                        <Input placeholder='Enter Email' type='email' name='email' {...formik.getFieldProps('email')} />
+                        {formik.touched.email && formik.errors.email && <p className='text-red-500 absolute bottom-2'>{formik.errors.email}</p>}
+                    </div>
+                    <div className='relative'>
+                        <Input placeholder='Enter Password' type='password' name='password' {...formik.getFieldProps('password')} />
+                        {formik.touched.password && formik.errors.password && <p className='text-red-500 absolute bottom-2'>{formik.errors.password}</p>}
+                    </div>
+
                     {
                         !!!signup &&
                         <div className="text-right mb-4">
@@ -27,7 +63,7 @@ export const AuthForm = ({ signup }) => {
                         </div>
                     }
                     <AuthButton>Sign {signup ? 'Up' : 'In'}</AuthButton>
-                </div>
+                </form>
 
                 <p className="text-center">{
                     signup ?
@@ -35,9 +71,9 @@ export const AuthForm = ({ signup }) => {
                 </p>
 
                 <div className='flex justify-center items-center gap-4 pt-6 pb-4'>
-                    <OAuthButton><BiLogoGoogle size={20} /></OAuthButton>
-                    <OAuthButton><FaFacebookF size={20} /></OAuthButton>
-                    <OAuthButton><AiFillApple size={20} /></OAuthButton>
+                    <OAuthButton onClick={() => signIn('google')}><BiLogoGoogle size={20} /></OAuthButton>
+                    <OAuthButton onClick={() => signIn('facebook')}><FaFacebookF size={20} /></OAuthButton>
+                    <OAuthButton onClick={() => signIn('apple')}><AiFillApple size={20} /></OAuthButton>
                 </div>
 
                 <div className="py-4 flex items-center justify-center relative">

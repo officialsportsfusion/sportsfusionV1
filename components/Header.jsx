@@ -20,10 +20,10 @@ export const Header = () => {
     }
 
     return (
-        <div>
+        <header>
             <nav className='py-4 flex items-center justify-between app-container md:py-6'>
                 <Link href='/'>
-                    <Image src={Logo} alt='Logo' className='w-[8rem] sm:w-40 md:w-auto' />
+                    <Image src={Logo} alt='Logo' className='w-[8rem] sm:w-40 md:w-44 lg:w-52' />
                 </Link>
 
                 {/* DESKTOP NAV */}
@@ -142,7 +142,7 @@ export const Header = () => {
                     <p className='text-app-white-500 text-center'>@Sportsfusion</p>
                 </div>
             </div>
-        </div>
+        </header>
     )
 }
 

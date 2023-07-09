@@ -7,6 +7,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import "swiper/css/effect-coverflow";
+import Link from 'next/link';
 SwiperCore.use([Navigation, Pagination, EffectCoverflow]);
 
 
@@ -42,7 +43,7 @@ export const Hero = () => {
         <p className='mb-5 text-sm md:w-10/12 '> Are you a Sport enthusiast but do not know or have the skills and knowledge on
           how to predict? We are here to assist and help you make profits
         </p>
-        <button className='h-[2.25rem] w-[6.8rem] grid place-items-center bg-gradient-to-r from-app-orange via-app-sky to-app-orange p-[1px] rounded-lg cursor-pointer hover:p-[2px]' ><span className='bg-app-black w-full h-full p-[1px] text-sm rounded-lg inline-grid place-items-center '>Join Us</span></button>
+        <Link href='/auth/signup' className='h-[2.25rem] w-[6.8rem] grid place-items-center bg-gradient-to-r from-app-orange via-app-sky to-app-orange p-[1px] rounded-lg cursor-pointer hover:p-[2px]' ><span className='bg-app-black w-full h-full p-[1px] text-sm rounded-lg inline-grid place-items-center '>Join Us</span></Link>
       </div>
 
 

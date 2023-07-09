@@ -4,8 +4,20 @@ import { Input } from "@components/Input";
 import FootballImg from '/images/football.png'
 import Image from "next/image";
 import Link from "next/link";
+import { useFormik } from "formik";
+import * as yup from 'yup'
 
 export default function Page() {
+    const formik = useFormik({
+        initialValues: { email: '' },
+        validationSchema: yup.object().shape({
+            email: yup.string().email().required(),
+        }),
+        onSubmit: async ({ email }, { }) => {
+            console.log(email)
+        }
+    })
+
     return (
         <AuthLayout>
             <section className="app-container md:grid md:grid-cols-12 md:gap-12 md:items-center md:portrait:max-lg:pt-36 md:landscape:pt-24">
@@ -15,10 +27,13 @@ export default function Page() {
                         <p className='text-center mt-3'>Password reset link will be sent to your email address</p>
                     </div>
 
-                    <div className="py-6">
-                        <Input placeholder='Enter Email' type='email' />
+                    <form className="py-6" onSubmit={formik.handleSubmit}>
+                        <div className='relative'>
+                            <Input placeholder='Enter Email' type='email' name='email' {...formik.getFieldProps('email')} />
+                            {formik.touched.email && formik.errors.email && <p className='text-red-500 absolute bottom-2'>{formik.errors.email}</p>}
+                        </div>
                         <AuthButton>Enter</AuthButton>
-                    </div>
+                    </form>
 
                     <p className="text-center">
                         Know your password?{' '}<Link href='/auth/signin' className="text-[#ffab6f] hover:text-app-sky">Sign In</Link>

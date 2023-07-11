@@ -17,30 +17,22 @@ export const authOptions = {
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials, req) {
-        const res = await fetch(
-          "https://tasty-duck-coveralls.cyclic.app/v1/login",
-          {
-            method: "POST",
-            body: JSON.stringify({
-              email: credentials.email,
-              password: credentials.password,
-            }),
-            headers: { "Content-Type": "application/json" },
-          }
-        );
+        const res = await fetch(process.env.BASE_URL + "/login", {
+          method: "POST",
+          body: JSON.stringify({
+            email: credentials.email,
+            password: credentials.password,
+          }),
+          headers: { "Content-Type": "application/json" },
+        });
 
-        console.log(res);
         if (!res.ok) {
           return null;
         }
-
         const user = await res.json();
-        // console.log(user);
-
         if (res.ok && user) {
           return user;
         }
-
         return null;
       },
     }),
@@ -69,7 +61,21 @@ export const authOptions = {
     strategy: "jwt",
   },
 
-  //   callbacks : {}
+  callbacks: {
+    jwt: async ({ token, user }) => {
+      if (user) {
+        token.accesToken = user.token;
+        token.id = user.id;
+      }
+      return token;
+    },
+
+    session: ({ session, token }) => {
+      session.accesToken = token.accesToken;
+      session.id = token.id;
+      return session;
+    },
+  },
 };
 
 export default NextAuth(authOptions);

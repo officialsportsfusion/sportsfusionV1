@@ -3,6 +3,7 @@ import Image from "next/image";
 import Img from "/images/football.png";
 import Link from "next/link";
 import { FaAngleDown } from "react-icons/fa";
+import Head from "next/head";
 
 export default function Page() {
   const data = [
@@ -48,15 +49,14 @@ export default function Page() {
 
   return (
     <Layout>
+      <Head>
+        <title>My Profile | SportsFusion</title>
+      </Head>
       <div className="bg-[#00070d]">
         <div className="app-container max-w-2xl relative pt-4 pb-14 md:pb-6">
           <div className="flex items-center justify-between max-w-2xl mx-auto">
-            <h1 className="font-extrabold text-3xl text-center w-full sm:w-auto">
-              My Account
-            </h1>
-            <button className="absolute bg-gradient-to-tr from-app-sky  to-app-orange py-2 px-6 rounded-lg right-0 bottom-0 sm:relative">
-              BECOME A TIPSTER
-            </button>
+            <h1 className="font-extrabold text-3xl text-center w-full sm:w-auto">My Account</h1>
+            <button className="absolute bg-gradient-to-tr from-app-sky  to-app-orange py-2 px-6 rounded-lg right-0 bottom-0 sm:relative">BECOME A TIPSTER</button>
           </div>
           <div className="flex justify-center item-center mt-8 m-auto rounded-full overflow-hidden h-52 aspect-square">
             <Image
@@ -113,10 +113,13 @@ export default function Page() {
             <button className="text-app-orange-light text-xl font-bold w-full text-left inline-flex items-center">
               History <FaAngleDown className="ml-4 pt-1" fontSize={28} />
             </button>
+            <div>
+              <History />
+            </div>
           </div>
         </div>
 
-        <div className="max-w-2xl">
+        <div className="max-w-2xl py-4 mx-auto">
           <div className="app-container">
             <button className="text-2xl">Log Out</button>
           </div>
@@ -143,40 +146,40 @@ const Table = ({ data }) => {
         <tbody>
           {data && data.length !== 0
             ? data.map((item, index) => {
-                return (
-                  <tr key={index}>
-                    <td className="py-1 px-[2px] text-center">
-                      <p className="inline-flex flex-col min-[420px]:text-md">
-                        <span>{item.date}</span>
-                        <span>{item.time}</span>
-                      </p>
-                    </td>
+              return (
+                <tr key={index}>
+                  <td className="py-1 px-[2px] text-center">
+                    <p className="inline-flex flex-col min-[420px]:text-md">
+                      <span>{item.date}</span>
+                      <span>{item.time}</span>
+                    </p>
+                  </td>
 
-                    <td className="p-1 text-center max-w-[12rem]">
-                      <p className="inline-flex flex-col ml-1 min-[420px]:text-md">
-                        {item.event.match}
-                      </p>
-                    </td>
+                  <td className="p-1 text-center max-w-[12rem]">
+                    <p className="inline-flex flex-col ml-1 min-[420px]:text-md">
+                      {item.event.match}
+                    </p>
+                  </td>
 
-                    <td className="p-1 text-center max-w-[12rem]">
-                      <p className="inline-flex flex-col ml-1 min-[420px]:text-md">
-                        {item.bettingType.odd}
-                      </p>
-                    </td>
+                  <td className="p-1 text-center max-w-[12rem]">
+                    <p className="inline-flex flex-col ml-1 min-[420px]:text-md">
+                      {item.bettingType.odd}
+                    </p>
+                  </td>
 
-                    <td className="pl-2 text-center">
-                      <p className="inline-flex flex-col  min-[420px]:text-sm">
-                        <span>{item.bettingType.odd}</span>
-                        <span>{item.bettingType.duration}</span>
-                      </p>
-                    </td>
+                  <td className="pl-2 text-center">
+                    <p className="inline-flex flex-col  min-[420px]:text-sm">
+                      <span>{item.bettingType.odd}</span>
+                      <span>{item.bettingType.duration}</span>
+                    </p>
+                  </td>
 
-                    <td className="text-center">
-                      <Pill>{item.price}</Pill>
-                    </td>
-                  </tr>
-                );
-              })
+                  <td className="text-center">
+                    <Pill>{item.price}</Pill>
+                  </td>
+                </tr>
+              );
+            })
             : null}
         </tbody>
       </table>
@@ -211,3 +214,17 @@ const Analytic = ({ name, value, clickable, href }) => {
     </div>
   );
 };
+
+const History = () => {
+
+  return (
+    <div>
+      <form onSubmit={e => e.preventDefault()}>
+        <input type='date'/>
+        <button>filter by day</button>
+      </form>
+
+      
+    </div>
+  )
+}

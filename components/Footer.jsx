@@ -51,7 +51,6 @@ export const Footer = () => {
         <div className="text-app-white-500">
           <p className="text-left md:text-center"><span className="inline-flex items-center gap-1 "><BiCopyright size={20} className="mb-[2px]" /> {new Date().getFullYear()} all rights reserved</span></p>
         </div>
-
       </div>
     </footer>
   )

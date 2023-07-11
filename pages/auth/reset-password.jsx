@@ -6,20 +6,27 @@ import Image from "next/image";
 import Link from "next/link";
 import { useFormik } from "formik";
 import * as yup from 'yup'
+import Head from "next/head";
+import { useRouter } from "next/router";
 
 export default function Page() {
+    const router = useRouter();
     const formik = useFormik({
         initialValues: { email: '' },
         validationSchema: yup.object().shape({
             email: yup.string().email().required(),
         }),
         onSubmit: async ({ email }, { }) => {
-            console.log(email)
+            // send request and redirect to confirm otp page
+            router.push(encodeURI(`/auth/confirm-otp?email=${email}`))
         }
     })
 
     return (
-        <AuthLayout>
+        <>
+            <Head>
+                <title>Reset Password | SportsFusion</title>
+            </Head>
             <section className="app-container md:grid md:grid-cols-12 md:gap-12 md:items-center md:portrait:max-lg:pt-36 md:landscape:pt-24">
                 <div className="md:col-span-6">
                     <div className='pt-4'>
@@ -30,7 +37,7 @@ export default function Page() {
                     <form className="py-6" onSubmit={formik.handleSubmit}>
                         <div className='relative'>
                             <Input placeholder='Enter Email' type='email' name='email' {...formik.getFieldProps('email')} />
-                            {formik.touched.email && formik.errors.email && <p className='text-red-500 absolute bottom-2'>{formik.errors.email}</p>}
+                            {formik.touched.email && formik.errors.email && <p className='text-red-400 absolute bottom-2'>{formik.errors.email}</p>}
                         </div>
                         <AuthButton>Enter</AuthButton>
                     </form>
@@ -48,6 +55,14 @@ export default function Page() {
                     </div>
                 </div>
             </section>
-        </AuthLayout>
+        </>
     );
+}
+
+Page.getLayout = (page) => {
+    return (
+        <AuthLayout>
+            {page}
+        </AuthLayout>
+    )
 }

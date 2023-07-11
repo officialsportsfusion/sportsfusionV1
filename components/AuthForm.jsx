@@ -10,31 +10,38 @@ import { Input } from "./Input";
 import { AuthButton } from "./AuthButton";
 import { OAuthButton } from "./OAuthButton";
 import { signIn } from "next-auth/react";
+import { useRouter } from 'next/router';
 
 export const AuthForm = ({ signup }) => {
+    const router = useRouter()
+
     const schema = yup.object().shape({
+        name: !!signup && yup.string().required("Username is required!").min(3, 'At least 3 characters'),
         email: yup.string().email().required(),
         password: yup.string().trim().required()
-            .matches(/(?=.*[A-Z])/, 'must contain uppercase')
-            .matches(/^(?=.*[a-z])/, 'Must contain lowercase')
-            .matches(/(?=.*\d)/, 'must contain a digit')
-            .matches(/(?=.*[^\w\d\s])/, 'must contain special character')
-            .min(8, 'must be at least 8 characters long')
-            .max(50, 'must be at most 50 characters long')
+        // .matches(/(?=.*[A-Z])/, 'must contain uppercase')
+        // .matches(/^(?=.*[a-z])/, 'Must contain lowercase')
+        // .matches(/(?=.*\d)/, 'must contain a digit')
+        // .matches(/(?=.*[^\w\d\s])/, 'must contain special character')
+        // .min(8, 'must be at least 8 characters long')
+        // .max(50, 'must be at most 50 characters long')
     })
 
 
     const formik = useFormik({
-        initialValues: { email: '', password: '' },
+        initialValues: { email: '', password: '', name: "" },
         validationSchema: schema,
-        onSubmit: async ({ email, password }, { }) => {
+        onSubmit: async (values, { }) => {
             if (!!signup) {
                 return console.log('sign up')
+            } else {
+                try {
+                    const res = await signIn('credentials', { email: values?.email, password: values?.password, redirect: false })
+                    if (res.status === 200) router.push('/')
+                } catch (error) {
+                    console.error(error)
+                }
             }
-
-            const res = await signIn('credentials', { email, password })
-            // const user = await res.json()
-            console.log(res)
         }
     })
 
@@ -47,13 +54,22 @@ export const AuthForm = ({ signup }) => {
                 </div>
 
                 <form className="py-6" onSubmit={formik.handleSubmit}>
+                    {
+                        !!signup &&
+                        <div className='relative'>
+                            <Input placeholder='Enter Username' type='text' name='name' {...formik.getFieldProps('name')} />
+                            {formik.touched.name && formik.errors.name && <p className='text-red-400 absolute bottom-2'>{formik.errors.name}</p>}
+                        </div>
+                    }
+
                     <div className='relative'>
                         <Input placeholder='Enter Email' type='email' name='email' {...formik.getFieldProps('email')} />
-                        {formik.touched.email && formik.errors.email && <p className='text-red-500 absolute bottom-2'>{formik.errors.email}</p>}
+                        {formik.touched.email && formik.errors.email && <p className='text-red-400 absolute bottom-2'>{formik.errors.email}</p>}
                     </div>
+
                     <div className='relative'>
                         <Input placeholder='Enter Password' type='password' name='password' {...formik.getFieldProps('password')} />
-                        {formik.touched.password && formik.errors.password && <p className='text-red-500 absolute bottom-2'>{formik.errors.password}</p>}
+                        {formik.touched.password && formik.errors.password && <p className='text-red-400 absolute bottom-2'>{formik.errors.password}</p>}
                     </div>
 
                     {
@@ -87,7 +103,7 @@ export const AuthForm = ({ signup }) => {
                 </div>
             </div>
 
-            <div className="pt-16 md:pt-0 md:col-span-6 lg:col-span-5 lg:col-start-8">
+            <div className='pt-16 md:pt-0 md:col-span-6 lg:col-span-5 lg:col-start-8'>
                 <div className='text-center'>
                     <h2 className="gradient-text-reverse font-extrabold text-3xl mb-8">Sign {signup ? 'Up' : 'In'}<br /> To Get Started</h2>
                     <div className="h-72 w-full rounded-2xl overflow-hidden">

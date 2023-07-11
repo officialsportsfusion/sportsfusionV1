@@ -1,13 +1,13 @@
-import { Freetips } from "@components/FreeTips";
+import { Premiumtip } from "@components/Premiumtip";
 import { AuthLayout } from "@components/AuthLayout";
-
 
 export default function Page() {
   return (
-    <main classname="min-h-screen text-app-white-500">
+    <main className="min-h-screen bg-app-black text-app-white-500">
       <AuthLayout>
-      <Freetips />
+      <Premiumtip />
       </AuthLayout>
+     
     </main>
   );
 }

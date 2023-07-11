@@ -71,6 +71,7 @@ export const Header = () => {
                             <Button handler={() => { setIsLoggedIn(false) }}>Log Out</Button>
                         </>
                         :
+                        
                         <Button classProps='ml-4' handler={() => { setIsLoggedIn(true) }} >Login</Button>
                     }
                 </div>

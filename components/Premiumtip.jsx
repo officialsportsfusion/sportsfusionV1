@@ -1,10 +1,13 @@
 import { useState, useEffect } from "react"
+import { useRouter } from "next/router";
+import { AiOutlineDelete } from "react-icons/ai"
+import { FiEdit2 } from "react-icons/fi"
 import Link from "next/link";
 import axios from 'axios';
 
-export const Adminpremiumtip = () => {
+export const Premiumtip = () => {
     const [Tip, setTips] = useState(null)
-
+    const router = useRouter()
     const deletetip = async (tipId) => {
         try {
             await axios.delete(`https://tasty-duck-coveralls.cyclic.app/v1/premium/${tipId}`);
@@ -21,6 +24,8 @@ export const Adminpremiumtip = () => {
         try {
             let response = await axios.get('https://tasty-duck-coveralls.cyclic.app/v1/premium')
             console.log(response.data)
+           
+
             setTips(response.data)
         } catch (err) {
             console.log(err.message)
@@ -28,8 +33,15 @@ export const Adminpremiumtip = () => {
     }
 
     useEffect(() => {
-        getPremium();
-    }, [])
+        const token = sessionStorage.getItem('jwtToken');
+        if (!token) {
+          // Redirect the user to the login page or display an access denied message
+          // based on your application's requirements
+          router.push('/'); // Replace '/login' with your login page path
+        } else {
+          getPremium();
+        }
+      }, );
     return (
         <section className="bg-app-black py-12">
             <h1 className="text-app-orange font-bold text-4xl text-center mb-4">Fusion Premium</h1>
@@ -51,9 +63,9 @@ const Table = ({ Tip, deletetip }) => {
                     <tr className="text-app-white bg-app-orange w-full border-b-solid border-b-[#4E443D] border-b-[1px]">
                         <th className="py-3 pl-4">Date</th>
                         <th className="py-2 pl-1">Event</th>
-                        <th className="hidden md:py-2 md:table-cell pl-1">Tipster</th>
+                        <th className=" md:py-2 md:table-cell pl-1">Tipster</th>
                         <th className=" py-2 pl-1 md:table-cell">Tip</th>
-                        <th className="py-2">Tips & Odds</th>
+                        {/* <th className="py-2">Tips & Odds</th> */}
                     </tr>
                 </thead>
 
@@ -68,8 +80,10 @@ const Table = ({ Tip, deletetip }) => {
 
                                     <td className="pl-2 text-center  border border-[#4E443D] md:table-cell"><p className="inline-flex flex-col ml-1 min-[420px]:text-md"><span className='text-[#AAAAAA]'>{item.tipster}</span></p></td>
                                     <td className="pl-2 text-center  border border-[#4E443D] md:table-cell"><p className="inline-flex flex-col ml-1 min-[420px]:text-md"><span className='text-[#AAAAAA]'>{item.tip}</span></p></td>
-                                    <Link href={`/updatetip/premium/${item._id}`} passHref> edit</Link>
-                                    <td className="text-center border border-[#4E443D]"><Button onClick={() => deletetip(item._id)}>delete</Button></td>
+                                    <Link href={`/updatetip/premium/${item._id}`} passHref className='text-center ml-3'><FiEdit2 size={20}/> </Link>
+                                   
+                                    <button onClick={() => deletetip(item._id)} className='mt-3'><AiOutlineDelete size={20}/></button>
+                                    {/* <Button onClick={() => deletetip(item._id)}>delete</Button> */}
 
                                 </tr>
                             }) : null

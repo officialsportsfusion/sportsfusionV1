@@ -4,7 +4,7 @@ import { AuthLayout } from "@components/AuthLayout";
 export default function Page() {
     return (
         <AuthLayout>
-            <AuthForm signup />
+            <AuthForm />
         </AuthLayout>
     );
 }

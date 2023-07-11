@@ -2,8 +2,15 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { useRouter } from "next/router";
 
-export const Updatefreetips = () => {
+export const Updatefreetip = () => {
   const router = useRouter();
+  useEffect(() => {
+    const token = sessionStorage.getItem('jwtToken');
+    if (!token) {
+      router.push('/'); 
+    } 
+  }, );
+
   const { id } = router.query;
 
   const [error, setError] = useState(null);
@@ -19,7 +26,7 @@ export const Updatefreetips = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const url = `https://tasty-duck-coveralls.cyclic.app/v1/freetip/${_id}`;
+        const url = `https://tasty-duck-coveralls.cyclic.app/v1/freetip/${id}`;
         const response = await axios.get(url);
         const { date, time, league, match, odds, tip, scores } = response.data;
         setDate(date);
@@ -72,7 +79,7 @@ export const Updatefreetips = () => {
       scores,
     };
     try {
-      const url = `https://tasty-duck-coveralls.cyclic.app/v1/freetip/${_id}`;
+      const url = `https://tasty-duck-coveralls.cyclic.app/v1/freetip/${id}`;
       const response = await axios.put(url, formData);
       console.log(response.data);
       setDate("");
@@ -82,7 +89,7 @@ export const Updatefreetips = () => {
       setOdds("");
       setTip("");
       setScores("");
-      router.push("/adminfreetip");
+      router.push("/freetip");
     } catch (error) {
       console.error("Error:", error);
       console.log(error.message);

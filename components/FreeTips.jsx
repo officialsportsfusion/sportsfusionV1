@@ -1,25 +1,6 @@
 import { FaUser } from "react-icons/fa"
-import axios from 'axios';
-import { useState, useEffect } from "react"
 
-export const FreeTips = () => {
-    const [tips, setTips] = useState([])
-    const fetchdata = async () => {
-        try {
-            const freetip = await axios.get('https://tasty-duck-coveralls.cyclic.app/v1/freetip')
-            const response = freetip.data
-            console.log(response)
-            setTips(response)
-        } catch (err) {
-            console.log(err.message)
-        }
-    }
-
-
-    useEffect(() => {
-        fetchdata();
-    }, []);
-
+export const FreeTips = ({ tips }) => {
     return (
         <section className="bg-app-black py-12">
             <h1 className="text-app-orange font-bold text-4xl text-center mb-4">Fusion Free Tips</h1>
@@ -30,8 +11,6 @@ export const FreeTips = () => {
         </section>
     )
 }
-
-export default FreeTips
 
 const TipsTable = ({ tips }) => {
     return (
@@ -69,9 +48,11 @@ const TipsTable = ({ tips }) => {
                 </table>
                 <div className="bg-gradient-to-t from-[#0D0D0D] to-[#0D0D0D00] h-48 absolute bottom-0 left-0 right-0" />
             </div>
-            <div className="grid place-items-center pt-3">
-                <button className='h-[2.25rem] w-[6.5rem] grid place-items-center bg-gradient-to-r from-app-orange via-app-sky to-app-orange p-[1px] rounded-lg cursor-pointer hover:p-[2px]' ><span className='bg-app-black w-full h-full rounded-lg inline-grid place-items-center '>See More</span></button>
-            </div>
+            {/* <div className="grid place-items-center pt-3">
+                <button className='h-[2.25rem] w-[6.5rem] app-border-gradient-rounded-lg cursor-pointer hover:p-[2px]' >
+                    <span className='inline-grid place-items-center'>See More</span>
+                </button>
+            </div> */}
         </div>
     )
 }

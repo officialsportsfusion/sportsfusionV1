@@ -29,8 +29,8 @@ export const Statistics = () => {
                     We provide stats to help you verify the value of all our tips without compromising digits or results to suit or lure investors. Trasparency is 100% value on all our offers.
                 </p>
 
-                <div className='grid mt-6 gap-y-12 md:mt-12 md:grid-cols-12 pb-6'>
-                    <div className='bg-[#43] rounded-lg py-4 sm:w-[28rem] sm:mx-auto md:mx-0 md:w-auto md:col-span-5 md:max-w-[23rem]'>
+                <div className='grid items-center mt-6 gap-y-12 md:mt-12 md:grid-cols-12 pb-6'>
+                    <div className='bg-[#0095ff08] rounded-lg py-4 sm:w-[28rem] sm:mx-auto md:mx-0 md:w-auto md:col-span-5 md:max-w-[23rem]'>
                         <h2 className='text-app-orange text-center font-bold md:text-xl md:mt-4'>SPORTSFUSION STATISTICS</h2>
 
                         <div className='flex items-center gap-4 justify-center mt-3 mb-5'>

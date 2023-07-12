@@ -1,5 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
+import arc from '@images/arc.svg'
+import arc1 from '@images/arc2.svg'
 
 export const FreetipsStats = () => {
     return (
@@ -26,7 +28,7 @@ const StatsSummary = ({ stats }) => {
     return (
         <div className='mb-14 mt-20 relative md:mt-24 md:mb-16'>
             <div className='w-full h-16 absolute bottom-full z-0 md:h-20'>
-                <div className='h-full absolute top-0 left-1/2 right-[14.5%] md:right-[11%]'><Image src='/arc.svg' alt='' width='200' height='80' className='w-full h-full' />
+                <div className='h-full absolute top-0 left-1/2 right-[14.5%] md:right-[11%]'><Image src={arc} alt='' width='200' height='80' className='w-full h-full' />
                 </div>
             </div>
             <div className='flex items-center justify-between z-50'>
@@ -36,7 +38,7 @@ const StatsSummary = ({ stats }) => {
             </div>
             <div className='w-full h-16 absolute top-full z-0 md:h-20'>
                 <div className='h-full absolute top-0 right-1/2 left-[14.5%] md:left-[11%]'>
-                    <Image src='/arc2.svg' alt='' width='200' height='80' className='w-full h-full' />
+                    <Image src={arc1} alt='' width='200' height='80' className='w-full h-full' />
                 </div>
             </div>
         </div>

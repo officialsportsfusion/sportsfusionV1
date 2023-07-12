@@ -1,11 +1,19 @@
-import { Layout } from "@components/Layout";
 import Image from "next/image";
 import Img from "/images/football.png";
 import Link from "next/link";
 import { FaAngleDown } from "react-icons/fa";
 import Head from "next/head";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/router";
 
 export default function Page() {
+  const router = useRouter()
+  const { status } = useSession({
+    required: true,
+    onUnauthenticated() {
+      router.push('/auth/signin');
+    }
+  })
   const data = [
     {
       date: "28-06-23",
@@ -48,85 +56,93 @@ export default function Page() {
   ];
 
   return (
-    <Layout>
+    <>
       <Head>
         <title>My Profile | SportsFusion</title>
       </Head>
-      <div className="bg-[#00070d]">
-        <div className="app-container max-w-2xl relative pt-4 pb-14 md:pb-6">
-          <div className="flex items-center justify-between max-w-2xl mx-auto">
-            <h1 className="font-extrabold text-3xl text-center w-full sm:w-auto">My Account</h1>
-            <button className="absolute bg-gradient-to-tr from-app-sky  to-app-orange py-2 px-6 rounded-lg right-0 bottom-0 sm:relative">BECOME A TIPSTER</button>
-          </div>
-          <div className="flex justify-center item-center mt-8 m-auto rounded-full overflow-hidden h-52 aspect-square">
-            <Image
-              src={Img}
-              alt="my-profile-pic"
-              className="h-full w-full object-cover"
-              width={320}
-              height={320}
-            />
-          </div>
-        </div>
+      {
+        status === 'authenticated' ?
+          <>
+            <div className="bg-[#00070d]">
+              <div className="app-container max-w-2xl relative pt-4 pb-14 md:pb-6">
+                <div className="flex items-center justify-between max-w-2xl mx-auto">
+                  <h1 className="font-extrabold text-3xl text-center w-full sm:w-auto">My Account</h1>
+                  <button className="absolute bg-gradient-to-tr from-app-sky  to-app-orange py-2 px-6 rounded-lg right-0 bottom-0 sm:relative">BECOME A TIPSTER</button>
+                </div>
+                <div className="flex justify-center item-center mt-8 m-auto rounded-full overflow-hidden h-52 aspect-square">
+                  <Image
+                    src={Img}
+                    alt="my-profile-pic"
+                    className="h-full w-full object-cover"
+                    width={320}
+                    height={320}
+                  />
+                </div>
+              </div>
 
-        <div className="app-container flex justify-center items-center gap-8 pt-8 pb-4 max-w-2xl">
-          <p>Followers: 25</p>
-          <p>Following: 205</p>
-        </div>
+              <div className="app-container flex justify-center items-center gap-8 pt-8 pb-4 max-w-2xl">
+                <p>Followers: 25</p>
+                <p>Following: 205</p>
+              </div>
 
-        <div className="app-container max-w-xl flex justify-between pt-6">
-          <Analytic name="Profits" value="$ 0.00" />
-          <Analytic name="Rank" value="User" />
-          <Analytic
-            name="Fund"
-            value="Fund/Withdraw"
-            href="/profile/fund"
-            clickable
-          />
-        </div>
+              <div className="app-container max-w-xl flex justify-between pt-6">
+                <Analytic name="Profits" value="$ 0.00" />
+                <Analytic name="Rank" value="User" />
+                <Analytic
+                  name="Fund"
+                  value="Fund/Withdraw"
+                  href="/profile/fund"
+                  clickable
+                />
+              </div>
 
-        <div className="bg-app-orange mt-8 py-2 px-4 max-w-2xl mx-auto">
-          <p>Todays bet</p>
-        </div>
+              <div className="bg-app-orange mt-8 py-2 px-4 max-w-2xl mx-auto">
+                <p>Todays bet</p>
+              </div>
 
-        <Table data={data} />
+              <Table data={data} />
 
-        <div className=" border-solid border-b-[#4E443D] border-b-[2px] py-6 max-w-2xl mx-auto">
-          <ul className="max-w-2xl app-container">
-            <li> Username : JesseJay</li>
-            <li className="mt-4"> Email : JesseJay@gmail.com</li>
-          </ul>
-        </div>
+              <div className=" border-solid border-b-[#4E443D] border-b-[2px] py-6 max-w-2xl mx-auto">
+                <ul className="max-w-2xl app-container">
+                  <li> Username : JesseJay</li>
+                  <li className="mt-4"> Email : JesseJay@gmail.com</li>
+                </ul>
+              </div>
 
-        <div className="border-b-[#4E443D] border-b-[2px] py-4 max-w-2xl mx-auto">
-          <div className="app-container">
-            <h2 className="text-app-orange-light text-2xl font-bold">Edit</h2>
-            <ul>
-              <li className="pt-3"> Change Username</li>
-              <li className="pt-2"> Change Password</li>
-            </ul>
-          </div>
-        </div>
+              <div className="border-b-[#4E443D] border-b-[2px] py-4 max-w-2xl mx-auto">
+                <div className="app-container">
+                  <h2 className="text-app-orange-light text-2xl font-bold">Edit</h2>
+                  <ul>
+                    <li className="pt-3"> Change Username</li>
+                    <li className="pt-2"> Change Password</li>
+                  </ul>
+                </div>
+              </div>
 
-        <div className="border-b-[#4E443D] border-b-[2px] py-4 max-w-2xl mx-auto">
-          <div className="app-container">
-            <button className="text-app-orange-light text-xl font-bold w-full text-left inline-flex items-center">
-              History <FaAngleDown className="ml-4 pt-1" fontSize={28} />
-            </button>
-            <div>
-              <History />
+              <div className="border-b-[#4E443D] border-b-[2px] py-4 max-w-2xl mx-auto">
+                <div className="app-container">
+                  <button className="text-app-orange-light text-xl font-bold w-full text-left inline-flex items-center">
+                    History <FaAngleDown className="ml-4 pt-1" fontSize={28} />
+                  </button>
+                  <div>
+                    <History />
+                  </div>
+                </div>
+              </div>
+
+              <div className="max-w-2xl py-4 mx-auto">
+                <div className="app-container">
+                  <button className="text-2xl">Log Out</button>
+                </div>
+              </div>
             </div>
+          </> :
+          <div>
+            <p>Loading...</p>
           </div>
-        </div>
-
-        <div className="max-w-2xl py-4 mx-auto">
-          <div className="app-container">
-            <button className="text-2xl">Log Out</button>
-          </div>
-        </div>
-      </div>
-    </Layout>
-  );
+      }
+    </>
+  )
 }
 
 const Table = ({ data }) => {
@@ -220,11 +236,11 @@ const History = () => {
   return (
     <div>
       <form onSubmit={e => e.preventDefault()}>
-        <input type='date'/>
+        <input type='date' />
         <button>filter by day</button>
       </form>
 
-      
+
     </div>
   )
 }

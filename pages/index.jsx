@@ -1,24 +1,33 @@
-import FreeTips from "@components/FreeTips";
+import { FreeTips } from "@components/FreeTips";
 import { Hero } from "@components/Hero";
 import { Premium } from "@components/Premium";
 import { Series } from "@components/Series";
 import { Statistics } from "@components/Statistics";
 import { Testimonial } from "@components/Testimonial";
 import { useSession } from "next-auth/react";
-import { useEffect } from "react";
 
-export default function Page() {
+export const getServerSideProps = async () => {
+  let tips;
+  try {
+    const res = await fetch('https://teal-worried-adder.cyclic.app/v1/freetip')
+    tips = await res.json();
+  } catch (err) {
+    console.log(err.message)
+  }
+  return {
+    props: { tips }
+  }
+}
+
+export default function Page({ tips }) {
   const session = useSession();
-  useEffect(() => {
-    console.log(session)
-  })
 
   return (
     <>
       <Hero />
       <Statistics />
-      <FreeTips />
-      <Premium />
+      <FreeTips tips={tips} />
+      {session.status === 'authenticated' && <Premium />}
       <Series />
       <Testimonial />
     </>

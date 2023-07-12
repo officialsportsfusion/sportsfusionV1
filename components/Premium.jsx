@@ -2,11 +2,10 @@ import { useState, useEffect } from "react"
 import axios from 'axios';
 
 export const Premium = () => {
-    const [Tip, setTips] = useState(null)
+    const [Tip, setTips] = useState([])
     async function getPremium() {
         try {
-            let response = await axios.get('https://tasty-duck-coveralls.cyclic.app/v1/premium')
-            console.log(response.data)
+            let response = await axios.get('https://teal-worried-adder.cyclic.app/v1/premium')
             setTips(response.data)
         } catch (err) {
             console.log(err.message)
@@ -16,13 +15,6 @@ export const Premium = () => {
     useEffect(() => {
         getPremium();
     }, [])
-
-    // const data = [
-    //     { date: '28-06-23', time: '03:45', event: { match: 'Pafos FC - Apollon Limassol', league: 'Cyprus 1-1, Division Championship Playoff' }, bettingType: { odd: 'Fixed Odd', duration: 'Full Time' }, tipster: { name: 'Jaxub Dabrowski', rank: 'Premium Tipster' }, price: '980' },
-    //     { date: '29-06-23', time: '11:45', event: { match: 'Auda -FS Metta/LU', league: 'Latvia 1-Virisliga' }, bettingType: { odd: 'Asian Handicap', duration: 'Full Time' }, tipster: { name: 'Jaxub Dabrowski', rank: 'Premium Tipster' }, price: '560' },
-    //     { date: '01-07-23', time: '05:15', event: { match: 'Tombense FC - Guarani', league: 'Brasil 2 - Serie B' }, bettingType: { odd: 'Fixed Odd', duration: 'Full Time' }, tipster: { name: 'Zahar Alekseeva', rank: 'Premium Tipster' }, price: '980' },
-    //     { date: '05-07-23', time: '03:30', event: { match: 'Gudus FC - Enyimba FC', league: 'Dudely Division, Championship Playoff' }, bettingType: { odd: 'Fixed Odd', duration: 'Full Time' }, tipster: { name: 'Dudely Codez', rank: 'Premium Tipster' }, price: '325' },
-    // ]
     return (
         <section className="bg-app-black py-12">
             <h1 className="text-app-orange font-bold text-4xl text-center mb-4">Fusion Premium</h1>

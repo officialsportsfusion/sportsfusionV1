@@ -7,7 +7,7 @@ export const Adminfreetips = () => {
     const [tips, setTips] = useState('')
     const deletetip = async (tipId) => {
         try {
-            await axios.delete(`https://tasty-duck-coveralls.cyclic.app/v1/freetip/${tipId}`);
+            await axios.delete(`https://teal-worried-adder.cyclic.app/v1/freetip/${tipId}`);
             // Update the state to reflect the deleted tip
             setTips(tips.filter((tip) => tip._id !== tipId));
             console.log("Tip deleted successfully");
@@ -19,7 +19,7 @@ export const Adminfreetips = () => {
 
     const fetchdata = async () => {
         try {
-            const freetip = await axios.get('https://tasty-duck-coveralls.cyclic.app/v1/freetip')
+            const freetip = await axios.get('https://teal-worried-adder.cyclic.app/v1/freetip')
             const response = freetip.data
             console.log(response)
             setTips(response)
@@ -75,7 +75,7 @@ const TipsTable = ({ tips, deletetip }) => {
                                         <td className="hidden md:table-cell ">{tip.odds}</td>
                                         <td className="hidden md:table-cell"><FaUser className="text-app-orange inline mb-1" />{' '}{tip.tipster}</td>
                                         <td className="text-center">{tip.scores}</td>
-                                        <Link href={`/updatetip/${tip._id}`} passHref> edit </Link>
+                                        <Link href={`/admin/tips/free/update/${tip._id}`} passHref> edit </Link>
                                         <button onClick={() => deletetip(tip._id)}>delete</button>
                                     </tr>
                                 }) : null

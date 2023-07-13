@@ -3,7 +3,7 @@ import Img from "/images/football.png";
 import Link from "next/link";
 import { FaAngleDown } from "react-icons/fa";
 import Head from "next/head";
-import { useSession } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 
 export default function Page() {
@@ -132,7 +132,7 @@ export default function Page() {
 
               <div className="max-w-2xl py-4 mx-auto">
                 <div className="app-container">
-                  <button className="text-2xl">Log Out</button>
+                  <button className="text-2xl" onClick={()=> signOut()}>Log Out</button>
                 </div>
               </div>
             </div>

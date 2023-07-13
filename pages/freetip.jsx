@@ -5,12 +5,12 @@ import { Testimonial } from "@components/Testimonial";
 
 export default function Page({ tips }) {
   return (
-    <main className="min-h-screen bg-app-black text-app-white-500">
+    <>
       <FreeTips tips={tips} />
       <BannerAd />
       <FreetipsStats />
       <Testimonial />
-    </main>
+    </>
   );
 }
 

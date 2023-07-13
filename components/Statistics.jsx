@@ -21,7 +21,7 @@ export const Statistics = () => {
     ]
 
     return (
-        <section className='w-full'>
+        <section className='w-full pt-16 md:pt-0'>
             <div className='app-container'>
                 <h2 className='text-center text-app-orange text-3xl font-bold md:text-4xl mb-4'><span className='hidden md:inline'>Fusion</span> Statistics</h2>
 

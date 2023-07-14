@@ -19,13 +19,13 @@ const TipsTable = ({ tips }) => {
                 <table className="w-full mt-8 bg-[#1E2124]">
                     <thead>
                         <tr className="text-app-white bg-app-orange w-full border-b-solid border-b-[#4E443D] border-b-[1px]">
-                            <th className="py-2 text-left pl-4">Time</th>
-                            <th className="hidden md:py-2 md:table-cell text-left pl-1">League</th>
-                            <th className="py-2 text-left pl-1">Match</th>
-                            <th className="py-2 text-left pl-1">Tips</th>
-                            <th className="hidden py-2 md:table-cell text-left pl-1">Odds</th>
-                            <th className="hidden py-2 text-left pl-1 md:table-cell">Tipster</th>
-                            <th className="py-2">Scores</th>
+                            <th className="py-2 text-left pl-4 text-center">Time</th>
+                            <th className="hidden md:py-2 md:table-cell text-left pl-1 text-center">League</th>
+                            <th className="py-2 text-left pl-1 text-center">Match</th>
+                            <th className="py-2 text-left pl-1 text-center">Tips</th>
+                            <th className="hidden py-2 md:table-cell text-left pl-1 text-center">Odds</th>
+                            <th className="hidden py-2 text-left pl-1 md:table-cell text-center">Tipster</th>
+                            <th className="py-2 text-center">Scores</th>
                         </tr>
                     </thead>
 
@@ -34,13 +34,13 @@ const TipsTable = ({ tips }) => {
                             tips && tips.length !== 0 ?
                                 tips.map((tip, index) => {
                                     return <tr key={index} className="border-b-solid border-b-[#4E443D] border-b-[1px] last-of-type:border-none">
-                                        <td className="pl-2"><p className="inline-flex text-sm flex-col ml-1 min-[420px]:text-md min-[420px]:flex-row"><span>{tip.date}</span> <span className='mx-4'>{tip.time}</span></p></td>
-                                        <td className="hidden md:table-cell">{tip.league}</td>
-                                        <td><span className="hidden sm:inline">{tip.match}</span><span className="sm:hidden">{tip.match}</span></td>
-                                        <td>{tip.tip}</td>
-                                        <td className="hidden md:table-cell ">{tip.odds}</td>
-                                        <td className="hidden md:table-cell"><FaUser className="text-app-orange inline mb-1" />{' '}{tip.tipster}</td>
-                                        <td className="text-center">{tip.scores}</td>
+                                        <td className="pl-2 text-center"><p className="inline-flex text-sm flex-col ml-1 min-[420px]:text-md min-[420px]:flex-row"><span>{tip.date}</span> <span className='mx-4'>{tip.time}</span></p></td>
+                                        <td className="hidden md:table-cell text-center">{tip.league}</td>
+                                        <td className='text-center'><span className="hidden sm:inline">{tip.match}</span><span className="sm:hidden">{tip.match}</span></td>
+                                        <td className='text-center'>{tip.tip}</td>
+                                        <td className="hidden md:table-cell text-center">{tip.odds}</td>
+                                        <td className="hidden md:table-cell text-center"><FaUser className="text-app-orange inline mb-1" />{' '}{tip.tipster}</td>
+                                        <td className="text-center text-center">{tip.scores}</td>
                                     </tr>
                                 }) : null
                         }

@@ -11,12 +11,15 @@ import { AuthButton } from "./AuthButton";
 import { OAuthButton } from "./OAuthButton";
 import { signIn } from "next-auth/react";
 import { useRouter } from 'next/router';
-
+import { useState } from 'react';
+import { data } from 'autoprefixer';
 export const AuthForm = ({ signup }) => {
+    const [message, setMessage] = useState('')
+    const [error, setError] = useState('')
     const router = useRouter()
 
     const schema = yup.object().shape({
-        name: !!signup && yup.string().required("Username is required!").min(3, 'At least 3 characters'),
+        username: !!signup && yup.string().required("Username is required!").min(3, 'At least 3 characters'),
         email: yup.string().email().required(),
         password: yup.string().trim().required()
         // .matches(/(?=.*[A-Z])/, 'must contain uppercase')
@@ -29,11 +32,35 @@ export const AuthForm = ({ signup }) => {
 
 
     const formik = useFormik({
-        initialValues: { email: '', password: '', name: "" },
+        initialValues: { email: '', password: '', username: "" },
         validationSchema: schema,
         onSubmit: async (values, { }) => {
             if (!!signup) {
-                return console.log('sign up')
+                // return console.log('sign up')
+                try{
+                const url = 'https://teal-worried-adder.cyclic.app/v1/user'
+                const res = await fetch(url, {
+                    method:'POST',
+                    headers:{
+                        "Content-Type": "application/json"
+                        },
+                    body:JSON.stringify( {email:values?.email, password:values?.password, username:values?.username})
+                })
+                console.log(res)
+                const data = await res.json();                
+                if(res.status === 200){
+                    router.push('/auth/signin')
+                }else{
+                    setError(data.message)
+                    setTimeout(() => {
+                        setError('');
+                      }, 5000);
+                }
+
+
+                }catch(err){
+                    console.log(err)
+                }
             } else {
                 try {
                     const res = await signIn('credentials', { email: values?.email, password: values?.password, redirect: false })
@@ -57,8 +84,8 @@ export const AuthForm = ({ signup }) => {
                     {
                         !!signup &&
                         <div className='relative'>
-                            <Input placeholder='Enter Username' type='text' name='name' {...formik.getFieldProps('name')} />
-                            {formik.touched.name && formik.errors.name && <p className='text-red-400 absolute bottom-2'>{formik.errors.name}</p>}
+                            <Input placeholder='Enter Username' type='text' name='username' {...formik.getFieldProps('username')} />
+                            {formik.touched.username && formik.errors.username && <p className='text-red-400 absolute bottom-2'>{formik.errors.username}</p>}
                         </div>
                     }
 
@@ -78,6 +105,8 @@ export const AuthForm = ({ signup }) => {
                             <Link href='/auth/reset-password' className="hover:text-app-sky">Forgotten Password?</Link>
                         </div>
                     }
+                    
+                      {error && <p className="text-red-400">{error}</p>}
                     <AuthButton>Sign {signup ? 'Up' : 'In'}</AuthButton>
                 </form>
 

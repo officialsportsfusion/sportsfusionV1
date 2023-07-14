@@ -11,9 +11,30 @@ import { AuthButton } from "./AuthButton";
 import { OAuthButton } from "./OAuthButton";
 import { signIn } from "next-auth/react";
 import { useRouter } from 'next/router';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
+import Select from 'react-select';
 import { data } from 'autoprefixer';
 export const AuthForm = ({ signup }) => {
+    const [countries, setCountries] = useState([]);
+
+    useEffect(() => {
+      const fetchCountries = async () => {
+        try {
+          const response = await axios.get('https://restcountries.com/v3.1/all');
+          const countriesData = response.data.map((country) => ({
+            value: country.alpha3Code,
+            label: country.name.common,
+          }));
+          setCountries(countriesData);
+        } catch (error) {
+          console.error('Error fetching countries:', error);
+        }
+      };
+  
+      fetchCountries();
+    }, []);
+    
     const [message, setMessage] = useState('')
     const [error, setError] = useState('')
     const router = useRouter()
@@ -32,7 +53,7 @@ export const AuthForm = ({ signup }) => {
 
 
     const formik = useFormik({
-        initialValues: { email: '', password: '', username: "" },
+        initialValues: { email: '', password: '', username: "", tel:'', country:'' },
         validationSchema: schema,
         onSubmit: async (values, { }) => {
             if (!!signup) {
@@ -44,7 +65,7 @@ export const AuthForm = ({ signup }) => {
                     headers:{
                         "Content-Type": "application/json"
                         },
-                    body:JSON.stringify( {email:values?.email, password:values?.password, username:values?.username})
+                    body:JSON.stringify( {email:values?.email, password:values?.password, username:values?.username, tel:values?.tel, country:values?.country })
                 })
                 console.log(res)
                 const data = await res.json();                
@@ -90,10 +111,44 @@ export const AuthForm = ({ signup }) => {
                 <form className="py-6" onSubmit={formik.handleSubmit}>
                     {
                         !!signup &&
-                        <div className='relative'>
+                        <>
+                           <div className='relative'>
                             <Input placeholder='Enter Username' type='text' name='username' {...formik.getFieldProps('username')} />
                             {formik.touched.username && formik.errors.username && <p className='text-red-400 absolute bottom-2'>{formik.errors.username}</p>}
                         </div>
+                           <div className='relative'>
+                           <Input placeholder='tel' type='number' name='tel' {...formik.getFieldProps('tel')} />
+                           {formik.touched.tel && formik.errors.tel && <p className='text-red-400 absolute bottom-2'>{formik.errors.tel}</p>}
+                       </div>
+                       {/* <div className='relative'>
+                           <Input placeholder='country' type='text' name='country' {...formik.getFieldProps('country')} />
+                           {formik.touched.country && formik.errors.country && <p className='text-red-400 absolute bottom-2'>{formik.errors.country}</p>}
+                       </div> */}
+
+            <div className="relative ">
+            <select
+              id="country"
+              name="country"
+              placeholder="Select a country"
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              value={formik.values.country}
+              className='rounded-full w-full py-3 mb-8 px-6 outline-none text-[#00070d] md:max-lg:py-2'
+            >
+              <option  value="">Select a country</option>
+              {countries.map((country) => (
+                <option key={country.value} value={country.value}>
+                  {country.label}
+                </option>
+              ))}
+            </select>
+            {formik.touched.country && formik.errors.country && (
+              <p className="text-red-400 absolute bottom-2">{formik.errors.country}</p>
+            )}
+          </div>
+            
+                        </>
+                     
                     }
 
                     <div className='relative'>

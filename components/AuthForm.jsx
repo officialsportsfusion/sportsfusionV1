@@ -64,7 +64,14 @@ export const AuthForm = ({ signup }) => {
             } else {
                 try {
                     const res = await signIn('credentials', { email: values?.email, password: values?.password, redirect: false })
-                    if (res.status === 200) router.push('/')
+                    if (res.ok) {
+                        // const data = await res.json();
+                        // console.log(data); // Log the returned object
+                        router.push('/');
+                      } else {
+                        console.error('Authentication failed:', res.status);
+                      }
+                  
                 } catch (error) {
                     console.error(error)
                 }

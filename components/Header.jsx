@@ -50,9 +50,10 @@ export const Header = () => {
                             <li className='group relative'>
                                 <button className='pb-[8px] text-base'>Tips</button>
                                 <ul className='bg-black absolute z-10 top-[100%] text-white text-base h-0 overflow-hidden group-hover:h-auto group-hover:p-4 w-[160px] text-md'>
-                                    <li>Soccer Tips</li>
-                                    <li>Soccer Tips</li>
-                                    <li>Soccer Tips</li>
+                                    <li><Link href='/freetip'>Free Tips</Link></li>
+                                    <li><Link href='/premium'>Premium Tips</Link></li>
+                                    {/* <li>Premium Tips</li> */}
+                                    {/* <li>Soccer Tips</li> */}
                                 </ul>
                             </li>
 
@@ -63,6 +64,11 @@ export const Header = () => {
                                     <li>Senior Tipster</li>
                                     <li>Premium Tipster</li>
                                 </ul>
+                            </li>
+
+                            
+                            <li className='group relative'>
+                                <button className='pb-[8px] text-base'><Link href="/profile">Profile</Link></button>
                             </li>
                         </ul>
                     )
@@ -118,9 +124,8 @@ export const Header = () => {
                         <div className='app-container'>
                             <button className='inline-flex items-center w-full py-3 text-xl' onClick={() => { switchTab('tips') }}>Tips {tab === 'tips' ? <FaAngleUp className='text-app-orange ml-4' /> : <FaAngleDown className='text-app-orange ml-4' />}</button>
                             <ul className={`overflow-hidden ${tab === 'tips' ? 'h-auto' : 'h-0'}`} >
-                                <li>Soccer Tips</li>
-                                <li>Soccer Tips</li>
-                                <li>Soccer Tips</li>
+                            <li><Link href='/freetip'>Free Tips</Link></li>
+                            <li><Link href='/premium'>Premium Tips</Link></li>
                             </ul>
                         </div>
                     </li>
@@ -134,6 +139,19 @@ export const Header = () => {
                             </ul>
                         </div>
                     </li>
+
+                    <li className='bg-[#1E2124]'>
+                        <div className='app-container'>
+                            {/* <button className='inline-flex items-center w-full py-3 text-xl' onClick={() => { switchTab('tipsters') }}>Tipsters {tab === 'tipsters' ? <FaAngleUp className='text-app-orange ml-4' /> : <FaAngleDown className='text-app-orange ml-4' />}</button> */}
+                            <ul>
+                            <li className='group relative'>
+                                <button className='pb-[8px] text-xl'><Link href="/profile">Profile</Link></button>
+                            </li>
+                            </ul>
+                        </div>
+                    </li>
+
+                     
                 </ul>)}
 
                 <div className='app-container pt-12'>
@@ -162,3 +180,4 @@ const Button = ({ children, classProps, handler }) => {
         <button className={`h-[2.5rem] w-[6.8rem] app-border-gradient-rounded-lg cursor-pointer hover:p-[2px] ${classProps}`} onClick={onClick}><span className='text-sm inline-grid place-items-center'>{children}</span></button>
     )
 }
+

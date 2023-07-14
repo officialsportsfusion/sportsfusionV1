@@ -3,10 +3,14 @@ import Img from "/images/football.png";
 import Link from "next/link";
 import { FaAngleDown } from "react-icons/fa";
 import Head from "next/head";
-import { signOut, useSession } from "next-auth/react";
+import { useState } from "react";
+import { getSession, signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 
-export default function Page() {
+export default function Page({userData}) {
+  const [selectedFile, setSelectedFile] = useState(null);
+  const{email, username, id, avatar} = userData
+  console.log(id)
   const router = useRouter()
   const { status } = useSession({
     required: true,
@@ -14,6 +18,40 @@ export default function Page() {
       router.push('/auth/signin');
     }
   })
+
+  const uploadPhoto = async () => {
+    if (!selectedFile) {
+      return; // No file selected, handle accordingly
+    }
+  
+    const formData = new FormData();
+    formData.append('profilePicture', selectedFile);
+  
+    try {
+      const response = await fetch(`https://teal-worried-adder.cyclic.app/v1/upload/avatar/${id}`, {
+        method: 'POST',
+        body: formData,
+      });
+      const data = response.json()
+      console.log(data)
+
+      if (response.ok) {
+        // Picture uploaded successfully, handle accordingly
+      } else {
+        
+        // Picture upload failed, handle accordingly
+      }
+    } catch (error) {
+      console.error('Error occurred during picture upload:', error);
+    }
+  };
+  
+  const handleUpload = (event) => {
+    event.preventDefault();
+    uploadPhoto();
+  };
+
+
   const data = [
     {
       date: "28-06-23",
@@ -79,6 +117,16 @@ export default function Page() {
                   />
                 </div>
               </div>
+              <form onSubmit={handleUpload}>
+                <input
+                  type="file"
+                  accept="image/*"
+                  onChange={(event) =>
+                    setSelectedFile(event.target.files[0])
+                  }
+                />
+                <button type="submit">Upload</button>
+              </form>
 
               <div className="app-container flex justify-center items-center gap-8 pt-8 pb-4 max-w-2xl">
                 <p>Followers: 25</p>
@@ -104,8 +152,9 @@ export default function Page() {
 
               <div className=" border-solid border-b-[#4E443D] border-b-[2px] py-6 max-w-2xl mx-auto">
                 <ul className="max-w-2xl app-container">
-                  <li> Username : JesseJay</li>
-                  <li className="mt-4"> Email : JesseJay@gmail.com</li>
+                  <li> Username:{username}</li>
+                  
+                  <li className="mt-4"> Email : {email}</li>
                 </ul>
               </div>
 
@@ -239,8 +288,35 @@ const History = () => {
         <input type='date' />
         <button>filter by day</button>
       </form>
-
-
     </div>
   )
+}
+
+
+
+
+export async function getServerSideProps(context) {
+  const session = await getSession(context);
+  if (!session) {
+    return {
+      redirect: {
+        destination: '/login', 
+        permanent: false,
+      },
+    };
+  }
+  console.log(session)
+  const userData = {
+    username : session.username,
+    // avatar : session.avatar,
+    email : session.user.email,
+    id:session.id
+
+  }
+
+  return {
+    props: {
+      userData,
+    },
+  };
 }

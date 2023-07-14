@@ -73,7 +73,7 @@ export const Testimonial = () => {
   }, []);
 
   return (
-    <div className="w-full">
+    <div className="w-full relative">
       <div className="app-container mb-5">
         <h1 className="text-3xl text-center text-app-orange font-bold py-5 lg:text-5xl">Testimonials</h1>
 
@@ -92,6 +92,7 @@ export const Testimonial = () => {
           })}
         </Swiper>
       </div>
+      <div className=' bg-app-orange-light blur-[180px] h-64 rounded-full w-64 absolute right-0 bottom-0  shadow-[150px_150px_125px_rgb(255,255,255,0.05)] shadow-lg'></div>
     </div>
   );
 }

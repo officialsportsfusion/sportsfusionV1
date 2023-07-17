@@ -12,29 +12,11 @@ import { OAuthButton } from "./OAuthButton";
 import { signIn } from "next-auth/react";
 import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
-import axios from 'axios';
-import Select from 'react-select';
-import { data } from 'autoprefixer';
-export const AuthForm = ({ signup }) => {
-    const [countries, setCountries] = useState([]);
+import { Countries } from './countries';
 
-    useEffect(() => {
-      const fetchCountries = async () => {
-        try {
-          const response = await axios.get('https://restcountries.com/v3.1/all');
-          const countriesData = response.data.map((country) => ({
-            value: country.alpha3Code,
-            label: country.name.common,
-          }));
-          setCountries(countriesData);
-        } catch (error) {
-          console.error('Error fetching countries:', error);
-        }
-      };
-  
-      fetchCountries();
-    }, []);
-    
+
+export const AuthForm = ({ signup }) => {
+    const [countries, setCountries] = useState(Countries);
     const [message, setMessage] = useState('')
     const [error, setError] = useState('')
     const router = useRouter()
@@ -116,16 +98,15 @@ export const AuthForm = ({ signup }) => {
                             <Input placeholder='Enter Username' type='text' name='username' {...formik.getFieldProps('username')} />
                             {formik.touched.username && formik.errors.username && <p className='text-red-400 absolute bottom-2'>{formik.errors.username}</p>}
                         </div>
-                           <div className='relative'>
-                           <Input placeholder='tel' type='number' name='tel' {...formik.getFieldProps('tel')} />
+
+                        <div className='flex justify-between'>
+                        <div className='relative w-5/12'>
+                           <Input placeholder='tel' type='tel' name='tel' {...formik.getFieldProps('tel')} />
                            {formik.touched.tel && formik.errors.tel && <p className='text-red-400 absolute bottom-2'>{formik.errors.tel}</p>}
                        </div>
-                       {/* <div className='relative'>
-                           <Input placeholder='country' type='text' name='country' {...formik.getFieldProps('country')} />
-                           {formik.touched.country && formik.errors.country && <p className='text-red-400 absolute bottom-2'>{formik.errors.country}</p>}
-                       </div> */}
+                      
 
-            <div className="relative ">
+            <div className="relative w-6/12">
             <select
               id="country"
               name="country"
@@ -146,6 +127,7 @@ export const AuthForm = ({ signup }) => {
               <p className="text-red-400 absolute bottom-2">{formik.errors.country}</p>
             )}
           </div>
+                        </div>
             
                         </>
                      

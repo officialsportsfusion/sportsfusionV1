@@ -6,7 +6,7 @@ import { Testimonial } from "@components/Testimonial";
 import { useRouter } from "next/router";
 import { signOut, useSession } from "next-auth/react";
 
-export default function Page() {
+export default function Page({tips}) {
   const router = useRouter()
   const { status } = useSession({
     required: true,
@@ -22,7 +22,7 @@ export default function Page() {
       {
         status === 'authenticated' ?
         <>
-         <Premium />
+         <Premium Tip={tips}/>
       <BannerAd />
       <FreetipsStats />
       <Testimonial />
@@ -34,4 +34,17 @@ export default function Page() {
      
     </>
   );
+}
+
+export const getServerSideProps = async () => {
+  let tips;
+  try {
+    const res = await fetch('https://teal-worried-adder.cyclic.app/v1/premium')
+    tips = await res.json();
+  } catch (err) {
+    console.log(err.message)
+  }
+  return {
+    props: { tips }
+  }
 }

@@ -2,7 +2,7 @@ import { FaUser } from "react-icons/fa"
 
 export const FreeTips = ({ tips }) => {
     return (
-        <section className="bg-app-black py-12">
+        <section className="bg-app-black py-12 mt-8">
             <h1 className="text-app-orange font-bold text-4xl text-center mb-4">Fusion Free Tips</h1>
 
             <p className="text-center text-app-white max-w-2xl app-container">We provide free evaluated tips by experts daily from tipsters and sources all around the world, that will hlp you make better betting decisions and profits. They are basically free for all users.</p>

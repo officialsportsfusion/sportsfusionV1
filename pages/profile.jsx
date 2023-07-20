@@ -8,9 +8,9 @@ import { getSession, signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 
 export default function Page({userData}) {
-  const [selectedFile, setSelectedFile] = useState(null);
-  const{email, username, id, avatar} = userData
-  console.log(id)
+  const [selectedImage, setSelectedImage] = useState(null);
+  const{email, username, avatar, id} = userData
+  // console.log(id)
   const router = useRouter()
   const { status } = useSession({
     required: true,
@@ -19,36 +19,41 @@ export default function Page({userData}) {
     }
   })
 
-  const uploadPhoto = async () => {
-    if (!selectedFile) {
-      return; // No file selected, handle accordingly
-    }
-  
-    const formData = new FormData();
-    formData.append('profilePicture', selectedFile);
-  
+ 
+
+  const handleImageChange = (event) => {
+    const selectedFile = event.target.files[0];
+    console.log('Selected File:', selectedFile);
+    setSelectedImage(selectedFile);
+  };
+
+  const handleUpload = async () => {
     try {
+      console.log('Uploading image...');
+      const formData = new FormData();
+      formData.append('avatar', selectedImage);
+
       const response = await fetch(`https://teal-worried-adder.cyclic.app/v1/upload/avatar/${id}`, {
         method: 'POST',
         body: formData,
+        mode:'no-cors'
       });
-      const data = response.json()
-      console.log(data)
 
-      if (response.ok) {
-        // Picture uploaded successfully, handle accordingly
-      } else {
-        
-        // Picture upload failed, handle accordingly
+      if (!response.ok) {
+        throw new Error('Image upload failed');
       }
+
+      // Assuming the backend responds with the updated user data including the new image URL
+      const userData = await response.json();
+    console.log('Response data:', userData);
+
+      // Update the user profile image display with the new image URL
+      // You can use the userData.avatar to get the new image URL
+      // Update the user profile image display accordingly
     } catch (error) {
-      console.error('Error occurred during picture upload:', error);
+
+      console.error('Image upload failed:', error);
     }
-  };
-  
-  const handleUpload = (event) => {
-    event.preventDefault();
-    uploadPhoto();
   };
 
 
@@ -109,28 +114,22 @@ export default function Page({userData}) {
                 </div>
                 <div className="flex justify-center item-center mt-8 m-auto rounded-full overflow-hidden h-52 aspect-square">
                   <Image
-                    src={Img}
+                    src={avatar}
                     alt="my-profile-pic"
                     className="h-full w-full object-cover"
                     width={320}
                     height={320}
                   />
                 </div>
+                {/* <div>
+      <input type="file" accept="image/*" name='avatar' onChange={handleImageChange} />
+      <button onClick={handleUpload}>Upload Image</button>
+    </div> */}
               </div>
-              <form onSubmit={handleUpload}>
-                <input
-                  type="file"
-                  accept="image/*"
-                  onChange={(event) =>
-                    setSelectedFile(event.target.files[0])
-                  }
-                />
-                <button type="submit">Upload</button>
-              </form>
 
               <div className="app-container flex justify-center items-center gap-8 pt-8 pb-4 max-w-2xl">
-                <p>Followers: 25</p>
-                <p>Following: 205</p>
+                <p>Followers: 0</p>
+                <p>Following: 0</p>
               </div>
 
               <div className="app-container max-w-xl flex justify-between pt-6">
@@ -154,7 +153,7 @@ export default function Page({userData}) {
                 <ul className="max-w-2xl app-container">
                   <li> Username:{username}</li>
                   
-                  <li className="mt-4"> Email : {email}</li>
+                  <li className="mt-4"> Email:{email} </li>
                 </ul>
               </div>
 
@@ -185,11 +184,12 @@ export default function Page({userData}) {
                 </div>
               </div>
             </div>
-          </> :
+          </>
+           :
           <div>
             <p>Loading...</p>
           </div>
-      }
+      } 
     </>
   )
 }
@@ -300,7 +300,7 @@ export async function getServerSideProps(context) {
   if (!session) {
     return {
       redirect: {
-        destination: '/login', 
+        destination: '/auth/signin', 
         permanent: false,
       },
     };
@@ -308,7 +308,7 @@ export async function getServerSideProps(context) {
   console.log(session)
   const userData = {
     username : session.username,
-    // avatar : session.avatar,
+    avatar : session.avatar,
     email : session.user.email,
     id:session.id
 

@@ -35,7 +35,7 @@ export const Header = () => {
                 {/* DESKTOP NAV */}
                 {
                     status === 'authenticated' && (
-                        <ul className='hidden md:gap-6 md:flex md:items-center lg:text-2xl lg:gap-8 '>
+                        <ul className='hidden lg:gap-6 lg:flex lg:items-center lg:text-2xl lg:gap-8 '>
                             <li className='group relative'>
                                 <button className='pb-[8px] text-base'>Home</button>
                                 <ul className='bg-black absolute text-white text-base h-0 overflow-hidden group-hover:h-auto group-hover:p-4 text-md'>
@@ -75,7 +75,7 @@ export const Header = () => {
                 }
 
 
-                <div className='hidden md:flex md:items-center md:gap-4'>
+                <div className='hidden lg:flex lg:items-center lg:gap-4'>
                     {status === 'authenticated' ?
                         <>
                             <FaSearch className='text-app-orange text-xl md:text-2xl' />
@@ -87,7 +87,7 @@ export const Header = () => {
                     }
                 </div>
 
-                <div className='flex items-center md:hidden'>
+                <div className='flex items-center lg:hidden'>
                     {
                         status === 'authenticated' &&
                         <>

@@ -1,6 +1,10 @@
 import { useEffect, useState } from 'react';
 import Image from "next/image";
-import Img1 from "/images/image.png";
+import Img1 from "../images/black-man-7368415.jpg";
+import Img2 from "../images/silhouette-6875954.png"
+import Img3 from "../images/man-5249991.jpg";
+import Img4 from "../images/man-7450033.jpg";
+
 import SwiperCore, { Navigation, Pagination } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
@@ -21,36 +25,24 @@ export const Testimonial = () => {
       star: 5,
     },
     {
-      name: "Pa Taiwo",
+      name: "Felix",
       testimony: "Sports Fusion improves betting decisions and deepens sports knowledge.",
-      image: Img1,
+      image: Img3,
       star: 4,
     },
     {
 
       name: "John Doe",
       testimony: "For reliable sports predictions and serious sports betting, Sports Fusion is a necessity. ",
-      image: Img1,
+      image: Img2,
       star: 5,
     },
     {
       name: "Cris Kyle",
-      testimony: "lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum ",
-      image: Img1,
+      testimony: "This platform has taken my betting experience to a whole new level of success and excitement. ",
+      image: Img4,
       star: 4.5,
-    },
-    {
-      name: "Jonathan Moore",
-      testimony: "No other sports prediction website compares to the accuracy and reliability of Sports Fusion",
-      image: Img1,
-      star: 3.5,
-    },
-    {
-      name: "John Champion",
-      testimony: "lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum ",
-      image: Img1,
-      star: 5,
-    },
+    }
   ];
 
   useEffect(() => {
@@ -99,14 +91,14 @@ export const Testimonial = () => {
 
 const Card = ({ testimony }) => {
   return (
-    <div className="rounded-2xl bg-gradient-to-r from-app-orange via-app-sky to-app-orange p-[2px]">
+    <div className="rounded-2xl bg-gradient-to-r from-app-orange via-app-sky to-app-orange p-[2px] h-[200px]">
       <div className="grid grid-cols-12 p-2 rounded-2xl h-full w-full bg-app-black sm:p-4 items-center">
-        <div className="col-span-4">
-          <Image src={testimony?.image} alt={`Image of ${testimony?.name || 'testifier'}`} className="w-full h-auto max-w-24" />
+        <div className="col-span-4 w-full h-[100px] lg:h-[150px]">
+          <Image src={testimony?.image} alt={`Image of ${testimony?.name || 'testifier'}`} className="w-full h-[100%]" />
         </div>
 
         <div className="ml-4 col-span-8 md:ml-6 lg:ml-8">
-          <h2 className="font-bold text-app-orange-light">{testimony?.name}</h2>
+          <h2 className="font-bold text-app-orange-light text-2xl mb-2 lg:text-3xl mt-0">{testimony?.name}</h2>
           <p className="text-app-white-500 line-clamp-3 text-[.875rem] mb-1 md:mb-2 ">{testimony?.testimony}</p>
           <div className="flex gap-1 md:gap-3"><Ratings rating={testimony?.star} /></div>
         </div>

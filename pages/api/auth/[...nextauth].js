@@ -26,8 +26,11 @@ export const authOptions = {
           headers: { "Content-Type": "application/json" },
         });
 
+       
         if (!res.ok) {
-          return null;
+          const errorData = await res.json();
+        const errorMessage = errorData.message; // Assuming your backend returns error messages under the 'message' property
+         throw new Error(errorMessage); 
         }
         const user = await res.json();
         if (res.ok && user) {
@@ -64,22 +67,25 @@ export const authOptions = {
   callbacks: {
     jwt: async ({ token, user }) => {
       if (user) {
-       token.accesToken = user.token;
-       token.avatar = user.avatar;
-       token.username = user.username;
+        token.accessToken = user.token;
+        token.avatar = user.avatar;
+        token.username = user.username;
+        token.role = user.role;
         token.id = user.id;
       }
       return token;
     },
-
+  
     session: ({ session, token }) => {
-      session.accesToken = token.accesToken;
+      session.accessToken = token.accessToken;
       session.avatar = token.avatar;
-      session.username= token.username;
+      session.username = token.username;
+      session.role = token.role;
       session.id = token.id;
       return session;
     },
   },
+  
 };
 
 export default NextAuth(authOptions);

@@ -2,7 +2,7 @@ import * as yup from 'yup'
 import { useFormik } from 'formik'
 import Link from "next/link"
 import Image from "next/image";
-import FootballImg from '/images/football.png'
+import FootballImg from '../images/football-1406106.jpg'
 import { FaFacebookF } from 'react-icons/fa'
 import { BiLogoGoogle } from 'react-icons/bi'
 import { AiFillApple } from 'react-icons/ai'
@@ -18,6 +18,7 @@ import { Countries } from './countries';
 export const AuthForm = ({ signup }) => {
     const [countries, setCountries] = useState(Countries);
     const [message, setMessage] = useState('')
+    const [errorMessage, setErrorMessage] = useState(null);
     const [error, setError] = useState('')
     const router = useRouter()
 
@@ -82,6 +83,18 @@ export const AuthForm = ({ signup }) => {
         }
     })
 
+    const handleCountryChange = (selectedCountry) => {
+        formik.setFieldValue('country', selectedCountry);
+        
+        // Assuming the country codes are stored in the `countryCode` field of the countries array
+        // Find the selected country in the countries array and set the countryCode field accordingly
+        const selectedCountryData = countries.find((country) => country.label === selectedCountry);
+        if (selectedCountryData) {
+          formik.setFieldValue('tel', selectedCountryData.countryCode);
+        }
+      };
+      
+
     return (
         <section className="app-container md:grid md:grid-cols-12 md:gap-12 md:items-center md:portrait:max-lg:pt-36">
             <div className="md:col-span-6">
@@ -111,14 +124,14 @@ export const AuthForm = ({ signup }) => {
               id="country"
               name="country"
               placeholder="Select a country"
-              onChange={formik.handleChange}
+              onChange={(e) => handleCountryChange(e.target.value)}
               onBlur={formik.handleBlur}
               value={formik.values.country}
               className='rounded-full w-full py-3 mb-8 px-6 outline-none text-[#00070d] md:max-lg:py-2'
             >
               <option  value="">Select a country</option>
               {countries.map((country) => (
-                <option key={country.value} value={country.value}>
+                <option key={country.label} value={country.label}>
                   {country.label}
                 </option>
               ))}

@@ -1,6 +1,8 @@
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
-import FootballImg from '/images/football.png'
+import FootballImg from '../images/football-1406106.jpg'
+import Football from '../images/football.png'
+import BasketBall from '../images/basketballImg.png'
 import SwiperCore, { Navigation, Pagination, EffectCoverflow } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
@@ -39,7 +41,7 @@ export const Hero = () => {
       <div className="app-container grid md:landscape:min-h-[calc(100dvh-88px)]">
         <div className='my-auto grid grid-cols-12 gap-y-12 md:gap-x-16 py-4 md:py-12'>
           <div className='col-span-12 md:max-laptop:max-w-[640px] md:max-laptop:mx-auto laptop:col-span-6'>
-            <h1 className="text-3xl font-bold text-left mb-6"> A WEB 3 DECENTRALIZED SPORTS <span className='text-app-orange'> MARKET PLACE </span></h1>
+            <h1 className="text-3xl font-bold text-left mb-6 "> A WEB 3 DECENTRALIZED SPORTS <span className='text-app-orange'> MARKET PLACE </span></h1>
             <p className="text-sm"> Exclusive way to earn big from the multiple systems for tips
               on the marketplace, carefully collated and evaluated from the
               best tipsters around the world. A platform that is Profit driven
@@ -73,21 +75,21 @@ export const Hero = () => {
 
               <SwiperSlide className="swiper-slide">
                 <div className=''>
-                  <Image src={FootballImg} alt='FootballImage' priority />
+                  <Image src={Football} alt='FootballImage' priority />
                   {/* <p className='text-right text-lg font-bold'> FOOTBALL</p> */}
                 </div>
               </SwiperSlide>
 
               <SwiperSlide className="swiper-slide">
                 <div className=''>
-                  <Image src={FootballImg} alt='FootballImage' priority />
+                  <Image src={BasketBall} alt='FootballImage' priority className='rounded-lg' />
                   {/* <p className='text-center text-4xl font-bold'> FOOTBALL</p> */}
                 </div>
               </SwiperSlide>
 
               <SwiperSlide className="swiper-slide">
                 <div className=''>
-                  <Image src={FootballImg} alt='FootballImage' priority />
+                  <Image src={Football} alt='FootballImage' priority />
                   {/* <p className='text-center text-4xl font-bold text-gray-100  shadow-lg'> FOOTBALL</p> */}
                 </div>
               </SwiperSlide>

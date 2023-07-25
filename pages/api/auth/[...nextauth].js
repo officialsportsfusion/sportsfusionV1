@@ -29,8 +29,7 @@ export const authOptions = {
        
         if (!res.ok) {
           const errorData = await res.json();
-        const errorMessage = errorData.message; // Assuming your backend returns error messages under the 'message' property
-         throw new Error(errorMessage); 
+          console.log(errorData.message)
         }
         const user = await res.json();
         if (res.ok && user) {
@@ -82,6 +81,9 @@ export const authOptions = {
       session.username = token.username;
       session.role = token.role;
       session.id = token.id;
+      if (session.error) {
+        session.errorMessage = session.error.message;
+      }
       return session;
     },
   },

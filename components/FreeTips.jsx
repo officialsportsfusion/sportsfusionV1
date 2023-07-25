@@ -34,7 +34,7 @@ const TipsTable = ({ tips }) => {
                             tips && tips.length !== 0 ?
                                 tips.map((tip, index) => {
                                     return <tr key={index} className="border-b-solid border-b-[#4E443D] border-b-[1px] last-of-type:border-none">
-                                        <td className="pl-2 text-center"><p className="inline-flex text-sm flex-col ml-1 min-[420px]:text-md min-[420px]:flex-row"><span>{tip.date}</span> <span className='mx-4'>{tip.time}</span></p></td>
+                                        <td className="pl-2 py-3 text-center"><p className="inline-flex text-sm flex-col ml-1 min-[420px]:text-md min-[420px]:flex-row"><span>{tip.date}</span> <span className='mx-4'>{tip.time}</span></p></td>
                                         <td className="hidden md:table-cell text-center">{tip.league}</td>
                                         <td className='text-center'><span className="hidden sm:inline">{tip.match}</span><span className="sm:hidden">{tip.match}</span></td>
                                         <td className='text-center'>{tip.tip}</td>

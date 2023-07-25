@@ -38,13 +38,13 @@ export const Header = () => {
                         <ul className='hidden lg:gap-6 lg:flex lg:items-center lg:text-2xl lg:gap-8 '>
                             <li className='group relative'>
                                 <button className='pb-[8px] text-base'>Home</button>
-                                <ul className='bg-black absolute text-white text-base h-0 overflow-hidden group-hover:h-auto group-hover:p-4 text-md'>
+                                {/* <ul className='bg-black absolute text-white text-base h-0 overflow-hidden group-hover:h-auto group-hover:p-4 text-md'>
                                     <li>News</li>
                                     <li>Scores</li>
                                     <li>Shows</li>
                                     <li>About Us</li>
                                     <li>Community</li>
-                                </ul>
+                                </ul> */}
                             </li>
 
                             <li className='group relative'>
@@ -52,19 +52,20 @@ export const Header = () => {
                                 <ul className='bg-black absolute z-10 top-[100%] text-white text-base h-0 overflow-hidden group-hover:h-auto group-hover:p-4 w-[160px] text-md'>
                                     <li><Link href='/freetip'>Free Tips</Link></li>
                                     <li><Link href='/premium'>Premium Tips</Link></li>
+                                    <li><Link href='/series'>Series</Link></li>
                                     {/* <li>Premium Tips</li> */}
                                     {/* <li>Soccer Tips</li> */}
                                 </ul>
                             </li>
 
-                            <li className='group relative'>
+                            {/* <li className='group relative'>
                                 <button className='pb-[8px] text-base'>Tipsters</button>
                                 <ul className='bg-black z-10 absolute text-white  text-base h-0 w-[218px] overflow-hidden group-hover:h-auto group-hover:p-4 text-md'>
                                     <li>Junior Tipster</li>
                                     <li>Senior Tipster</li>
                                     <li>Premium Tipster</li>
                                 </ul>
-                            </li>
+                            </li> */}
 
                             
                             <li className='group relative'>

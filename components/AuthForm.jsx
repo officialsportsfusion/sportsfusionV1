@@ -9,7 +9,7 @@ import { AiFillApple } from 'react-icons/ai'
 import { Input } from "./Input";
 import { AuthButton } from "./AuthButton";
 import { OAuthButton } from "./OAuthButton";
-import { signIn } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
 import { Countries } from './countries';
@@ -21,7 +21,7 @@ export const AuthForm = ({ signup }) => {
     const [errorMessage, setErrorMessage] = useState(null);
     const [error, setError] = useState('')
     const router = useRouter()
-
+    const { session } = useSession();
     const schema = yup.object().shape({
         username: !!signup && yup.string().required("Username is required!").min(3, 'At least 3 characters'),
         email: yup.string().email().required(),
@@ -68,6 +68,11 @@ export const AuthForm = ({ signup }) => {
             } else {
                 try {
                     const res = await signIn('credentials', { email: values?.email, password: values?.password, redirect: false })
+                    if (res.error) {
+                        // Handle the error and display the message to the user
+                        setErrorMessage(res.error.message);
+                        // Display the error message on the frontend UI (e.g., in a toast or a notification)
+                      }
                     if (res.ok) {
                         // const data = await res.json();
                         // console.log(data); // Log the returned object
@@ -113,10 +118,7 @@ export const AuthForm = ({ signup }) => {
                         </div>
 
                         <div className='flex justify-between'>
-                        <div className='relative w-5/12'>
-                           <Input placeholder='tel' type='tel' name='tel' {...formik.getFieldProps('tel')} />
-                           {formik.touched.tel && formik.errors.tel && <p className='text-red-400 absolute bottom-2'>{formik.errors.tel}</p>}
-                       </div>
+                 
                       
 
             <div className="relative w-6/12">
@@ -140,6 +142,11 @@ export const AuthForm = ({ signup }) => {
               <p className="text-red-400 absolute bottom-2">{formik.errors.country}</p>
             )}
           </div>
+
+          <div className='relative w-5/12'>
+                           <Input placeholder='tel' type='tel' name='tel' {...formik.getFieldProps('tel')} />
+                           {formik.touched.tel && formik.errors.tel && <p className='text-red-400 absolute bottom-2'>{formik.errors.tel}</p>}
+                       </div>
                         </div>
             
                         </>
@@ -164,6 +171,10 @@ export const AuthForm = ({ signup }) => {
                     }
                     
                       {error && <p className="text-red-400">{error}</p>}
+                      <p className="text-red-400">
+  {errorMessage}
+</p>
+                      {session?.error && (<p className="text-red-400">{session.error}</p>)}
                     <AuthButton>Sign {signup ? 'Up' : 'In'}</AuthButton>
                 </form>
 

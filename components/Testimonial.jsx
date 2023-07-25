@@ -93,7 +93,7 @@ const Card = ({ testimony }) => {
   return (
     <div className="rounded-2xl bg-gradient-to-r from-app-orange via-app-sky to-app-orange p-[2px] h-[200px]">
       <div className="grid grid-cols-12 p-2 rounded-2xl h-full w-full bg-app-black sm:p-4 items-center">
-        <div className="col-span-4 w-full h-[100px] lg:h-[150px]">
+        <div className="col-span-4 w-full h-[100px] lg:h-[170px]">
           <Image src={testimony?.image} alt={`Image of ${testimony?.name || 'testifier'}`} className="w-full h-[100%]" />
         </div>
 

@@ -65,20 +65,20 @@ const StatsTable = ({ stats }) => {
         <table className='w-full text-base'>
             <thead>
                 <tr>
-                    <th className='text-app-orange text-left pl-4 md:pl-8'>Date</th>
-                    <th className='text-app-orange text-left'>Win</th>
-                    <th className='text-app-orange text-left'>Loss</th>
-                    <th className='text-app-orange text-left'>Profits</th>
+                    <th className='text-app-orange text-left  text-center'>Date</th>
+                    <th className='text-app-orange text-center'>Win</th>
+                    <th className='text-app-orange text-center'>Loss</th>
+                    <th className='text-app-orange text-center'>Profits</th>
                 </tr>
             </thead>
             <tbody>
                 {
                     stats && stats.length !== 0 ?
                         stats.map((stat, index) => <tr key={index} className='text-app-white text-sm sm:text-lg md:text-md'>
-                            <td className='pl-4 md:pl-8 py-1 md:w-[10rem] text-sm'>{stat?.date}</td>
-                            <td className='pl-2 py-1 text-sm'>{stat?.wins}</td>
-                            <td className='pl-2 py-1 text-sm'>{stat?.loss}</td>
-                            <td className='py-1 text-sm'>${stat?.profits}</td>
+                            <td className=' py-4 md:w-[10rem] text-sm text-center border-b'>{stat?.date}</td>
+                            <td className='pl-2 py-4 text-sm border-b text-center'>{stat?.wins}</td>
+                            <td className='pl-2 py-4 text-sm border-b text-center'>{stat?.loss}</td>
+                            <td className='py-4 text-sm border-b text-center'>${stat?.profits}</td>
                         </tr>) :
                         null
                 }

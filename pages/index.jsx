@@ -11,6 +11,8 @@ export const getServerSideProps = async () => {
   let firstTwentyTips;
   let Tip
   let firstTwentyPremiumTips
+  let seriestipData
+  let firstTwentySeriesTips
   try {
     const res = await fetch('https://teal-worried-adder.cyclic.app/v1/freetip')
     tips = await res.json();
@@ -18,17 +20,21 @@ export const getServerSideProps = async () => {
     const response = await fetch('https://teal-worried-adder.cyclic.app/v1/premium')
     Tip = await response.json()
     firstTwentyPremiumTips = Tip.slice(0,10)
+    const seriesTip = await fetch('https://teal-worried-adder.cyclic.app/v1/series')
+    seriestipData=await seriesTip.json()
+    firstTwentySeriesTips = seriestipData.slice(0,1)
   } catch (err) {
     console.log(err.message)
   }
   return {
     props: { tips : firstTwentyTips,
-            Tip:firstTwentyPremiumTips
+            Tip:firstTwentyPremiumTips,
+            firstTwentySeriesTips
           }
   }
 }
 
-export default function Page({ tips , Tip}) {
+export default function Page({ tips , Tip, firstTwentySeriesTips}) {
   const session = useSession();
 
   return (
@@ -37,7 +43,7 @@ export default function Page({ tips , Tip}) {
       <Statistics />
       <FreeTips tips={tips} />
       {session.status === 'authenticated' && <Premium Tip={Tip}/>}
-      <Series />
+      <Series tip={firstTwentySeriesTips}/>
       <Testimonial />
     </>
   );

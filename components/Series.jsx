@@ -47,7 +47,7 @@ const Table = ({ tip }) => {
                                     <td className="hidden py-2 pl-1 text-center md:table-cell text-center">{serie.odds}</td>
                                     <td className="hidden py-2 pl-1 md:table-cell text-center">${serie.stake}</td>
                                     <td className="hidden py-2 pl-1 text-center md:table-cell text-center">{serie.scores}</td>
-                                    <td className="py-2 text-center pr-2"><Status won={serie.won} /></td>
+                                    <td className="py-2 text-center pr-2"><Status won={serie.outcome} /></td>
                                 </tr>
                             }) : null
                     }

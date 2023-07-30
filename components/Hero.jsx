@@ -1,19 +1,21 @@
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import FootballImg from '../images/football-1406106.jpg'
-import Football from '../images/football.png'
-import BasketBall from '../images/basketballImg.png'
-import SwiperCore, { Navigation, Pagination, EffectCoverflow } from 'swiper';
+import robot from '../images/imageedit_7_7673854764-removebg-preview.png'
+import robot2 from '../images/green-robot-3d-character 1.png'
+import football from '../images/football-scene-soccer-player-futuristic-digital-background-generative-ai-276861640-removebg-preview.png'
+import SwiperCore, { Navigation, Pagination, EffectCoverflow, Autoplay } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import 'swiper/css/autoplay';
 import "swiper/css/effect-coverflow";
 import Link from 'next/link';
 import { useSession } from 'next-auth/react';
-SwiperCore.use([Navigation, Pagination, EffectCoverflow]);
+// SwiperCore.use([Navigation, Pagination]);
 
-
+// import { Autoplay } from 'swiper/modules';
 export const Hero = () => {
   const [slidesPerView, setSlidesPerView] = useState(1);
   const { status } = useSession();
@@ -42,14 +44,21 @@ export const Hero = () => {
         <div className='my-auto grid grid-cols-12 gap-y-12 md:gap-x-16 py-4 md:py-12'>
           <div className='col-span-12 md:max-laptop:max-w-[640px] md:max-laptop:mx-auto laptop:col-span-7 '>
             <h1 className="text-4xl font-black text-left mb-6 "> A WEB 3 DECENTRALIZED SPORTS <span className='text-app-orange'> MARKET PLACE </span></h1>
-            <p className="text-sm"> Exclusive way to earn big from the multiple systems for tips
+            <p className="text mb-6"> Exclusive way to earn big from the multiple systems for tips
               on the marketplace, carefully collated and evaluated from the
               best tipsters around the world. A platform that is Profit driven
               where u can either buy and sell your predictions. Also become a tipster
             </p>
-            <p className='mt-3 text-sm'> Are you a Sport enthusiast but do not know or have the skills and knowledge on
+            {/* <p className='mt-3 text-sm'> Are you a Sport enthusiast but do not know or have the skills and knowledge on
               how to predict? We are here to assist and help you make profits
-            </p>
+            </p> */}
+            
+            <p>Are you a sports enthusiast
+               seeking to enhance your understanding of 
+               sports predictions and expand your profit-making potential? 
+               If you lack the specific skills and knowledge required to make accurate predictions, 
+               fear not, for we are here to assist and provide valuable insights 
+               that can help you navigate the world of sports predictions and potentially increase your chances of making profitable decisions.</p>
 
             {
               !(status === 'authenticated') && <Link href='/auth/signup' className='h-[2.25rem] w-[6.8rem] app-border-gradient-rounded-lg cursor-pointer hover:p-[2px] mt-6' >
@@ -60,37 +69,38 @@ export const Hero = () => {
 
           <div className='col-span-12 md:max-laptop:max-w-[640px] md:max-laptop:mx-auto laptop:col-span-5 laptop:col-start-8'>
             <Swiper
-              slidesPerView={1}
-              navigation
-              effect="coverflow" // Apply the 3D coverflow effect
-              coverflowEffect={{
-                rotate: 30, // Rotate the slides in the coverflow
-                stretch: 0, // Stretch the slides when active
-                depth: 300, // Depth of the 3D effect
-                modifier: 1, // Effect modifier
-                slideShadows: true, // Disable slide shadows
-              }}
+                  spaceBetween={30}
+                  centeredSlides={true}
+                  autoplay={{
+                    delay: 1500,
+                    disableOnInteraction: false,
+                  }}
+                  pagination={{
+                    clickable: true,
+                  }}
+                  navigation={true}
+                  modules={[Pagination, Navigation, Autoplay]}
+               
               className="mySwiper"
             >
 
-              <SwiperSlide className="swiper-slide">
+              <SwiperSlide>
                 <div className=''>
-                  <Image src={Football} alt='FootballImage' priority />
+                  <Image src={robot} alt='FootballImage' priority  className='rounded-lg '/>
                   {/* <p className='text-right text-lg font-bold'> FOOTBALL</p> */}
                 </div>
               </SwiperSlide>
 
               <SwiperSlide className="swiper-slide">
                 <div className=''>
-                  <Image src={BasketBall} alt='FootballImage' priority className='rounded-lg' />
+                  <Image src={robot2} alt='FootballImage' priority className='rounded-lg ' />
                   {/* <p className='text-center text-4xl font-bold'> FOOTBALL</p> */}
                 </div>
               </SwiperSlide>
 
               <SwiperSlide className="swiper-slide">
                 <div className=''>
-                  <Image src={Football} alt='FootballImage' priority />
-                  {/* <p className='text-center text-4xl font-bold text-gray-100  shadow-lg'> FOOTBALL</p> */}
+                  <Image src={football} alt='FootballImage' priority  className='rounded-lg'/>
                 </div>
               </SwiperSlide>
             </Swiper>

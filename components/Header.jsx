@@ -67,10 +67,10 @@ export const Header = () => {
                                 </ul>
                             </li> */}
 
-                            
+{/*                             
                             <li className='group relative'>
                                 <button className='pb-[8px] text-base'><Link href="/profile">Profile</Link></button>
-                            </li>
+                            </li> */}
                         </ul>
                     )
                 }
@@ -132,12 +132,12 @@ export const Header = () => {
                     </li>
                     <li className='bg-[#1E2124]'>
                         <div className='app-container'>
-                            <button className='inline-flex items-center w-full py-3 text-xl' onClick={() => { switchTab('tipsters') }}>Tipsters {tab === 'tipsters' ? <FaAngleUp className='text-app-orange ml-4' /> : <FaAngleDown className='text-app-orange ml-4' />}</button>
+                            {/* <button className='inline-flex items-center w-full py-3 text-xl' onClick={() => { switchTab('tipsters') }}>Tipsters {tab === 'tipsters' ? <FaAngleUp className='text-app-orange ml-4' /> : <FaAngleDown className='text-app-orange ml-4' />}</button>
                             <ul className={`overflow-hidden ${tab === 'tipsters' ? 'h-auto pb-6' : 'h-0'}`}>
                                 <li>Junior Tipster</li>
                                 <li>Senior Tipster</li>
                                 <li>Premium Tipster</li>
-                            </ul>
+                            </ul> */}
                         </div>
                     </li>
 
@@ -145,9 +145,9 @@ export const Header = () => {
                         <div className='app-container'>
                             {/* <button className='inline-flex items-center w-full py-3 text-xl' onClick={() => { switchTab('tipsters') }}>Tipsters {tab === 'tipsters' ? <FaAngleUp className='text-app-orange ml-4' /> : <FaAngleDown className='text-app-orange ml-4' />}</button> */}
                             <ul>
-                            <li className='group relative'>
+                            {/* <li className='group relative'>
                                 <button className='pb-[8px] text-xl'><Link href="/profile">Profile</Link></button>
-                            </li>
+                            </li> */}
                             </ul>
                         </div>
                     </li>

@@ -18,6 +18,7 @@ import { Countries } from './countries';
 export const AuthForm = ({ signup }) => {
     const [countries, setCountries] = useState(Countries);
     const [message, setMessage] = useState('')
+    const [isLoading, setIsLoading] = useState(false);
     const [errorMessage, setErrorMessage] = useState(null);
     const [error, setError] = useState('')
     const router = useRouter()
@@ -39,6 +40,10 @@ export const AuthForm = ({ signup }) => {
         initialValues: { email: '', password: '', username: "", tel:'', country:'' },
         validationSchema: schema,
         onSubmit: async (values, { }) => {
+            setIsLoading(true);
+            setTimeout(() => {
+                setIsLoading(false); // Set the loading state back to false after the loading process completes
+              }, 2000); 
             if (!!signup) {
                 // return console.log('sign up')
                 try{
@@ -175,7 +180,7 @@ export const AuthForm = ({ signup }) => {
   {errorMessage}
 </p>
                       {session?.error && (<p className="text-red-400">{session.error}</p>)}
-                    <AuthButton>Sign {signup ? 'Up' : 'In'}</AuthButton>
+                   <div className='bg-gradient-to-tr from-app-sky to-app-orange p-[2px] rounded-lg'> <AuthButton isLoading={isLoading} >Sign {signup ? 'Up' : 'In'}</AuthButton></div>
                 </form>
 
                 <p className="text-center">{
@@ -201,7 +206,7 @@ export const AuthForm = ({ signup }) => {
             </div>
 
             <div className='pt-16 md:pt-0 md:col-span-6 lg:col-span-5 lg:col-start-8'>
-                <div className='text-center'>
+                <div className='text-center hidden md:contents'>
                     <h2 className="gradient-text-reverse font-extrabold text-3xl mb-8">Sign {signup ? 'Up' : 'In'}<br /> To Get Started</h2>
                     <div className="h-72 w-full rounded-2xl overflow-hidden">
                         <Image src={FootballImg} alt="" className="w-full h-full object-cover" />

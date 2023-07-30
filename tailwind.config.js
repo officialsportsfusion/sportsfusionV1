@@ -8,6 +8,7 @@ module.exports = {
     extend: {
       screens: {
         laptop: "992px",
+        maxScreen:"1280px"
       },
       colors: {
         "app-black": "#00070d",

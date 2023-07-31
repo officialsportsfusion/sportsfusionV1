@@ -44,7 +44,7 @@ export const Hero = () => {
         <div className='my-auto grid grid-cols-12 gap-y-12 md:gap-x-16 py-4 md:py-12'>
           <div className='col-span-12 md:max-laptop:max-w-[640px] md:max-laptop:mx-auto laptop:col-span-7 '>
             <h1 className="text-4xl font-black text-left mb-6 "> A WEB 3 DECENTRALIZED SPORTS <span className='text-app-orange'> MARKET PLACE </span></h1>
-            <p className="text mb-6"> Exclusive way to earn big from the multiple systems for tips
+            <p className="text-sm mb-6"> Exclusive way to earn big from the multiple systems for tips
               on the marketplace, carefully collated and evaluated from the
               best tipsters around the world. A platform that is Profit driven
               where u can either buy and sell your predictions. Also become a tipster
@@ -53,7 +53,7 @@ export const Hero = () => {
               how to predict? We are here to assist and help you make profits
             </p> */}
             
-            <p>Are you a sports enthusiast
+            <p className='text-sm'>Are you a sports enthusiast
                seeking to enhance your understanding of 
                sports predictions and expand your profit-making potential? 
                If you lack the specific skills and knowledge required to make accurate predictions, 

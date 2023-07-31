@@ -109,8 +109,8 @@ export const AuthForm = ({ signup }) => {
         <section className="app-container md:grid md:grid-cols-12 md:gap-12 md:items-center md:portrait:max-lg:pt-36">
             <div className="md:col-span-6">
                 <div className='pt-4'>
-                    <h2 className="text-center"><span className="text-3xl font-extrabold gradient-text w-fit">Sign {signup ? 'Up' : 'In'}</span></h2>
-                    <p className='text-center mt-3'>Sign {signup ? 'up' : 'in'} to get started</p>
+                    <h2 className="text-center"><span className="text-3xl font-extrabold gradient-text w-fit">Sign In</span></h2>
+                    {/* <p className='text-center mt-3'>Sign {signup ? 'up' : 'in'} to get started</p> */}
                 </div>
 
                 <form className="py-6" onSubmit={formik.handleSubmit}>
@@ -183,10 +183,10 @@ export const AuthForm = ({ signup }) => {
                    <div className='bg-gradient-to-tr from-app-sky to-app-orange p-[2px] rounded-lg'> <AuthButton isLoading={isLoading} >Sign {signup ? 'Up' : 'In'}</AuthButton></div>
                 </form>
 
-                <p className="text-center">{
+                {/* <p className="text-center">{
                     signup ?
                         <>Already have an account?{' '}<Link href='/auth/signin' className="text-[#ffab6f] hover:text-app-sky">Sign In</Link></> : <>Don&#39;t have an account?{' '}<Link href='/auth/signup' className="text-[#ffab6f] hover:text-app-sky">Sign Up</Link></>}
-                </p>
+                </p> */}
 
                 <div className='flex justify-center items-center gap-4 pt-6 pb-4'>
                     <OAuthButton onClick={() => signIn('google')}><BiLogoGoogle size={20} /></OAuthButton>

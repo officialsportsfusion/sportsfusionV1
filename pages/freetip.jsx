@@ -1,3 +1,4 @@
+
 import { BannerAd } from "@components/BannerAd";
 import { FreeTips } from "@components/FreeTips";
 import Head from "next/head";
@@ -14,6 +15,8 @@ export default function Page({ tips }) {
       router.push('/auth/signin');
     }
   })
+
+
 
   return (
     <>

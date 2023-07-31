@@ -1,9 +1,19 @@
 import { useState } from "react";
 import axios from 'axios';
-// import { useRouter } from "next/router";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
 
 export const Addfreetips = () => {
-  // const router = useRouter()
+  
+  const router = useRouter()
+  useEffect(() => {
+    const token = sessionStorage.getItem('jwtToken');
+    if (!token) {
+      router.push('/'); 
+    } 
+  }, );
+
+  
   const [error, setError] = useState('')
   const [Message, setMessage] = useState('')
   const [formData, setFormData] = useState({
@@ -15,6 +25,9 @@ export const Addfreetips = () => {
     tip: '',
     scores: ''
   });
+
+
+
 
   const handleInputChange = (e) => {
     setFormData({
@@ -67,7 +80,7 @@ export const Addfreetips = () => {
   return (
     <div className='flex justify-center items-center'>
       <div>
-        <h1 className="text-center text-3xl">Add Free Tips</h1>
+        <h1 className="text-center text-xl">Add Free Tips</h1>
         <form className='text-app-black' onSubmit={handleSubmit}>
           <div className='mt-4'>
             <input

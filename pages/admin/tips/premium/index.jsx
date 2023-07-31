@@ -1,4 +1,4 @@
-import { Adminpremiumtip } from "@components/Adminpremiumtip";
+import { Adminpremiumtip } from "@components/Premiumtip";
 
 export default function Page() {
   return (

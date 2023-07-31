@@ -4,6 +4,13 @@ import { useRouter } from "next/router";
 
 export const Updatepremiumtip = () => {
   const router = useRouter();
+  useEffect(() => {
+    const token = sessionStorage.getItem('jwtToken');
+    if (!token) {
+      router.push('/'); 
+    } 
+  }, );
+
   const { id } = router.query;
 
   const [error, setError] = useState(null);
@@ -19,7 +26,7 @@ export const Updatepremiumtip = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const url = `https://tasty-duck-coveralls.cyclic.app/v1/premium/${_id}`;
+        const url = `https://tasty-duck-coveralls.cyclic.app/v1/premium/${id}`;
         const response = await axios.get(url);
         const { date, time, league, match, odds, tip, scores } = response.data;
         setDate(date);
@@ -72,7 +79,7 @@ export const Updatepremiumtip = () => {
       scores,
     };
     try {
-      const url = `https://tasty-duck-coveralls.cyclic.app/v1/premium/${_id}`;
+      const url = `https://tasty-duck-coveralls.cyclic.app/v1/premium/${id}`;
       const response = await axios.put(url, formData);
       console.log(response.data);
       setDate("");
@@ -82,7 +89,7 @@ export const Updatepremiumtip = () => {
       setOdds("");
       setTip("");
       setScores("");
-      router.push("/adminpremiumtip");
+      router.push("/premiumtip");
     } catch (error) {
       console.error("Error:", error);
       console.log(error.message);

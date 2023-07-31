@@ -7,12 +7,12 @@ export const FreeTips = ({ tips }) => {
 
             <p className="text-center text-app-white max-w-2xl app-container">We provide free evaluated tips by experts daily from tipsters and sources all around the world, that will hlp you make better betting decisions and profits. They are basically free for all users.</p>
 
-            <TipsTable tips={tips} />
+            <TipsTable tips={tips}/>
         </section>
     )
 }
 
-const TipsTable = ({ tips }) => {
+const TipsTable = ({ tips}) => {
     return (
         <div className="md:app-container">
             <div className="relative">
@@ -46,7 +46,7 @@ const TipsTable = ({ tips }) => {
                         }
                     </tbody>
                 </table>
-                <div className="bg-gradient-to-t from-[#0D0D0D] to-[#0D0D0D00] h-48 absolute bottom-0 left-0 right-0" />
+                {/* <div className="bg-gradient-to-t from-[#0D0D0D] to-[#0D0D0D00] h-48 absolute bottom-0 left-0 right-0" /> */}
             </div>
             {/* <div className="grid place-items-center pt-3">
                 <button className='h-[2.25rem] w-[6.5rem] app-border-gradient-rounded-lg cursor-pointer hover:p-[2px]' >

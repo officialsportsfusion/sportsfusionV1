@@ -1,45 +1,19 @@
-
 import { BannerAd } from "@components/BannerAd";
-import { FreeTips } from "@components/FreeTips";
-import Head from "next/head";
+import { Footer } from "@components/Footer";
+import FreeTips from "@components/FreeTips";
 import { FreetipsStats } from "@components/FreetipsStats";
+import { Header } from "@components/Header";
 import { Testimonial } from "@components/Testimonial";
-import { useRouter } from "next/router";
-import { signOut, useSession } from "next-auth/react";
-
-export default function Page({ tips }) {
-  const router = useRouter()
-  const { status } = useSession({
-    required: true,
-    onUnauthenticated() {
-      router.push('/auth/signin');
-    }
-  })
-
-
 
   return (
-    <>
-      <Head>
-        <title> Free Tips | SportsFusion</title>
-      </Head>
-      
-      {
-        status === 'authenticated' ?
-      <>
-      <FreeTips tips={tips} />
+    <main className="min-h-screen bg-app-black text-app-white-500">
+      <Header />
+      <FreeTips />
       <BannerAd />
       <FreetipsStats />
       <Testimonial />
-      </>:
-      <div>
-      <p>Loading...</p>
-      </div>
-      } 
-    
-      
-     
-    </>
+      <Footer />
+    </main>
   );
 }
 

@@ -186,7 +186,7 @@ export const AuthForm = ({ signup }) => {
                 {/* <p className="text-center">{
                     signup ?
                         <>Already have an account?{' '}<Link href='/auth/signin' className="text-[#ffab6f] hover:text-app-sky">Sign In</Link></> : <>Don&#39;t have an account?{' '}<Link href='/auth/signup' className="text-[#ffab6f] hover:text-app-sky">Sign Up</Link></>}
-                </p> */}
+                </p> 
 
                 <div className='flex justify-center items-center gap-4 pt-6 pb-4'>
                     <OAuthButton onClick={() => signIn('google')}><BiLogoGoogle size={20} /></OAuthButton>

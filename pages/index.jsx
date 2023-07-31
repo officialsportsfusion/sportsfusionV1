@@ -38,6 +38,7 @@ export default function Page({ tips , Tip, firstTwentySeriesTips}) {
   const session = useSession();
 
   return (
+<<<<<<< HEAD
     <>
       <Hero />
       <Statistics />
@@ -46,5 +47,12 @@ export default function Page({ tips , Tip, firstTwentySeriesTips}) {
       <Series tip={firstTwentySeriesTips}/>
       <Testimonial />
     </>
+=======
+    <div className="min-h-screen bg-app-black text-app-white-500">
+      <AuthLayout>
+      <AuthForm />
+    </AuthLayout>
+    </div>
+>>>>>>> 46e1c6648cfbeaf2c8c5aa7beecbf3e1bd322d9
   );
 }

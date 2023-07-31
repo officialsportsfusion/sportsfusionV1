@@ -113,77 +113,19 @@ export const AuthForm = ({ signup }) => {
                     {/* <p className='text-center mt-3'>Sign {signup ? 'up' : 'in'} to get started</p> */}
                 </div>
 
-                <form className="py-6" onSubmit={formik.handleSubmit}>
-                    {
-                        !!signup &&
-                        <>
-                           <div className='relative'>
-                            <Input placeholder='Enter Username' type='text' name='username' {...formik.getFieldProps('username')} />
-                            {formik.touched.username && formik.errors.username && <p className='text-red-400 absolute bottom-2'>{formik.errors.username}</p>}
-                        </div>
-
-                        <div className='flex justify-between'>
-                 
-                      
-
-            <div className="relative w-6/12">
-            <select
-              id="country"
-              name="country"
-              placeholder="Select a country"
-              onChange={(e) => handleCountryChange(e.target.value)}
-              onBlur={formik.handleBlur}
-              value={formik.values.country}
-              className='rounded-full w-full py-3 mb-8 px-6 outline-none text-[#00070d] md:max-lg:py-2'
-            >
-              <option  value="">Select a country</option>
-              {countries.map((country) => (
-                <option key={country.label} value={country.label}>
-                  {country.label}
-                </option>
-              ))}
-            </select>
-            {formik.touched.country && formik.errors.country && (
-              <p className="text-red-400 absolute bottom-2">{formik.errors.country}</p>
-            )}
-          </div>
-
-          <div className='relative w-5/12'>
-                           <Input placeholder='tel' type='tel' name='tel' {...formik.getFieldProps('tel')} />
-                           {formik.touched.tel && formik.errors.tel && <p className='text-red-400 absolute bottom-2'>{formik.errors.tel}</p>}
-                       </div>
-                        </div>
-            
-                        </>
-                     
-                    }
-
-                    <div className='relative'>
-                        <Input placeholder='Enter Email' type='email' name='email' {...formik.getFieldProps('email')} />
-                        {formik.touched.email && formik.errors.email && <p className='text-red-400 absolute bottom-2'>{formik.errors.email}</p>}
-                    </div>
-
-                    <div className='relative'>
-                        <Input placeholder='Enter Password' type='password' name='password' {...formik.getFieldProps('password')} />
-                        {formik.touched.password && formik.errors.password && <p className='text-red-400 absolute bottom-2'>{formik.errors.password}</p>}
-                    </div>
-
+                <div className="py-6">
+                    <Input placeholder='Enter Email' type='email' />
+                    <Input placeholder='Enter Password' type='password' />
                     {
                         !!!signup &&
                         <div className="text-right mb-4">
                             <Link href='/auth/reset-password' className="hover:text-app-sky">Forgotten Password?</Link>
                         </div>
                     }
-                    
-                      {error && <p className="text-red-400">{error}</p>}
-                      <p className="text-red-400">
-  {errorMessage}
-</p>
-                      {session?.error && (<p className="text-red-400">{session.error}</p>)}
-                   <div className='bg-gradient-to-tr from-app-sky to-app-orange p-[2px] rounded-lg'> <AuthButton isLoading={isLoading} >Sign {signup ? 'Up' : 'In'}</AuthButton></div>
-                </form>
+                    <AuthButton>Sign {signup ? 'Up' : 'In'}</AuthButton>
+                </div>
 
-                {/* <p className="text-center">{
+                <p className="text-center">{
                     signup ?
                         <>Already have an account?{' '}<Link href='/auth/signin' className="text-[#ffab6f] hover:text-app-sky">Sign In</Link></> : <>Don&#39;t have an account?{' '}<Link href='/auth/signup' className="text-[#ffab6f] hover:text-app-sky">Sign Up</Link></>}
                 </p> 
@@ -205,8 +147,8 @@ export const AuthForm = ({ signup }) => {
                 </div>
             </div>
 
-            <div className='pt-16 md:pt-0 md:col-span-6 lg:col-span-5 lg:col-start-8'>
-                <div className='text-center hidden md:contents'>
+            <div className="pt-16 md:pt-0 md:col-span-6 lg:col-span-5 lg:col-start-8">
+                <div className='text-center'>
                     <h2 className="gradient-text-reverse font-extrabold text-3xl mb-8">Sign {signup ? 'Up' : 'In'}<br /> To Get Started</h2>
                     <div className="h-72 w-full rounded-2xl overflow-hidden">
                         <Image src={FootballImg} alt="" className="w-full h-full object-cover" />

@@ -6,6 +6,7 @@ import FootballImg from '../images/football-1406106.jpg'
 import { FaFacebookF } from 'react-icons/fa'
 import { BiLogoGoogle } from 'react-icons/bi'
 import { AiFillApple } from 'react-icons/ai'
+import { RiEyeFill, RiEyeOffFill } from 'react-icons/ri';
 import { Input } from "./Input";
 import { AuthButton } from "./AuthButton";
 import { OAuthButton } from "./OAuthButton";
@@ -16,6 +17,7 @@ import { Countries } from './countries';
 
 
 export const AuthForm = ({ signup }) => {
+    const [showPassword, setShowPassword] = useState(false)
     const [countries, setCountries] = useState(Countries);
     const [message, setMessage] = useState('')
     const [isLoading, setIsLoading] = useState(false);
@@ -43,7 +45,7 @@ export const AuthForm = ({ signup }) => {
             setIsLoading(true);
             setTimeout(() => {
                 setIsLoading(false); // Set the loading state back to false after the loading process completes
-              }, 2000); 
+              }, 3000); 
             if (!!signup) {
                 // return console.log('sign up')
                 try{
@@ -104,6 +106,9 @@ export const AuthForm = ({ signup }) => {
         }
       };
       
+      const handleTogglePassword = () => {
+        setShowPassword(!showPassword);
+      };
 
     return (
         <section className="app-container md:grid md:grid-cols-12 md:gap-12 md:items-center md:portrait:max-lg:pt-36">
@@ -164,9 +169,18 @@ export const AuthForm = ({ signup }) => {
                     </div>
 
                     <div className='relative'>
-                        <Input placeholder='Enter Password' type='password' name='password' {...formik.getFieldProps('password')} />
-                        {formik.touched.password && formik.errors.password && <p className='text-red-400 absolute bottom-2'>{formik.errors.password}</p>}
+                    <div  className='rounded-3xl w-12/12 bg-red-500 h-[45px] mb-3 text-black'>
+                    <Input placeholder='Enter Password' type={showPassword ? 'text' : 'password'} name='password' {...formik.getFieldProps('password')}  className='w-11/12 h-full rounded-l-3xl text-black pl-5 border-none outline-none'/>
+                        <button onClick={handleTogglePassword} className='ml-3'>{showPassword ? <RiEyeOffFill /> : <RiEyeFill />}</button>
+                        
                     </div>
+                    <div>
+                    {formik.touched.password && formik.errors.password && <p className='text-red-400  bottom-2'>{formik.errors.password}</p>}   
+                    </div>
+
+                    </div>
+                    
+                    
 
                     {
                         !!!signup &&

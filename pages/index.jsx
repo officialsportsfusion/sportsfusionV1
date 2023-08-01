@@ -42,6 +42,7 @@ export default function Page({ tips , Tip, firstTwentySeriesTips}) {
     <>
        <Head>
         <title> SportsFusion | Crypto Meets Sports</title>
+        <meta name="google-site-verification" content="mpo1KJPs717-AKR73Marre0X8CIg9hX3TMr0FxlER8E" />
         <meta property="og:title" content="Sports Fusion" />
         <meta property="og:description" content="Exclusive way to earn big from the multiple systems for tips
               on the marketplace, carefully collated and evaluated from the
@@ -51,7 +52,7 @@ export default function Page({ tips , Tip, firstTwentySeriesTips}) {
         <meta property="og:url" content="https://www.sportsfusion.io" />
       </Head>
        <>
-      <Hero />
+      <Hero />  
       <Statistics />
       <FreeTips tips={tips} />
       {session.status === 'authenticated' && <Premium Tip={Tip}/>}

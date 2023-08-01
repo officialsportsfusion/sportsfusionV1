@@ -1,5 +1,6 @@
 import { FreeTips } from "@components/FreeTips";
 import { Hero } from "@components/Hero";
+import Head from "next/head";
 import { Premium } from "@components/Premium";
 import { Series } from "@components/Series";
 import { Statistics } from "@components/Statistics";
@@ -39,6 +40,17 @@ export default function Page({ tips , Tip, firstTwentySeriesTips}) {
 
   return (
     <>
+       <Head>
+        <title> SportsFusion | Crypto Meets Sports</title>
+        <meta property="og:title" content="Sports Fusion" />
+        <meta property="og:description" content="Exclusive way to earn big from the multiple systems for tips
+              on the marketplace, carefully collated and evaluated from the
+              best tipsters around the world. A platform that is Profit driven
+              where u can either buy and sell your predictions." />
+        <meta property="og:image" content="/public/Layer1.png" />
+        <meta property="og:url" content="https://www.sportsfusion.io" />
+      </Head>
+       <>
       <Hero />
       <Statistics />
       <FreeTips tips={tips} />
@@ -46,5 +58,7 @@ export default function Page({ tips , Tip, firstTwentySeriesTips}) {
       <Series tip={firstTwentySeriesTips}/>
       <Testimonial />
     </>
+    </>
+ 
   );
 }

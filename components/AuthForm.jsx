@@ -171,7 +171,7 @@ export const AuthForm = ({ signup }) => {
                     <div className='relative'>
                     <div  className='rounded-3xl w-12/12 bg-red-500 h-[45px] mb-3 text-black'>
                     <Input placeholder='Enter Password' type={showPassword ? 'text' : 'password'} name='password' {...formik.getFieldProps('password')}  className='w-11/12 h-full rounded-l-3xl text-black pl-5 border-none outline-none'/>
-                        <button onClick={handleTogglePassword} className='ml-3'>{showPassword ? <RiEyeOffFill /> : <RiEyeFill />}</button>
+                    <button onClick={handleTogglePassword} className='ml-1 mt-3 lg:ml-2'>{showPassword ? <RiEyeOffFill /> : <RiEyeFill />}</button>
                         
                     </div>
                     <div>

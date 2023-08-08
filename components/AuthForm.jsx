@@ -13,7 +13,7 @@ import { OAuthButton } from "./OAuthButton";
 import { signIn, useSession } from "next-auth/react";
 import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
-import { Countries } from './countries';
+import { Countries } from '../lib/countries';
 
 
 export const AuthForm = ({ signup }) => {

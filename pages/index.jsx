@@ -1,6 +1,6 @@
+import Head from "next/head";
 import { FreeTips } from "@components/FreeTips";
 import { Hero } from "@components/Hero";
-import Head from "next/head";
 import { Premium } from "@components/Premium";
 import { Series } from "@components/Series";
 import { Statistics } from "@components/Statistics";

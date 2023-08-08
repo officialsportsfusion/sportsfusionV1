@@ -11,6 +11,12 @@ button {
   cursor: pointer;
 }
 
+.active {
+  background-color: #ff6b00;
+  /* transform: scaleY(1.75); */
+  height: 1.125rem;
+}
+
 @layer components {
   .gradient-text {
     @apply bg-gradient-to-tr to-app-orange from-app-sky text-transparent bg-clip-text;
@@ -97,6 +103,6 @@ button {
   overflow-x: hidden;
 }
 
-.test{
-  color: #0095ff08
+.test {
+  color: #0095ff08;
 }

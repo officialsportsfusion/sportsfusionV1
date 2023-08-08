@@ -4,19 +4,11 @@ import Img1 from "../images/black-man-7368415.jpg";
 import Img2 from "../images/silhouette-6875954.png"
 import Img3 from "../images/man-5249991.jpg";
 import Img4 from "../images/man-7450033.jpg";
-
-import SwiperCore, { Navigation, Pagination } from 'swiper';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
+import { Swiper } from '@components/swiper'
 import { Star } from './Star';
 import { StarHalf } from './StarHalf';
 
-SwiperCore.use([Navigation, Pagination]);
-
 export const Testimonial = () => {
-  const [slidesPerView, setSlidesPerView] = useState(1);
   const testimonies = [
     {
       name: "Ezra John",
@@ -42,65 +34,53 @@ export const Testimonial = () => {
       testimony: "This platform has taken my betting experience to a whole new level of success and excitement. ",
       image: Img4,
       star: 4.5,
-    }
+    },
+   
   ];
 
+  const [slides, setSlides] = useState(1);
+
   useEffect(() => {
-    const handleResize = () => {
+    const setSlideInView = () => {
       if (window.innerWidth >= 768) {
-        setSlidesPerView(2); // Display 2 slides per view for screen widths >= 768px
+        setSlides(2);
       } else {
-        setSlidesPerView(1); // Display 1 slide per view for screen widths < 768px
+        setSlides(1);
       }
     };
-
-    // Call the handleResize function on initial load and when the window is resized
-    handleResize();
-
-    window.addEventListener('resize', handleResize);
-
-    return () => {
-      window.removeEventListener('resize', handleResize); // Cleanup the event listener on component unmount
-    };
+    setSlideInView()
+    window.addEventListener("resize", setSlideInView);
+    return () => { window.removeEventListener("resize", setSlideInView) };
   }, []);
 
   return (
-    <div className="w-full relative">
-      <div className="app-container mb-5">
-        <h1 className="text-3xl text-center text-app-orange font-bold py-5 lg:text-5xl">Testimonials</h1>
-
-        <Swiper
-          slidesPerView={slidesPerView}
-          navigation
-          pagination={{ clickable: true }}
-          id="swiper"
-          className="mySwiper">
-          {testimonies.map((testimony, key) => {
-            return (
-              <SwiperSlide key={key} className="swiper-slide px-4">
-                <Card testimony={testimony} />
-              </SwiperSlide>
-            );
-          })}
+    <div className="w-full relative isolate before:-z-10 before:bg-app-orange-light before:h-64 before:rounded-full before:w-64 before:absolute before:right-0 before:bottom-0  before:shadow-[150px_150px_125px_rgb(255,255,255,0.05)] before:blur-[180px]">
+      <div className="mb-5">
+        <h1 className="app-container text-3xl text-center text-app-orange font-bold py-5 lg:text-5xl">Testimonials</h1>
+        <Swiper withIndicators withNavigators slides={slides} className='md:app-container'>
+          {
+            testimonies.map((testimony, index) => <Card testimony={testimony} key={index} />)
+          }
         </Swiper>
       </div>
-      <div className=' bg-app-orange-light blur-[180px] h-64 rounded-full w-64 absolute right-0 bottom-0  shadow-[150px_150px_125px_rgb(255,255,255,0.05)] shadow-lg'></div>
     </div>
   );
 }
 
 const Card = ({ testimony }) => {
   return (
-    <div className="rounded-2xl bg-gradient-to-r from-app-orange via-app-sky to-app-orange p-[2px] h-[200px]">
-      <div className="grid grid-cols-12 p-2 rounded-2xl h-full w-full bg-app-black sm:p-4 items-center">
-        <div className="col-span-4 w-full h-[100px] lg:h-[170px]">
-          <Image src={testimony?.image} alt={`Image of ${testimony?.name || 'testifier'}`} className="w-full h-[100%]" />
-        </div>
+    <div className='w-full'>
+      <div className="app-border-gradient-rounded-lg p-[2px] h-[200px] mx-auto w-[92%] max-w-[540px]">
+        <div className="grid grid-cols-12 p-2 sm:p-4 items-center">
+          <div className="col-span-4 w-full h-[100px] lg:h-[150px]">
+            <Image src={testimony?.image} alt={`Image of ${testimony?.name || 'testifier'}`} className="w-full h-[100%] rounded-2xl" />
+          </div>
 
-        <div className="ml-4 col-span-8 md:ml-6 lg:ml-8">
-          <h2 className="font-bold text-app-orange-light text-2xl mb-2 lg:text-3xl mt-0">{testimony?.name}</h2>
-          <p className="text-app-white-500 line-clamp-3 text-[.875rem] mb-1 md:mb-2 ">{testimony?.testimony}</p>
-          <div className="flex gap-1 md:gap-3"><Ratings rating={testimony?.star} /></div>
+          <div className="ml-4 col-span-8 md:ml-6 lg:ml-8">
+            <h2 className="font-bold text-app-orange-light text-2xl mb-2 lg:text-3xl mt-0">{testimony?.name}</h2>
+            <p className="text-app-white-500 line-clamp-3 text-[.875rem] mb-1 md:mb-2 ">{testimony?.testimony}</p>
+            <div className="flex gap-1 md:gap-3"><Ratings rating={testimony?.star} /></div>
+          </div>
         </div>
       </div>
     </div>

@@ -2,7 +2,7 @@ import { BannerAd } from "@components/BannerAd";
 import Head from "next/head";
 import { FreetipsStats } from "@components/FreetipsStats";
 import { Premium } from "@components/Premium";
-import { Testimonial } from "@components/Testimonial";
+import { Testimonial } from "@public/Testimonial";
 import { useRouter } from "next/router";
 import { signOut, useSession } from "next-auth/react";
 

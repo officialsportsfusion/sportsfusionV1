@@ -44,8 +44,10 @@ export default function Page() {
 
                     <p className="text-center">
                         Know your password?{' '}<Link href='/auth/signin' className="text-[#ffab6f] hover:text-app-sky">Sign In</Link>
+                        {/* jhjhbh */}
                     </p>
                 </div>
+
 
                 <div className="pt-24 md:pt-0 md:col-span-6 lg:col-span-5 lg:col-start-8">
                     <div className='text-center'>

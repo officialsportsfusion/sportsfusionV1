@@ -1,10 +1,9 @@
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
-import FootballImg from '../images/football-1406106.jpg'
-import robot from '../images/imageedit_7_7673854764-removebg-preview.png'
-import robot2 from '../images/green-robot-3d-character 1.png'
-import football from '../images/football-scene-soccer-player-futuristic-digital-background-generative-ai-276861640-removebg-preview.png'
-import SwiperCore, { Navigation, Pagination, EffectCoverflow, Autoplay } from 'swiper';
+import robot from '/images/imageedit_7_7673854764-removebg-preview.png'
+import robot2 from '/images/green-robot-3d-character 1.png'
+import football from '/images/football-scene-soccer-player-futuristic-digital-background-generative-ai-276861640-removebg-preview.png'
+import { Navigation, Pagination, Autoplay } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -13,31 +12,10 @@ import 'swiper/css/autoplay';
 import "swiper/css/effect-coverflow";
 import Link from 'next/link';
 import { useSession } from 'next-auth/react';
-// SwiperCore.use([Navigation, Pagination]);
 
-// import { Autoplay } from 'swiper/modules';
+
 export const Hero = () => {
-  const [slidesPerView, setSlidesPerView] = useState(1);
   const { status } = useSession();
-
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth >= 768) {
-        setSlidesPerView(2); // Display 2 slides per view for screen widths >= 768px
-      } else {
-        setSlidesPerView(1); // Display 1 slide per view for screen widths < 768px
-      }
-    };
-
-    // Call the handleResize function on initial load and when the window is resized
-    handleResize();
-    window.addEventListener('resize', handleResize);
-
-    return () => {
-      window.removeEventListener('resize', handleResize); // Cleanup the event listener on component unmount
-    };
-  }, []);
-
   return (
     <section className="pt-[64px] md:pt-[88px]">
       <div className="app-container grid md:landscape:min-h-[calc(100dvh-88px)]">
@@ -52,13 +30,13 @@ export const Hero = () => {
             {/* <p className='mt-3 text-sm'> Are you a Sport enthusiast but do not know or have the skills and knowledge on
               how to predict? We are here to assist and help you make profits
             </p> */}
-            
+
             <p className='text-sm'>Are you a sports enthusiast
-               seeking to enhance your understanding of 
-               sports predictions and expand your profit-making potential? 
-               If you lack the specific skills and knowledge required to make accurate predictions, 
-               fear not, for we are here to assist and provide valuable insights 
-               that can help you navigate the world of sports predictions and potentially increase your chances of making profitable decisions.</p>
+              seeking to enhance your understanding of
+              sports predictions and expand your profit-making potential?
+              If you lack the specific skills and knowledge required to make accurate predictions,
+              fear not, for we are here to assist and provide valuable insights
+              that can help you navigate the world of sports predictions and potentially increase your chances of making profitable decisions.</p>
 
             {
               !(status === 'authenticated') && <Link href='/auth/signup' className='h-[2.25rem] w-[6.8rem] app-border-gradient-rounded-lg cursor-pointer hover:p-[2px] mt-6' >
@@ -69,24 +47,24 @@ export const Hero = () => {
 
           <div className='col-span-12 md:max-laptop:max-w-[640px] md:max-laptop:mx-auto laptop:col-span-5 laptop:col-start-8'>
             <Swiper
-                  spaceBetween={30}
-                  centeredSlides={true}
-                  autoplay={{
-                    delay: 1500,
-                    disableOnInteraction: false,
-                  }}
-                  pagination={{
-                    clickable: true,
-                  }}
-                  navigation={true}
-                  modules={[Pagination, Navigation, Autoplay]}
-               
+              spaceBetween={30}
+              centeredSlides={true}
+              autoplay={{
+                delay: 1500,
+                disableOnInteraction: false,
+              }}
+              pagination={{
+                clickable: true,
+              }}
+              navigation={true}
+              modules={[Pagination, Navigation, Autoplay]}
+
               className="mySwiper"
             >
 
               <SwiperSlide>
                 <div className=''>
-                  <Image src={robot} alt='FootballImage' priority  className='rounded-lg '/>
+                  <Image src={robot} alt='FootballImage' priority className='rounded-lg ' />
                   {/* <p className='text-right text-lg font-bold'> FOOTBALL</p> */}
                 </div>
               </SwiperSlide>
@@ -100,7 +78,7 @@ export const Hero = () => {
 
               <SwiperSlide className="swiper-slide">
                 <div className=''>
-                  <Image src={football} alt='FootballImage' priority  className='rounded-lg'/>
+                  <Image src={football} alt='FootballImage' priority className='rounded-lg' />
                 </div>
               </SwiperSlide>
             </Swiper>

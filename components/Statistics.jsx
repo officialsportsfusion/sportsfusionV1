@@ -53,7 +53,7 @@ export const Statistics = () => {
 
                         <StatsSummary />
                     </div>
-                    <div className=' bg-app-orange-light blur-[200px] h-64 rounded-full w-64 absolute right-0 bottom-0  shadow-[150px_150px_125px_rgb(255,255,255,0.05)] shadow-lg'></div>
+                    <div className=' bg-app-orange-light blur-[200px] h-64 rounded-full w-64 absolute right-0 bottom-0  shadow-[150px_150px_125px_rgb(255,255,255,0.05)]'></div>
                 </div>
             </div>
         </section>
@@ -65,7 +65,7 @@ const StatsTable = ({ stats }) => {
         <table className='w-full text-base'>
             <thead>
                 <tr>
-                    <th className='text-app-orange text-left  text-center'>Date</th>
+                    <th className='text-app-orange text-center'>Date</th>
                     <th className='text-app-orange text-center'>Win</th>
                     <th className='text-app-orange text-center'>Loss</th>
                     <th className='text-app-orange text-center'>Profits</th>

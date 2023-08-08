@@ -66,31 +66,31 @@ export const Form = ({ update, init }) => {
     <form className='text-app-black' onSubmit={formik.handleSubmit}>
       <div className='sm:grid sm:grid-cols-2 sm:gap-x-6'>
         <div className='relative'>
-          <Input placeholder='Date' type='text' name='date' {...formik.getFieldProps('date')} />
+          <Input placeholder='Date' type='text' name='date' formik={formik} />
           {formik.touched.date && formik.errors.date && <p className='text-red-400 absolute bottom-2'>{formik.errors.date}</p>}
         </div>
         <div className='relative'>
-          <Input placeholder='Time' type='text' name='time' {...formik.getFieldProps('time')} />
+          <Input placeholder='Time' type='text' name='time' formik={formik} />
           {formik.touched.time && formik.errors.time && <p className='text-red-400 absolute bottom-2'>{formik.errors.time}</p>}
         </div>
         <div className='relative'>
-          <Input placeholder='League' type='text' name='league' {...formik.getFieldProps('league')} />
+          <Input placeholder='League' type='text' name='league' formik={formik} />
           {formik.touched.league && formik.errors.league && <p className='text-red-400 absolute bottom-2'>{formik.errors.league}</p>}
         </div>
         <div className='relative'>
-          <Input placeholder='Match' type='text' name='match' {...formik.getFieldProps('match')} />
+          <Input placeholder='Match' type='text' name='match' formik={formik} />
           {formik.touched.match && formik.errors.match && <p className='text-red-400 absolute bottom-2'>{formik.errors.match}</p>}
         </div>
         <div className='relative'>
-          <Input placeholder='Odds' type='text' name='odds' {...formik.getFieldProps('odds')} />
+          <Input placeholder='Odds' type='text' name='odds' formik={formik} />
           {formik.touched.odds && formik.errors.odds && <p className='text-red-400 absolute bottom-2'>{formik.errors.odds}</p>}
         </div>
         <div className='relative'>
-          <Input placeholder='Tip' type='text' name='tip' {...formik.getFieldProps('tip')} />
+          <Input placeholder='Tip' type='text' name='tip' formik={formik} />
           {formik.touched.tip && formik.errors.tip && <p className='text-red-400 absolute bottom-2'>{formik.errors.tip}</p>}
         </div>
         <div className='relative'>
-          <Input placeholder='Outcome' type='text' name='score' {...formik.getFieldProps('score')} />
+          <Input placeholder='Outcome' type='text' name='score' formik={formik} />
           {formik.touched.score && formik.errors.score && <p className='text-red-400 absolute bottom-2'>{formik.errors.score}</p>}
         </div>
         <button type='submit' className='app-border-gradient-rounded-md h-[2.25rem] w-full cursor-pointer hover:p-[2px] text-white'>

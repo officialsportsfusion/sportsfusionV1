@@ -42,7 +42,7 @@ export default function Page() {
 
           <form className="py-6" onSubmit={formik.handleSubmit}>
             <div className='relative'>
-              <Input placeholder='Enter OTP' type='text' name='otp' {...formik.getFieldProps('otp')} />
+              <Input placeholder='Enter OTP' type='text' name='otp' formik={formik} />
               {formik.touched.otp && formik.errors.otp && <p className='text-red-400 absolute bottom-2'>{formik.errors.otp}</p>}
             </div>
             <button className="app-border-gradient-rounded-lg w-full" type="submit"><span className="py-3 md:max-lg:py-2 hover:opacity-3/4">Validate Account</span></button>

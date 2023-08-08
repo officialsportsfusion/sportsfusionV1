@@ -36,7 +36,7 @@ export default function Page() {
 
                     <form className="py-6" onSubmit={formik.handleSubmit}>
                         <div className='relative'>
-                            <Input placeholder='Enter Email' type='email' name='email' {...formik.getFieldProps('email')} />
+                            <Input placeholder='Enter Email' type='email' name='email' formik={formik} />
                             {formik.touched.email && formik.errors.email && <p className='text-red-400 absolute bottom-2'>{formik.errors.email}</p>}
                         </div>
                         <AuthButton>Enter</AuthButton>

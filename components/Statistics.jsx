@@ -111,12 +111,12 @@ const StatsSummary = ({ stats }) => {
 const Pill = ({ stats, value }) => {
     return (
         <div className='bg-[#334B5D] rounded-full p-[2px] md:p-[3px]'>
-            <div className='text-xl text-center pt-4 mb-8 font-bold md:pt-8 md:mb-10 md:text-2xl'>
+            <div className='text-xl text-center pt-4 mb-8 font-bold md:pt-8 md:mb-10 md:text-2xl max-[319px]:text-sm'>
                 <p>Total</p>
                 <p>{stats}</p>
             </div>
-            <div className='rounded-full w-20 h-20 bg-[rgba(255,255,255,0.13)] grid place-items-center min-[360px]:w-24 min-[360px]:h-24 md:h-28 md:w-28 lg:w-32 lg:h-32'>
-                <p className='text-app-orange-light text-2xl md:text-3xl'> <CountUp end={value} duration={3} /></p>
+            <div className='rounded-full w-20 h-20 bg-[rgba(255,255,255,0.13)] grid place-items-center min-[360px]:w-24 min-[360px]:h-24 md:h-28 md:w-28 lg:w-32 lg:h-32 max-[319px]:w-16 max-[319px]:h-16'>
+                <p className='text-app-orange-light text-2xl md:text-3xl max-[319px]:text-xl'> <CountUp end={value} duration={3} /></p>
             </div>
         </div>
     )

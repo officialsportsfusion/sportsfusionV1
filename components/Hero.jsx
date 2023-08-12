@@ -21,7 +21,7 @@ export const Hero = () => {
       <div className="app-container grid md:landscape:min-h-[calc(100dvh-88px)]">
         <div className='my-auto grid grid-cols-12 gap-y-12 md:gap-x-16 py-4 md:py-12'>
           <div className='col-span-12 md:max-laptop:max-w-[640px] md:max-laptop:mx-auto laptop:col-span-7 '>
-            <h1 className="text-4xl font-black text-left mb-6 "> A WEB 3 DECENTRALIZED SPORTS <span className='text-app-orange'> MARKET PLACE </span></h1>
+            <h1 className="text-4xl font-black text-left mb-6 max-[319px]:text-2xl"> A WEB 3 DECENTRALIZED SPORTS <span className='text-app-orange'> MARKET PLACE </span></h1>
             <p className="text-sm mb-6"> Exclusive way to earn big from the multiple systems for tips
               on the marketplace, carefully collated and evaluated from the
               best tipsters around the world. A platform that is Profit driven

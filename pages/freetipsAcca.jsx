@@ -1,5 +1,5 @@
 import { BannerAd } from "@components/BannerAd";
-import { FreeTips } from "@components/FreeTips";
+import { FreeAcca } from "@components/FreeAcca";
 import Head from "next/head";
 import { FreetipsStats } from "@components/FreetipsStats";
 import { Testimonial } from "@components/Testimonial";
@@ -18,13 +18,13 @@ export default function Page({ tips }) {
   return (
     <>
       <Head>
-        <title> Free Tips | SportsFusion</title>
+        <title> Free Tips Acca | SportsFusion</title>
       </Head>
       
       {
         status === 'authenticated' ?
       <>
-      <FreeTips tips={tips} />
+      <FreeAcca tip ={tips} />
       <BannerAd />
       <FreetipsStats />
       <Testimonial />
@@ -43,8 +43,9 @@ export default function Page({ tips }) {
 export const getServerSideProps = async () => {
   let tips;
   try {
-    const res = await fetch('https://teal-worried-adder.cyclic.app/v1/freetip')
+    const res = await fetch('https://teal-worried-adder.cyclic.app/v1/accatip')
     tips = await res.json();
+    console.log(tips)
   } catch (err) {
     console.log(err.message)
   }

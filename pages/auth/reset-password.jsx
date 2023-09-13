@@ -18,7 +18,30 @@ export default function Page() {
         }),
         onSubmit: async ({ email }, { }) => {
             // send request and redirect to confirm otp page
-            router.push(encodeURI(`/auth/confirm-otp?email=${email}`))
+            try{
+                const url = 'https://teal-worried-adder.cyclic.app/v1/forgot/password'
+                const res = await fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ email })
+                })
+        
+                console.log(res)
+                        const data = await res.json();
+                        if (res.status === 200) {
+                            router.push(`/auth/change-password`)
+                        } else {
+                            setError(data.message)
+                            setTimeout(() => {
+                                setError('');
+                            }, 5000);
+                        }
+              }catch(error){
+                console.log(error)
+              }
+            // router.push(encodeURI(`/auth/confirm-otp?email=${email}`))
         }
     })
 
@@ -31,7 +54,7 @@ export default function Page() {
                 <div className="md:col-span-6">
                     <div className='pt-4'>
                         <h2 className="text-center"><span className="text-3xl font-extrabold gradient-text w-fit">Password Reset</span></h2>
-                        <p className='text-center mt-3'>Password reset link will be sent to your email address</p>
+                        <p className='text-center mt-3'>One Time Reset Password will be sent to your email address</p>
                     </div>
 
                     <form className="py-6" onSubmit={formik.handleSubmit}>

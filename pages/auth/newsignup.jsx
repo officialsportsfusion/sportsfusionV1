@@ -137,7 +137,7 @@ export default function Page() {
                         {error && <p className="text-red-400">{error}</p>}
 
                         {session?.error && (<p className="text-red-400">{session.error}</p>)}
-                        <AuthButton isLoading={isLoading} >Sign up</AuthButton>
+                       <button type='submit'>Sign Up</button>
                     </form>
           
 

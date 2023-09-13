@@ -1,5 +1,6 @@
 import Head from "next/head";
 import { FreeTips } from "@components/FreeTips";
+import { FreeAcca } from "@components/FreeAcca";
 import { Hero } from "@components/Hero";
 import { Premium } from "@components/Premium";
 import { Testimonial } from "@components/Testimonial";
@@ -14,6 +15,8 @@ export const getServerSideProps = async () => {
   let firstTwentyPremiumTips
   let seriestipData
   let firstTwentySeriesTips
+  let acca
+  let firstfiveAcca
   try {
     const res = await fetch('https://teal-worried-adder.cyclic.app/v1/freetip')
     tips = await res.json();
@@ -24,6 +27,10 @@ export const getServerSideProps = async () => {
     const seriesTip = await fetch('https://teal-worried-adder.cyclic.app/v1/series')
     seriestipData = await seriesTip.json()
     firstTwentySeriesTips = seriestipData.slice(0, 1)
+    const freeAcca = await fetch('https://teal-worried-adder.cyclic.app/v1/accatip')
+    acca = await freeAcca.json()
+    console.log(acca)
+    firstfiveAcca = acca.slice(0,5)
   } catch (err) {
     console.log(err.message)
   }
@@ -31,12 +38,13 @@ export const getServerSideProps = async () => {
     props: {
       tips: firstTwentyTips,
       Tip: firstTwentyPremiumTips,
-      firstTwentySeriesTips
+      firstTwentySeriesTips,
+      acca:firstfiveAcca
     }
   }
 }
 
-export default function Page({ tips, Tip, firstTwentySeriesTips }) {
+export default function Page({ tips, Tip, firstTwentySeriesTips, acca }) {
   const session = useSession();
 
   return (
@@ -57,6 +65,7 @@ export default function Page({ tips, Tip, firstTwentySeriesTips }) {
         <Statistics />
         <FreeTips tips={tips} />
         {session.status === 'authenticated' && <Premium Tip={Tip} />}
+        {session.status === 'authenticated' && <FreeAcca tip={acca} />}
         <Series tip={firstTwentySeriesTips} />
         <Testimonial />
       </>

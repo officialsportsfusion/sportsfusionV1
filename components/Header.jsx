@@ -37,25 +37,42 @@ export const Header = () => {
                     status === 'authenticated' && (
                         <ul className='hidden lg:gap-6 lg:flex lg:items-center lg:text-2xl lg:gap-8 '>
                             <li className='group relative'>
-                                <button className='pb-[8px] text-base'>Home</button>
-                                {/* <ul className='bg-black absolute text-white text-base h-0 overflow-hidden group-hover:h-auto group-hover:p-4 text-md'>
-                                    <li>News</li>
-                                    <li>Scores</li>
-                                    <li>Shows</li>
-                                    <li>About Us</li>
-                                    <li>Community</li>
-                                </ul> */}
+                                <button className='pb-[8px] text-base'><Link href='/'>Home</Link></button>
                             </li>
 
                             <li className='group relative'>
-                                <button className='pb-[8px] text-base'>Tips</button>
+                                <button className='pb-[8px] text-base'>FreeTips</button>
                                 <ul className='bg-black absolute z-10 top-[100%] text-white text-base h-0 overflow-hidden group-hover:h-auto group-hover:p-4 w-[160px] text-md'>
                                     <li><Link href='/freetip'>Free Tips</Link></li>
-                                    <li><Link href='/premium'>Premium Tips</Link></li>
-                                    <li><Link href='/series'>Series</Link></li>
+                                    <li><Link href='/freetipsAcca'>Free Tips Acca</Link></li>
+                                </ul>
+
+                              
+                            </li>
+
+                            <li className='group relative'>
+                                <button className='pb-[8px] text-base'>PremiumTips</button>
+                                <ul className='bg-black absolute z-10 top-[100%] text-white text-base h-0 overflow-hidden group-hover:h-auto group-hover:p-4 w-[160px] text-md'>
+                                    <li><Link href='/'>Coming Soon</Link></li>
+                                  
                                     {/* <li>Premium Tips</li> */}
                                     {/* <li>Soccer Tips</li> */}
                                 </ul>
+
+                                
+                            </li>
+
+
+                            <li className='group relative'>
+                                <button className='pb-[8px] text-base'>Series</button>
+                                <ul className='bg-black absolute z-10 top-[100%] text-white text-base h-0 overflow-hidden group-hover:h-auto group-hover:p-4 w-[160px] text-md'>
+                                    <li><Link href='/'>Coming Soon</Link></li>
+                                  
+                                    {/* <li>Premium Tips</li> */}
+                                    {/* <li>Soccer Tips</li> */}
+                                </ul>
+
+                                
                             </li>
 
                             {/* <li className='group relative'>
@@ -79,8 +96,8 @@ export const Header = () => {
                 <div className='hidden lg:flex lg:items-center lg:gap-4'>
                     {status === 'authenticated' ?
                         <>
-                            <FaSearch className='text-app-orange text-xl md:text-2xl' />
-                            <Profile />
+                            {/* <FaSearch className='text-app-orange text-xl md:text-2xl' /> */}
+                            {/* <Profile /> */}
                             {!isProfile && <Button handler={() => { signOut({ redirect: false }) }}>Log Out</Button>}
                         </>
                         :
@@ -92,8 +109,8 @@ export const Header = () => {
                     {
                         status === 'authenticated' &&
                         <>
-                            <FaSearch className='text-app-orange text-xl mr-2' />
-                            <Profile />
+                            {/* <FaSearch className='text-app-orange text-xl mr-2' /> */}
+                            {/* <Profile /> */}
                         </>
                     }
                     <button onClick={showMobileNav} className='cursor-pointer py-1 pl-1' aria-label='hamburger menu'>
@@ -111,33 +128,33 @@ export const Header = () => {
                 {status === 'authenticated' && (<ul>
                     <li className='bg-[#1E2124]'>
                         <div className='app-container'>
-                            <button className='inline-flex items-center w-full py-3 text-xl' onClick={() => { switchTab('home') }}>Home {tab === 'home' ? <FaAngleUp className='text-app-orange ml-4' /> : <FaAngleDown className='text-app-orange ml-4' />}</button>
-                            <ul className={`overflow-hidden ${tab === 'home' ? 'h-auto' : 'h-0'}`} >
-                                <li>News</li>
-                                <li>Scores</li>
-                                <li>Shows</li>
-                                <li>About Us</li>
-                                <li>Community</li>
-                            </ul>
+                            <button className='inline-flex items-center w-full py-3 text-xl' onClick={() => { switchTab('home') }}><Link href='/'>Home</Link></button>
                         </div>
                     </li>
                     <li className='bg-[#1E2124]'>
                         <div className='app-container'>
-                            <button className='inline-flex items-center w-full py-3 text-xl' onClick={() => { switchTab('tips') }}>Tips {tab === 'tips' ? <FaAngleUp className='text-app-orange ml-4' /> : <FaAngleDown className='text-app-orange ml-4' />}</button>
+                            <button className='inline-flex items-center w-full py-3 text-xl' onClick={() => { switchTab('tips') }}>FreeTips {tab === 'tips' ? <FaAngleUp className='text-app-orange ml-4' /> : <FaAngleDown className='text-app-orange ml-4' />}</button>
                             <ul className={`overflow-hidden ${tab === 'tips' ? 'h-auto' : 'h-0'}`} >
                             <li><Link href='/freetip'>Free Tips</Link></li>
-                            <li><Link href='/premium'>Premium Tips</Link></li>
+                            <li><Link href='/freetipsAcca'>Free Acca</Link></li>
                             </ul>
+                          
                         </div>
+
+                     
                     </li>
                     <li className='bg-[#1E2124]'>
                         <div className='app-container'>
-                            {/* <button className='inline-flex items-center w-full py-3 text-xl' onClick={() => { switchTab('tipsters') }}>Tipsters {tab === 'tipsters' ? <FaAngleUp className='text-app-orange ml-4' /> : <FaAngleDown className='text-app-orange ml-4' />}</button>
-                            <ul className={`overflow-hidden ${tab === 'tipsters' ? 'h-auto pb-6' : 'h-0'}`}>
-                                <li>Junior Tipster</li>
-                                <li>Senior Tipster</li>
-                                <li>Premium Tipster</li>
-                            </ul> */}
+                        <ul>
+      <li className='inline-flex items-center w-full py-3 text-xl group relative'>
+        Premium-Tips
+        <span className="absolute top-full left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100  text-white px-2 py-1 rounded-md transition-opacity text-sm duration-100">Coming Soon</span>
+      </li>
+      <li className='inline-flex items-center w-full py-3 text-xl group relative'>
+        Series
+        <span className="absolute text-sm top-full left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100  text-white px-2 py-1 rounded-md transition-opacity duration-100">Coming Soon</span>
+      </li>
+    </ul>
                         </div>
                     </li>
 

@@ -24,12 +24,6 @@ export default function Page() {
   const schema = yup.object().shape({
     email: yup.string().email().required(),
     password: yup.string().trim().required()
-    // .matches(/(?=.*[A-Z])/, 'must contain uppercase')
-    // .matches(/^(?=.*[a-z])/, 'Must contain lowercase')
-    // .matches(/(?=.*\d)/, 'must contain a digit')
-    // .matches(/(?=.*[^\w\d\s])/, 'must contain special character')
-    // .min(8, 'must be at least 8 characters long')
-    // .max(50, 'must be at most 50 characters long')
   })
 
   const onChange = () => {

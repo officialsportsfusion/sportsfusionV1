@@ -21,9 +21,7 @@ export const AuthHeader = () => {
                         <li>
                             <Link href='/testimonials'>Testimonials</Link>
                         </li>
-                        <li>
-                            <Link href='/partners'>Partners</Link>
-                        </li>
+                      
                     </ul>
                 </nav>
             </div>

@@ -26,9 +26,7 @@ export default function Page() {
 
     const schema = yup.object().shape({
         username: yup.string().required("Username is required!").min(3, 'At least 3 characters'),
-        country: yup.string().required("Required feild!"),
-        workStatus: yup.string().required("Required feild!"),
-        dob: yup.string().required("Required field!"),
+        country: yup.string().required("Required field!"),
         email: yup.string().email().required(),
         password: yup.string().trim().required()
     })
@@ -37,7 +35,7 @@ export default function Page() {
     
 
     const formik = useFormik({
-        initialValues: { email: '', password: '', username: "", tel: '', country: '', workStatus: '', dob: '', countryCode: '' },
+        initialValues: { email: '', password: '', username: "", tel: '', country: '', countryCode: '' },
         validationSchema: schema,
 
         onSubmit: async (values) => {
@@ -50,9 +48,8 @@ export default function Page() {
                     headers: {
                         "Content-Type": "application/json"
                     },
-                    body: JSON.stringify({ email: values?.email, password: values?.password, username: values?.username, tel: values?.tel, country: values?.country })
+                    body: JSON.stringify({ email: values?.email, password: values?.password, username: values?.username, tel: `+${values.countryCode + values?.tel}`.replace(/\s/g, ""), country: values?.country })
                 })
-                console.log(res)
                 const data = await res.json();
                 if (res.status === 200) {
                     router.push(`/confirm-otp`)

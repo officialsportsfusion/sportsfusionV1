@@ -31,8 +31,8 @@ export default function Page() {
         password: yup.string().trim().required()
     })
 
-  
-    
+
+
 
     const formik = useFormik({
         initialValues: { email: '', password: '', username: "", tel: '', country: '', countryCode: '' },
@@ -42,6 +42,7 @@ export default function Page() {
             setIsLoading(true);
 
             try {
+                console.log(JSON.stringify({ email: values?.email, password: values?.password, username: values?.username, tel: `+${values.countryCode + values?.tel}`.replace(/\s/g, ""), country: values?.country }))
                 const url = 'https://teal-worried-adder.cyclic.app/v1/user'
                 const res = await fetch(url, {
                     method: 'POST',
@@ -52,8 +53,11 @@ export default function Page() {
                 })
                 const data = await res.json();
                 if (res.status === 200) {
-                    router.push(`/confirm-otp`)
+                    router.push(`/auth/confirm-otp`)
                 } else {
+                    if (res.status === 400 && data.message === 'user already exist') {
+                        router.push(`/auth/confirm-otp`)
+                    }
                     setError(data.message)
                     setTimeout(() => {
                         setError('');
@@ -136,7 +140,7 @@ export default function Page() {
                         {session?.error && (<p className="text-red-400">{session.error}</p>)}
                         <AuthButton isLoading={isLoading} >Sign up</AuthButton>
                     </form>
-          
+
 
                     <p className="text-center">
                         Already have an account?{' '}<Link href='/auth/signin' className="text-[#ffab6f] hover:text-app-sky">Sign In</Link>

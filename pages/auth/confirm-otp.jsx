@@ -3,14 +3,17 @@ import { Input } from "@components/Input";
 import FootballImg from '/images/football.png'
 import Image from "next/image";
 import { useFormik } from "formik";
+
 import * as yup from 'yup'
 import Head from "next/head";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import { AuthButton } from '@components/AuthButton';
 
 export default function Page() {
   const router = useRouter()
   const [email, setEmail] = useState('')
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const { email } = router.query
@@ -20,9 +23,10 @@ export default function Page() {
   const formik = useFormik({
     initialValues: { otp: '' },
     validationSchema: yup.object().shape({
-      otp: yup.string().required().matches(/^\d{6,6}$/, 'Invalid OTP'),
+      otp: yup.string().required().matches(/^\d{4,4}$/, 'Invalid OTP'),
     }),
     onSubmit: async ({ otp }, { }) => {
+      setIsLoading(true);
       console.log(otp)
       try{
         const url = 'https://teal-worried-adder.cyclic.app/v1/confirm/otp'
@@ -68,7 +72,7 @@ export default function Page() {
               <Input placeholder='Enter OTP' type='text' name='otp' formik={formik} />
               {formik.touched.otp && formik.errors.otp && <p className='text-red-400 absolute bottom-2'>{formik.errors.otp}</p>}
             </div>
-            <button className="app-border-gradient-rounded-lg w-full" type="submit"><span className="py-3 md:max-lg:py-2 hover:opacity-3/4">Validate Account</span></button>
+            <AuthButton isLoading={isLoading} >Validate Account</AuthButton>
           </form>
 
           <div className="py-4 flex items-center justify-center relative">

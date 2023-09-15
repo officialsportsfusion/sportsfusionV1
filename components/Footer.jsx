@@ -22,17 +22,16 @@ export const Footer = () => {
         <div className="pb-8 md:flex">
           <div className="sm:grid sm:grid-cols-12 sm:gap-8 lg:pl-12 lg:w-[540px] xl:w-[720px]">
             <ul className="text-app-white border-b-solid border-b-2 border-b-app-white-500 py-4 sm:col-span-6 sm:border-none">
-              <li className=" mb-3 mt-3"><Link href="/about-us"> About Us </Link></li>
-              <li className=" mb-3"><Link href="/contact-us"> Contact Us </Link></li>
-              <li className=" mb-3"><Link href="/privacy-policy"> Privacy Policy</Link></li>
-              <li className=" mb-3"><Link href="/term-and-conditions"> Terms And Conditions </Link></li>
-              <li className=" mb-3"><Link href="/terms-of-services"> Terms Of Services </Link></li>
+              <li className=" mb-3 mt-3"><Link href="https://t.me/+1rEb93ckA_8zMzJk"> Join Telegram </Link></li>
+              <li className=" mb-3"><Link href="https://twitter.com/sportsfusionhq"> Contact Us </Link></li>
+              <li className=" mb-3"><Link href="/privacy"> Privacy Policy</Link></li>
+              <li className=" mb-3"><Link href="/terms"> Terms</Link></li>
             </ul>
 
             <ul className="text-app-white border-b-solid border-b-2 border-b-app-white-500 py-4 sm:col-span-6 sm:border-none md:w-[200px]">
-              <li className=" mb-3 mt-3"><Link href="/features"> Features </Link></li>
-              <li className=" mb-3"><Link href="/testimonials"> Testimonials </Link></li>
-              <li className=" mb-3"><Link href="/partners"> Partners</Link></li>
+              <li className=" mb-3 mt-3"><Link href="/"> Features </Link></li>
+              <li className=" mb-3"><Link href="/"> Testimonials </Link></li>
+              {/* <li className=" mb-3"><Link href="/partners"> Partners</Link></li> */}
             </ul>
           </div>
 
@@ -41,7 +40,7 @@ export const Footer = () => {
             <ul className="flex items-center gap-8">
               <li className="pr-2 "><Link href="#"><Image src={fbImage} alt="instagram" className="h-[1.5rem] w-auto" /></Link></li>
               <li className="pr-2 "><Link href="#"><Image src={img2} alt="facebook" className="h-[1.5rem] w-auto" /></Link></li>
-              <li className="pr-2 "><Link href="#"><Image src={img3} alt="twitter" className="h-[1.5rem] w-auto" /></Link></li>
+              <li className="pr-2 "><Link href="https://twitter.com/sportsfusionhq"><Image src={img3} alt="twitter" className="h-[1.5rem] w-auto" /></Link></li>
               <li className="pr-2 "><Link href="#"><Image src={img4} alt="youtube" className="h-[1.5rem] w-auto" /></Link></li>
             </ul>
             <Image src={ageWarning} alt="18 years plus warning" className="my-6 " />

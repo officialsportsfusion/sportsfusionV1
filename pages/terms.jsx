@@ -1,6 +1,7 @@
 import { BannerAd } from "@components/BannerAd";
 import { FreeTips } from "@components/FreeTips";
 import { Privacy } from "@components/privacy";
+import { Terms } from "@components/terms";
 import Head from "next/head";
 import { FreetipsStats } from "@components/FreetipsStats";
 import { Testimonial } from "@components/Testimonial";
@@ -13,13 +14,13 @@ export default function Page() {
     return (
       <>
         <Head>
-          <title> Privacy Policy | SportsFusion</title>
+          <title> Terms of Services | SportsFusion</title>
         </Head>
         
        
        
        
-        <Privacy/> 
+        <Terms/> 
          <BannerAd />          
         <FreetipsStats />
         <Testimonial />

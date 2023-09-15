@@ -6,11 +6,13 @@ import { useFormik } from "formik";
 import { PInput } from '@components/PInput';
 import * as yup from 'yup'
 import Head from "next/head";
+import { AuthButton } from '@components/AuthButton';
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
 export default function Page() {
   const router = useRouter()
+  const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('')
   const [email, setEmail] = useState('')
 
@@ -28,6 +30,7 @@ export default function Page() {
     }),
 
     onSubmit: async (values) => {
+      setIsLoading(true);
       try{
         const url = 'https://teal-worried-adder.cyclic.app/v1/change/password'
         const res = await fetch(url, {
@@ -74,7 +77,8 @@ export default function Page() {
               <PInput name='password' placeholder='password' type='password' formik={formik} />
           
             </div>
-            <button className="app-border-gradient-rounded-lg w-full" type="submit"><span className="py-3 md:max-lg:py-2 hover:opacity-3/4">Reset Password</span></button>
+            
+            <AuthButton isLoading={isLoading} >Reset Password</AuthButton>
           </form>
 
           {/* <div className="py-4 flex items-center justify-center relative">

@@ -7,9 +7,11 @@ import Link from "next/link";
 import { useFormik } from "formik";
 import * as yup from 'yup'
 import Head from "next/head";
+import { useState } from 'react';
 import { useRouter } from "next/router";
 
 export default function Page() {
+    const [isLoading, setIsLoading] = useState(false);
     const router = useRouter();
     const formik = useFormik({
         initialValues: { email: '' },

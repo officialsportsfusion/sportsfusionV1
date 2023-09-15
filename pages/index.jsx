@@ -64,9 +64,9 @@ export default function Page({ tips, Tip, firstTwentySeriesTips, acca }) {
         <Hero />
         <Statistics />
         <FreeTips tips={tips} />
-        {session.status === 'authenticated' && <Premium Tip={Tip} />}
+        {/* {session.status === 'authenticated' && <Premium Tip={Tip} />} */}
         {session.status === 'authenticated' && <FreeAcca tip={acca} />}
-        <Series tip={firstTwentySeriesTips} />
+        {/* <Series tip={firstTwentySeriesTips} /> */}
         <Testimonial />
       </>
     </>

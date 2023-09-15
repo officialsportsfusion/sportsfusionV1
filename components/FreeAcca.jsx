@@ -1,7 +1,7 @@
 import Link from "next/link"
 export const FreeAcca = ({tip}) => {
     return (
-        <section className="bg-app-black py-12">
+        <section className="bg-app-black py-12 mt-20">
             <h1 className="text-app-orange font-bold text-4xl text-center mb-4">Fusion Accumulator Tips</h1>
 
             <p className="text-center text-app-white max-w-4xl app-container">Our experts have curated an exciting lineup of high-odds games. Ready to play? Click Stake if you are in or Sign Up to join the action. Every bet is a chance to win big, and every game is an adventure!</p>

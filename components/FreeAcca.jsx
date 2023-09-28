@@ -31,7 +31,7 @@ const Table = ({ tip }) => {
                             tip.map((serie, index) => {
                                 return <tr key={index} className="border-b-solid border-b-[#4E443D] border-b-[1px] last-of-type:border-none">
 
-                                    <td className="py-1 px-[2px] text-center"><p className="gap-x-1 inline-flex flex-col min-[412px]:text-md min-[412px]:flex-row"><span>{serie.date}</span><span>{serie.time}</span></p></td>
+                                    <td className="py-1 px-[2px] text-center"><p className="gap-x-1 inline-flex flex-col min-[412px]:text-sm min-[412px]:flex-row"><span>{serie.date}</span><span>{serie.time}</span></p></td>
                                     {/* <td className="hidden md:py-2 md:table-cell pl-1 text-center">{serie.time}</td> */}
                                     <td className=" py-2 pl-1 text-center">{serie.category}</td>
                                     <td className=" py-2 pl-1 md:table-cell text-[#AAAAAA] text-center"><a href={serie.gameLink}><button className="rounded-md h-6 w-12 text-sm bg-gray-500">stake</button></a></td>

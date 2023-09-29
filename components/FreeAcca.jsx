@@ -34,8 +34,8 @@ const Table = ({ tip }) => {
                                     <td className="py-1 px-[2px] text-center"><p className="gap-x-1 inline-flex flex-col min-[412px]:text-sm min-[412px]:flex-row"><span>{serie.date}</span><span>{serie.time}</span></p></td>
                                     {/* <td className="hidden md:py-2 md:table-cell pl-1 text-center">{serie.time}</td> */}
                                     <td className=" py-2 pl-1 text-center">{serie.category}</td>
-                                    <td className=" py-2 pl-1 md:table-cell text-[#AAAAAA] text-center"><a href={serie.gameLink}><button className="rounded-md h-6 w-12 text-sm bg-gray-500">stake</button></a></td>
-                                    <td className=" py-2 pl-1 md:table-cell text-[#AAAAAA] text-center"><a href={serie.signupLink}><button className="rounded-md h-7 w-16 text-sm bg-gray-500">sign up</button></a></td>
+                                    <td className=" py-2 pl-1 md:table-cell text-[#AAAAAA] text-center"><a href={serie.gameLink}  target="_blank" rel="noopener noreferrer" ><button className="rounded-md h-6 w-12 text-sm bg-gray-500">stake</button></a></td>
+                                    <td className=" py-2 pl-1 md:table-cell text-[#AAAAAA] text-center"><a href={serie.signupLink} target="_blank" rel="noopener noreferrer"><button className="rounded-md h-7 w-16 text-sm bg-gray-500">sign up</button></a></td>
                                     <td className="py-2 text-center pr-2"><Status won={serie.status} /></td>
                                 </tr>
                             }) : null

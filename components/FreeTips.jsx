@@ -23,9 +23,9 @@ const TipsTable = ({ tips }) => {
                             <th className="hidden md:py-2 md:table-cell text-left pl-1 text-center">League</th>
                             <th className="py-2 text-left pl-1 text-center">Match</th>
                             <th className="py-2 text-left pl-1 text-center">Tips</th>
-                            <th className="hidden py-2 md:table-cell text-left pl-1 text-center">Odds</th>
+                            <th className="py-2 text-left pl-1 text-center">Odds</th>
                             <th className="hidden py-2 text-left pl-1 md:table-cell text-center">Tipster</th>
-                            <th className="py-2 text-center">Scores</th>
+                            <th className="hidden md:table-cell py-2 text-center">Scores</th>
                         </tr>
                     </thead>
 
@@ -38,9 +38,9 @@ const TipsTable = ({ tips }) => {
                                         <td className="hidden md:table-cell text-center">{tip.league}</td>
                                         <td className='text-center'><span className="hidden sm:inline">{tip.match}</span><span className="sm:hidden">{tip.match}</span></td>
                                         <td className='text-center'>{tip.tip}</td>
-                                        <td className="hidden md:table-cell text-center">{tip.odds}</td>
+                                        <td className="text-center">{tip.odds}</td>
                                         <td className="hidden md:table-cell text-center"><FaUser className="text-app-orange inline mb-1" />{' '}{tip.tipster}</td>
-                                        <td className="text-center text-center">{tip.scores}</td>
+                                        <td className="hidden md:table-cell text-center text-center">{tip.scores}</td>
                                     </tr>
                                 }) : null
                         }
